@@ -1,0 +1,70 @@
+grammar ml.classification.DSL with org.eclipse.xtext.common.Terminals
+
+generate dSL "http://www.classification.ml/DSL"
+
+
+// concrete and abstract syntax
+ML:
+	(statements+=Statement "\n")* statements+=Statement;
+		
+Statement :
+	statement=Expression | 
+	statement=Primitive;
+
+Primitive:
+	primitive=Print | 
+	primitive=Algo_choose | 
+	primitive=Read | 
+	primitive=Strategy_choose | 
+	primitive=Column | 
+	primitive=Use_Metric;
+	
+Use_Metric:
+	"use_metric" metric=METRIC;
+
+terminal METRIC:
+	"accuracy" | 
+	"recall" | 
+	"f1";
+
+Column:
+	"use_column" (use+=INT)+ | 
+	"unuse_column" (unuse+=INT)+ | 
+	"predict_column" predict=INT;
+
+Strategy_choose:
+	"use_strategy" strategy="train_test" ratio=DOUBLE | 
+	"use_strategy" strategy="cross_valid" nb=INT? ;
+
+Read:
+	"read" path=STRING  separator=SEP?;
+
+terminal SEP:
+	";"|",";
+
+Algo_choose:
+	"use_algorithm" algorithm=ALGO_NAME;
+
+terminal ALGO_NAME:
+	"tree" | 
+	"svm";
+
+Print:
+	"print" val=Constant;
+
+Expression:
+	expr=Constant | 
+	expr=Assign;
+
+Assign:
+	varname=ID "=" val=Constant |
+	varname=ID "=" val=Primitive; 
+
+Constant:
+	valInt=INT | 
+	valDouble=DOUBLE | 
+	valString=STRING | 
+	valID=ID;
+
+terminal DOUBLE:
+	INT "." INT ;
