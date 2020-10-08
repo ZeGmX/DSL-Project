@@ -5,7 +5,7 @@ generate dSL "http://www.classification.ml/DSL"
 
 // concrete and abstract syntax
 ML:
-	(statements+=Statement "\n")* statements+=Statement;
+	(statements+=Statement)* statements+=Statement;
 		
 Statement :
 	statement=Expression | 

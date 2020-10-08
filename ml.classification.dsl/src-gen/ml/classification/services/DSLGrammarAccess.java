@@ -25,32 +25,24 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	public class MLElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ml.classification.DSL.ML");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cGroup.eContents().get(0);
-		private final Assignment cStatementsAssignment_0_0 = (Assignment)cGroup_0.eContents().get(0);
-		private final RuleCall cStatementsStatementParserRuleCall_0_0_0 = (RuleCall)cStatementsAssignment_0_0.eContents().get(0);
-		private final Keyword cLineFeedKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
+		private final Assignment cStatementsAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cStatementsStatementParserRuleCall_0_0 = (RuleCall)cStatementsAssignment_0.eContents().get(0);
 		private final Assignment cStatementsAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cStatementsStatementParserRuleCall_1_0 = (RuleCall)cStatementsAssignment_1.eContents().get(0);
 		
 		//// concrete and abstract syntax
 		//ML:
-		//	(statements+=Statement "\n")* statements+=Statement;
+		//	statements+=Statement* statements+=Statement;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//(statements+=Statement "\n")* statements+=Statement
+		//statements+=Statement* statements+=Statement
 		public Group getGroup() { return cGroup; }
 		
-		//(statements+=Statement "\n")*
-		public Group getGroup_0() { return cGroup_0; }
-		
-		//statements+=Statement
-		public Assignment getStatementsAssignment_0_0() { return cStatementsAssignment_0_0; }
+		//statements+=Statement*
+		public Assignment getStatementsAssignment_0() { return cStatementsAssignment_0; }
 		
 		//Statement
-		public RuleCall getStatementsStatementParserRuleCall_0_0_0() { return cStatementsStatementParserRuleCall_0_0_0; }
-		
-		//"\n"
-		public Keyword getLineFeedKeyword_0_1() { return cLineFeedKeyword_0_1; }
+		public RuleCall getStatementsStatementParserRuleCall_0_0() { return cStatementsStatementParserRuleCall_0_0; }
 		
 		//statements+=Statement
 		public Assignment getStatementsAssignment_1() { return cStatementsAssignment_1; }
@@ -571,7 +563,7 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	
 	//// concrete and abstract syntax
 	//ML:
-	//	(statements+=Statement "\n")* statements+=Statement;
+	//	statements+=Statement* statements+=Statement;
 	public MLElements getMLAccess() {
 		return pML;
 	}

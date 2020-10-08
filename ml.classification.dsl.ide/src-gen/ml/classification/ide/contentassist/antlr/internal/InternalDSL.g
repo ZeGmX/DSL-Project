@@ -556,9 +556,9 @@ rule__ML__Group__0__Impl
 	}
 :
 (
-	{ before(grammarAccess.getMLAccess().getGroup_0()); }
-	(rule__ML__Group_0__0)*
-	{ after(grammarAccess.getMLAccess().getGroup_0()); }
+	{ before(grammarAccess.getMLAccess().getStatementsAssignment_0()); }
+	(rule__ML__StatementsAssignment_0)*
+	{ after(grammarAccess.getMLAccess().getStatementsAssignment_0()); }
 )
 ;
 finally {
@@ -585,60 +585,6 @@ rule__ML__Group__1__Impl
 	{ before(grammarAccess.getMLAccess().getStatementsAssignment_1()); }
 	(rule__ML__StatementsAssignment_1)
 	{ after(grammarAccess.getMLAccess().getStatementsAssignment_1()); }
-)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-rule__ML__Group_0__0
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	rule__ML__Group_0__0__Impl
-	rule__ML__Group_0__1
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__ML__Group_0__0__Impl
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-(
-	{ before(grammarAccess.getMLAccess().getStatementsAssignment_0_0()); }
-	(rule__ML__StatementsAssignment_0_0)
-	{ after(grammarAccess.getMLAccess().getStatementsAssignment_0_0()); }
-)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__ML__Group_0__1
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	rule__ML__Group_0__1__Impl
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__ML__Group_0__1__Impl
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-(
-	{ before(grammarAccess.getMLAccess().getLineFeedKeyword_0_1()); }
-	'\n'
-	{ after(grammarAccess.getMLAccess().getLineFeedKeyword_0_1()); }
 )
 ;
 finally {
@@ -1389,15 +1335,15 @@ finally {
 }
 
 
-rule__ML__StatementsAssignment_0_0
+rule__ML__StatementsAssignment_0
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getMLAccess().getStatementsStatementParserRuleCall_0_0_0()); }
+		{ before(grammarAccess.getMLAccess().getStatementsStatementParserRuleCall_0_0()); }
 		ruleStatement
-		{ after(grammarAccess.getMLAccess().getStatementsStatementParserRuleCall_0_0_0()); }
+		{ after(grammarAccess.getMLAccess().getStatementsStatementParserRuleCall_0_0()); }
 	)
 ;
 finally {

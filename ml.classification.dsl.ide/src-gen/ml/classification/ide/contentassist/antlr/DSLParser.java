@@ -39,7 +39,6 @@ public class DSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getAssignAccess().getAlternatives(), "rule__Assign__Alternatives");
 			builder.put(grammarAccess.getConstantAccess().getAlternatives(), "rule__Constant__Alternatives");
 			builder.put(grammarAccess.getMLAccess().getGroup(), "rule__ML__Group__0");
-			builder.put(grammarAccess.getMLAccess().getGroup_0(), "rule__ML__Group_0__0");
 			builder.put(grammarAccess.getUse_MetricAccess().getGroup(), "rule__Use_Metric__Group__0");
 			builder.put(grammarAccess.getColumnAccess().getGroup_0(), "rule__Column__Group_0__0");
 			builder.put(grammarAccess.getColumnAccess().getGroup_1(), "rule__Column__Group_1__0");
@@ -51,7 +50,7 @@ public class DSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getPrintAccess().getGroup(), "rule__Print__Group__0");
 			builder.put(grammarAccess.getAssignAccess().getGroup_0(), "rule__Assign__Group_0__0");
 			builder.put(grammarAccess.getAssignAccess().getGroup_1(), "rule__Assign__Group_1__0");
-			builder.put(grammarAccess.getMLAccess().getStatementsAssignment_0_0(), "rule__ML__StatementsAssignment_0_0");
+			builder.put(grammarAccess.getMLAccess().getStatementsAssignment_0(), "rule__ML__StatementsAssignment_0");
 			builder.put(grammarAccess.getMLAccess().getStatementsAssignment_1(), "rule__ML__StatementsAssignment_1");
 			builder.put(grammarAccess.getStatementAccess().getStatementAssignment_0(), "rule__Statement__StatementAssignment_0");
 			builder.put(grammarAccess.getStatementAccess().getStatementAssignment_1(), "rule__Statement__StatementAssignment_1");

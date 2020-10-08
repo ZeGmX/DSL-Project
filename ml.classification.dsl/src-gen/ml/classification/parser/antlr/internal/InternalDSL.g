@@ -78,35 +78,10 @@ ruleML returns [EObject current=null]
 	(
 		(
 			(
-				(
-					{
-						newCompositeNode(grammarAccess.getMLAccess().getStatementsStatementParserRuleCall_0_0_0());
-					}
-					lv_statements_0_0=ruleStatement
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getMLRule());
-						}
-						add(
-							$current,
-							"statements",
-							lv_statements_0_0,
-							"ml.classification.DSL.Statement");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-			otherlv_1='\n'
-			{
-				newLeafNode(otherlv_1, grammarAccess.getMLAccess().getLineFeedKeyword_0_1());
-			}
-		)*
-		(
-			(
 				{
-					newCompositeNode(grammarAccess.getMLAccess().getStatementsStatementParserRuleCall_1_0());
+					newCompositeNode(grammarAccess.getMLAccess().getStatementsStatementParserRuleCall_0_0());
 				}
-				lv_statements_2_0=ruleStatement
+				lv_statements_0_0=ruleStatement
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getMLRule());
@@ -114,7 +89,26 @@ ruleML returns [EObject current=null]
 					add(
 						$current,
 						"statements",
-						lv_statements_2_0,
+						lv_statements_0_0,
+						"ml.classification.DSL.Statement");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)*
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getMLAccess().getStatementsStatementParserRuleCall_1_0());
+				}
+				lv_statements_1_0=ruleStatement
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getMLRule());
+					}
+					add(
+						$current,
+						"statements",
+						lv_statements_1_0,
 						"ml.classification.DSL.Statement");
 					afterParserOrEnumRuleCall();
 				}
