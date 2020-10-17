@@ -261,13 +261,22 @@ public interface DSLPackage extends EPackage
   int PRIMITIVE__USE_METRIC = 5;
 
   /**
+   * The feature id for the '<em><b>Predict</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRIMITIVE__PREDICT = 6;
+
+  /**
    * The number of structural features of the '<em>Primitive</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PRIMITIVE_FEATURE_COUNT = 6;
+  int PRIMITIVE_FEATURE_COUNT = 7;
 
   /**
    * The meta object id for the '{@link ml.classification.dSL.impl.Use_MetricImpl <em>Use Metric</em>}' class.
@@ -677,6 +686,17 @@ public interface DSLPackage extends EPackage
   EReference getPrimitive_Use_metric();
 
   /**
+   * Returns the meta object for the attribute '{@link ml.classification.dSL.Primitive#getPredict <em>Predict</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Predict</em>'.
+   * @see ml.classification.dSL.Primitive#getPredict()
+   * @see #getPrimitive()
+   * @generated
+   */
+  EAttribute getPrimitive_Predict();
+
+  /**
    * Returns the meta object for class '{@link ml.classification.dSL.Use_Metric <em>Use Metric</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1033,6 +1053,14 @@ public interface DSLPackage extends EPackage
      * @generated
      */
     EReference PRIMITIVE__USE_METRIC = eINSTANCE.getPrimitive_Use_metric();
+
+    /**
+     * The meta object literal for the '<em><b>Predict</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PRIMITIVE__PREDICT = eINSTANCE.getPrimitive_Predict();
 
     /**
      * The meta object literal for the '{@link ml.classification.dSL.impl.Use_MetricImpl <em>Use Metric</em>}' class.

@@ -1,6 +1,16 @@
 package ml.classification.generator
 
-import ml.classification.dSL.*
+import ml.classification.dSL.ML
+import ml.classification.dSL.Statement
+import ml.classification.dSL.Expression
+import ml.classification.dSL.Assign
+import ml.classification.dSL.Primitive
+import ml.classification.dSL.Print
+import ml.classification.dSL.Algo_choose
+import ml.classification.dSL.Read
+import ml.classification.dSL.Strategy_choose
+import ml.classification.dSL.Use_Metric
+import ml.classification.dSL.Column
 
 
 class PrettyPrinter {
@@ -55,7 +65,9 @@ class PrettyPrinter {
 			«primitive.use_metric.prettyprint()»
 		«ELSE»«IF primitive.column !== null»
 			«primitive.column.prettyprint()»
-		«ENDIF»«ENDIF»«ENDIF»«ENDIF»«ENDIF»«ENDIF»
+		«ELSE»«IF primitive.predict !== null»
+			predict
+		«ENDIF»«ENDIF»«ENDIF»«ENDIF»«ENDIF»«ENDIF»«ENDIF»
 		'''
 	
 	}

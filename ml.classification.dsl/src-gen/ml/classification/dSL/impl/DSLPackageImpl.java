@@ -375,6 +375,17 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
    * @generated
    */
   @Override
+  public EAttribute getPrimitive_Predict()
+  {
+    return (EAttribute)primitiveEClass.getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getUse_Metric()
   {
     return use_MetricEClass;
@@ -609,6 +620,7 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
     createEReference(primitiveEClass, PRIMITIVE__STRATEGY_CHOOSE);
     createEReference(primitiveEClass, PRIMITIVE__COLUMN);
     createEReference(primitiveEClass, PRIMITIVE__USE_METRIC);
+    createEAttribute(primitiveEClass, PRIMITIVE__PREDICT);
 
     use_MetricEClass = createEClass(USE_METRIC);
     createEAttribute(use_MetricEClass, USE_METRIC__METRIC);
@@ -687,6 +699,7 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
     initEReference(getPrimitive_Strategy_choose(), this.getStrategy_choose(), null, "strategy_choose", null, 0, 1, Primitive.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPrimitive_Column(), this.getColumn(), null, "column", null, 0, 1, Primitive.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPrimitive_Use_metric(), this.getUse_Metric(), null, "use_metric", null, 0, 1, Primitive.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getPrimitive_Predict(), ecorePackage.getEString(), "predict", null, 0, 1, Primitive.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(use_MetricEClass, Use_Metric.class, "Use_Metric", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getUse_Metric_Metric(), ecorePackage.getEString(), "metric", null, 0, 1, Use_Metric.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

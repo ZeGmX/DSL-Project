@@ -150,14 +150,16 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		private final RuleCall cColumnColumnParserRuleCall_4_0 = (RuleCall)cColumnAssignment_4.eContents().get(0);
 		private final Assignment cUse_metricAssignment_5 = (Assignment)cAlternatives.eContents().get(5);
 		private final RuleCall cUse_metricUse_MetricParserRuleCall_5_0 = (RuleCall)cUse_metricAssignment_5.eContents().get(0);
+		private final Assignment cPredictAssignment_6 = (Assignment)cAlternatives.eContents().get(6);
+		private final RuleCall cPredictPredictParserRuleCall_6_0 = (RuleCall)cPredictAssignment_6.eContents().get(0);
 		
 		//Primitive:
 		//	print=Print | algo_choose=Algo_choose | read=Read | strategy_choose=Strategy_choose | column=Column |
-		//	use_metric=Use_Metric;
+		//	use_metric=Use_Metric | predict=Predict;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//print=Print | algo_choose=Algo_choose | read=Read | strategy_choose=Strategy_choose | column=Column |
-		//use_metric=Use_Metric
+		//use_metric=Use_Metric | predict=Predict
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//print=Print
@@ -195,6 +197,23 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		
 		//Use_Metric
 		public RuleCall getUse_metricUse_MetricParserRuleCall_5_0() { return cUse_metricUse_MetricParserRuleCall_5_0; }
+		
+		//predict=Predict
+		public Assignment getPredictAssignment_6() { return cPredictAssignment_6; }
+		
+		//Predict
+		public RuleCall getPredictPredictParserRuleCall_6_0() { return cPredictPredictParserRuleCall_6_0; }
+	}
+	public class PredictElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ml.classification.DSL.Predict");
+		private final Keyword cPredictKeyword = (Keyword)rule.eContents().get(1);
+		
+		//Predict:
+		//	"predict";
+		@Override public ParserRule getRule() { return rule; }
+		
+		//"predict"
+		public Keyword getPredictKeyword() { return cPredictKeyword; }
 	}
 	public class ConstantElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ml.classification.DSL.Constant");
@@ -451,6 +470,7 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	private final AssignElements pAssign;
 	private final ExpressionElements pExpression;
 	private final PrimitiveElements pPrimitive;
+	private final PredictElements pPredict;
 	private final ConstantElements pConstant;
 	private final Use_MetricElements pUse_Metric;
 	private final TerminalRule tMETRIC;
@@ -477,6 +497,7 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		this.pAssign = new AssignElements();
 		this.pExpression = new ExpressionElements();
 		this.pPrimitive = new PrimitiveElements();
+		this.pPredict = new PredictElements();
 		this.pConstant = new ConstantElements();
 		this.pUse_Metric = new Use_MetricElements();
 		this.tMETRIC = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ml.classification.DSL.METRIC");
@@ -560,13 +581,23 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	
 	//Primitive:
 	//	print=Print | algo_choose=Algo_choose | read=Read | strategy_choose=Strategy_choose | column=Column |
-	//	use_metric=Use_Metric;
+	//	use_metric=Use_Metric | predict=Predict;
 	public PrimitiveElements getPrimitiveAccess() {
 		return pPrimitive;
 	}
 	
 	public ParserRule getPrimitiveRule() {
 		return getPrimitiveAccess().getRule();
+	}
+	
+	//Predict:
+	//	"predict";
+	public PredictElements getPredictAccess() {
+		return pPredict;
+	}
+	
+	public ParserRule getPredictRule() {
+		return getPredictAccess().getRule();
 	}
 	
 	//Constant:

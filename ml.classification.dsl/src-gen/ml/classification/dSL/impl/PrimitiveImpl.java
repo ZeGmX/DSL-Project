@@ -35,6 +35,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link ml.classification.dSL.impl.PrimitiveImpl#getStrategy_choose <em>Strategy choose</em>}</li>
  *   <li>{@link ml.classification.dSL.impl.PrimitiveImpl#getColumn <em>Column</em>}</li>
  *   <li>{@link ml.classification.dSL.impl.PrimitiveImpl#getUse_metric <em>Use metric</em>}</li>
+ *   <li>{@link ml.classification.dSL.impl.PrimitiveImpl#getPredict <em>Predict</em>}</li>
  * </ul>
  *
  * @generated
@@ -100,6 +101,26 @@ public class PrimitiveImpl extends MinimalEObjectImpl.Container implements Primi
    * @ordered
    */
   protected Use_Metric use_metric;
+
+  /**
+   * The default value of the '{@link #getPredict() <em>Predict</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getPredict()
+   * @generated
+   * @ordered
+   */
+  protected static final String PREDICT_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getPredict() <em>Predict</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getPredict()
+   * @generated
+   * @ordered
+   */
+  protected String predict = PREDICT_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -428,6 +449,31 @@ public class PrimitiveImpl extends MinimalEObjectImpl.Container implements Primi
    * @generated
    */
   @Override
+  public String getPredict()
+  {
+    return predict;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setPredict(String newPredict)
+  {
+    String oldPredict = predict;
+    predict = newPredict;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.PRIMITIVE__PREDICT, oldPredict, predict));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
     switch (featureID)
@@ -470,6 +516,8 @@ public class PrimitiveImpl extends MinimalEObjectImpl.Container implements Primi
         return getColumn();
       case DSLPackage.PRIMITIVE__USE_METRIC:
         return getUse_metric();
+      case DSLPackage.PRIMITIVE__PREDICT:
+        return getPredict();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -501,6 +549,9 @@ public class PrimitiveImpl extends MinimalEObjectImpl.Container implements Primi
         return;
       case DSLPackage.PRIMITIVE__USE_METRIC:
         setUse_metric((Use_Metric)newValue);
+        return;
+      case DSLPackage.PRIMITIVE__PREDICT:
+        setPredict((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -534,6 +585,9 @@ public class PrimitiveImpl extends MinimalEObjectImpl.Container implements Primi
       case DSLPackage.PRIMITIVE__USE_METRIC:
         setUse_metric((Use_Metric)null);
         return;
+      case DSLPackage.PRIMITIVE__PREDICT:
+        setPredict(PREDICT_EDEFAULT);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -560,8 +614,27 @@ public class PrimitiveImpl extends MinimalEObjectImpl.Container implements Primi
         return column != null;
       case DSLPackage.PRIMITIVE__USE_METRIC:
         return use_metric != null;
+      case DSLPackage.PRIMITIVE__PREDICT:
+        return PREDICT_EDEFAULT == null ? predict != null : !PREDICT_EDEFAULT.equals(predict);
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (predict: ");
+    result.append(predict);
+    result.append(')');
+    return result.toString();
   }
 
 } //PrimitiveImpl

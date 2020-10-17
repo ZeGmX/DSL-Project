@@ -62,6 +62,7 @@ public class DSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getPrimitiveAccess().getStrategy_chooseAssignment_3(), "rule__Primitive__Strategy_chooseAssignment_3");
 			builder.put(grammarAccess.getPrimitiveAccess().getColumnAssignment_4(), "rule__Primitive__ColumnAssignment_4");
 			builder.put(grammarAccess.getPrimitiveAccess().getUse_metricAssignment_5(), "rule__Primitive__Use_metricAssignment_5");
+			builder.put(grammarAccess.getPrimitiveAccess().getPredictAssignment_6(), "rule__Primitive__PredictAssignment_6");
 			builder.put(grammarAccess.getUse_MetricAccess().getMetricAssignment_1(), "rule__Use_Metric__MetricAssignment_1");
 			builder.put(grammarAccess.getColumnAccess().getUseAssignment_0_1(), "rule__Column__UseAssignment_0_1");
 			builder.put(grammarAccess.getColumnAccess().getUnuseAssignment_1_1(), "rule__Column__UnuseAssignment_1_1");

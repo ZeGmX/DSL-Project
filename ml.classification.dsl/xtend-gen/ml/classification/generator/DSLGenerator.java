@@ -5,6 +5,7 @@ package ml.classification.generator;
 
 import com.google.common.collect.Iterables;
 import ml.classification.dSL.ML;
+import ml.classification.generator.Compiler2Python;
 import ml.classification.generator.PrettyPrinter;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -26,9 +27,13 @@ public class DSLGenerator extends AbstractGenerator {
     for (final ML ml : _filter) {
       {
         String _replaceAll = resource.getURI().lastSegment().replaceAll(".mldsl", "");
-        final String name = (_replaceAll + "-prettyprinted.mldsl");
+        final String namePrettyPrint = (_replaceAll + "-prettyprinted.mldsl");
         final PrettyPrinter prettyPrinter = new PrettyPrinter();
-        fsa.generateFile(name, prettyPrinter.prettyprint(ml));
+        fsa.generateFile(namePrettyPrint, prettyPrinter.prettyprint(ml));
+        String _replaceAll_1 = resource.getURI().lastSegment().replaceAll(".mldsl", "");
+        final String nameCompilePython = (_replaceAll_1 + ".py");
+        final Compiler2Python compiler2Python = new Compiler2Python();
+        fsa.generateFile(nameCompilePython, compiler2Python.compile(ml));
       }
     }
   }

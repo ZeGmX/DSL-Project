@@ -428,7 +428,49 @@ rulePrimitive returns [EObject current=null]
 				}
 			)
 		)
+		    |
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getPrimitiveAccess().getPredictPredictParserRuleCall_6_0());
+				}
+				lv_predict_6_0=rulePredict
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getPrimitiveRule());
+					}
+					set(
+						$current,
+						"predict",
+						lv_predict_6_0,
+						"ml.classification.DSL.Predict");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
 	)
+;
+
+// Entry rule entryRulePredict
+entryRulePredict returns [String current=null]:
+	{ newCompositeNode(grammarAccess.getPredictRule()); }
+	iv_rulePredict=rulePredict
+	{ $current=$iv_rulePredict.current.getText(); }
+	EOF;
+
+// Rule Predict
+rulePredict returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	kw='predict'
+	{
+		$current.merge(kw);
+		newLeafNode(kw, grammarAccess.getPredictAccess().getPredictKeyword());
+	}
 ;
 
 // Entry rule entryRuleConstant

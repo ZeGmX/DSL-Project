@@ -166,7 +166,8 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *         read=Read | 
 	 *         strategy_choose=Strategy_choose | 
 	 *         column=Column | 
-	 *         use_metric=Use_Metric
+	 *         use_metric=Use_Metric | 
+	 *         predict=Predict
 	 *     )
 	 */
 	protected void sequence_Primitive(ISerializationContext context, Primitive semanticObject) {

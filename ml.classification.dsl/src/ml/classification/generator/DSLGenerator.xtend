@@ -7,7 +7,7 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
-import ml.classification.dSL.*
+import ml.classification.dSL.ML
 
 /**
  * Generates code from your Statement files on save.
@@ -18,9 +18,13 @@ class DSLGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
        for (ml : resource.allContents.toIterable.filter(ML)){
-                val name = resource.URI.lastSegment.replaceAll(".mldsl","") +"-prettyprinted.mldsl"
+                val namePrettyPrint = resource.URI.lastSegment.replaceAll(".mldsl","") +"-prettyprinted.mldsl"
                 val prettyPrinter = new PrettyPrinter
-             fsa.generateFile(name, prettyPrinter.prettyprint(ml))
+             	fsa.generateFile(namePrettyPrint, prettyPrinter.prettyprint(ml))
+             	val nameCompilePython = resource.URI.lastSegment.replaceAll(".mldsl","") + ".py"
+             	val compiler2Python = new Compiler2Python
+             	fsa.generateFile(nameCompilePython, compiler2Python.compile(ml))
+             	
        }
     }
 	

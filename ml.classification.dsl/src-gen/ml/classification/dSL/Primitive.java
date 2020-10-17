@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link ml.classification.dSL.Primitive#getStrategy_choose <em>Strategy choose</em>}</li>
  *   <li>{@link ml.classification.dSL.Primitive#getColumn <em>Column</em>}</li>
  *   <li>{@link ml.classification.dSL.Primitive#getUse_metric <em>Use metric</em>}</li>
+ *   <li>{@link ml.classification.dSL.Primitive#getPredict <em>Predict</em>}</li>
  * </ul>
  *
  * @see ml.classification.dSL.DSLPackage#getPrimitive()
@@ -159,5 +160,27 @@ public interface Primitive extends EObject
    * @generated
    */
   void setUse_metric(Use_Metric value);
+
+  /**
+   * Returns the value of the '<em><b>Predict</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Predict</em>' attribute.
+   * @see #setPredict(String)
+   * @see ml.classification.dSL.DSLPackage#getPrimitive_Predict()
+   * @model
+   * @generated
+   */
+  String getPredict();
+
+  /**
+   * Sets the value of the '{@link ml.classification.dSL.Primitive#getPredict <em>Predict</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Predict</em>' attribute.
+   * @see #getPredict()
+   * @generated
+   */
+  void setPredict(String value);
 
 } // Primitive

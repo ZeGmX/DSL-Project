@@ -28,6 +28,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//Primitive/strategy_choose"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//Primitive/column"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//Primitive/use_metric"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//Primitive/predict"/>
     </genClasses>
     <genClasses ecoreClass="DSL.ecore#//Use_Metric">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//Use_Metric/metric"/>
