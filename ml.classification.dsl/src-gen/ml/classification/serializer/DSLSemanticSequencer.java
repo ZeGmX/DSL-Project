@@ -8,7 +8,6 @@ import java.util.Set;
 import ml.classification.dSL.Algo_choose;
 import ml.classification.dSL.Assign;
 import ml.classification.dSL.Column;
-import ml.classification.dSL.Constant;
 import ml.classification.dSL.DSLPackage;
 import ml.classification.dSL.Expression;
 import ml.classification.dSL.ML;
@@ -51,9 +50,6 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				return; 
 			case DSLPackage.COLUMN:
 				sequence_Column(context, (Column) semanticObject); 
-				return; 
-			case DSLPackage.CONSTANT:
-				sequence_Constant(context, (Constant) semanticObject); 
 				return; 
 			case DSLPackage.EXPRESSION:
 				sequence_Expression(context, (Expression) semanticObject); 
@@ -107,10 +103,19 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Assign returns Assign
 	 *
 	 * Constraint:
-	 *     ((varname=ID val=Constant) | (varname=ID val=Primitive))
+	 *     (varname=ID assign_value=Expression)
 	 */
 	protected void sequence_Assign(ISerializationContext context, Assign semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, DSLPackage.Literals.ASSIGN__VARNAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DSLPackage.Literals.ASSIGN__VARNAME));
+			if (transientValues.isValueTransient(semanticObject, DSLPackage.Literals.ASSIGN__ASSIGN_VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DSLPackage.Literals.ASSIGN__ASSIGN_VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAssignAccess().getVarnameIDTerminalRuleCall_0_0(), semanticObject.getVarname());
+		feeder.accept(grammarAccess.getAssignAccess().getAssign_valueExpressionParserRuleCall_2_0(), semanticObject.getAssign_value());
+		feeder.finish();
 	}
 	
 	
@@ -128,22 +133,10 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     Constant returns Constant
-	 *
-	 * Constraint:
-	 *     (valInt=INT | valDouble=DOUBLE | valString=STRING | valID=ID)
-	 */
-	protected void sequence_Constant(ISerializationContext context, Constant semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
 	 *     Expression returns Expression
 	 *
 	 * Constraint:
-	 *     (expr=Constant | expr=Assign)
+	 *     (expr_prim=Primitive | expr_const=Constant)
 	 */
 	protected void sequence_Expression(ISerializationContext context, Expression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -168,12 +161,12 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *
 	 * Constraint:
 	 *     (
-	 *         primitive=Print | 
-	 *         primitive=Algo_choose | 
-	 *         primitive=Read | 
-	 *         primitive=Strategy_choose | 
-	 *         primitive=Column | 
-	 *         primitive=Use_Metric
+	 *         print=Print | 
+	 *         algo_choose=Algo_choose | 
+	 *         read=Read | 
+	 *         strategy_choose=Strategy_choose | 
+	 *         column=Column | 
+	 *         use_metric=Use_Metric
 	 *     )
 	 */
 	protected void sequence_Primitive(ISerializationContext context, Primitive semanticObject) {
@@ -186,15 +179,15 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Print returns Print
 	 *
 	 * Constraint:
-	 *     val=Constant
+	 *     print=Constant
 	 */
 	protected void sequence_Print(ISerializationContext context, Print semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, DSLPackage.Literals.PRINT__VAL) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DSLPackage.Literals.PRINT__VAL));
+			if (transientValues.isValueTransient(semanticObject, DSLPackage.Literals.PRINT__PRINT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DSLPackage.Literals.PRINT__PRINT));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getPrintAccess().getValConstantParserRuleCall_1_0(), semanticObject.getVal());
+		feeder.accept(grammarAccess.getPrintAccess().getPrintConstantParserRuleCall_1_0(), semanticObject.getPrint());
 		feeder.finish();
 	}
 	
@@ -216,7 +209,7 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Statement returns Statement
 	 *
 	 * Constraint:
-	 *     (statement=Expression | statement=Primitive)
+	 *     (assign=Assign | primitive=Primitive)
 	 */
 	protected void sequence_Statement(ISerializationContext context, Statement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

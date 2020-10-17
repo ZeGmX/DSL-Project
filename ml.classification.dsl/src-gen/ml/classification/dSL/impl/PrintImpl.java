@@ -3,15 +3,12 @@
  */
 package ml.classification.dSL.impl;
 
-import ml.classification.dSL.Constant;
 import ml.classification.dSL.DSLPackage;
 import ml.classification.dSL.Print;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
@@ -24,7 +21,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link ml.classification.dSL.impl.PrintImpl#getVal <em>Val</em>}</li>
+ *   <li>{@link ml.classification.dSL.impl.PrintImpl#getPrint <em>Print</em>}</li>
  * </ul>
  *
  * @generated
@@ -32,14 +29,24 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class PrintImpl extends MinimalEObjectImpl.Container implements Print
 {
   /**
-   * The cached value of the '{@link #getVal() <em>Val</em>}' containment reference.
+   * The default value of the '{@link #getPrint() <em>Print</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getVal()
+   * @see #getPrint()
    * @generated
    * @ordered
    */
-  protected Constant val;
+  protected static final String PRINT_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getPrint() <em>Print</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getPrint()
+   * @generated
+   * @ordered
+   */
+  protected String print = PRINT_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -68,9 +75,9 @@ public class PrintImpl extends MinimalEObjectImpl.Container implements Print
    * @generated
    */
   @Override
-  public Constant getVal()
+  public String getPrint()
   {
-    return val;
+    return print;
   }
 
   /**
@@ -78,54 +85,13 @@ public class PrintImpl extends MinimalEObjectImpl.Container implements Print
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetVal(Constant newVal, NotificationChain msgs)
+  @Override
+  public void setPrint(String newPrint)
   {
-    Constant oldVal = val;
-    val = newVal;
+    String oldPrint = print;
+    print = newPrint;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DSLPackage.PRINT__VAL, oldVal, newVal);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setVal(Constant newVal)
-  {
-    if (newVal != val)
-    {
-      NotificationChain msgs = null;
-      if (val != null)
-        msgs = ((InternalEObject)val).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DSLPackage.PRINT__VAL, null, msgs);
-      if (newVal != null)
-        msgs = ((InternalEObject)newVal).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DSLPackage.PRINT__VAL, null, msgs);
-      msgs = basicSetVal(newVal, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.PRINT__VAL, newVal, newVal));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case DSLPackage.PRINT__VAL:
-        return basicSetVal(null, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
+      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.PRINT__PRINT, oldPrint, print));
   }
 
   /**
@@ -138,8 +104,8 @@ public class PrintImpl extends MinimalEObjectImpl.Container implements Print
   {
     switch (featureID)
     {
-      case DSLPackage.PRINT__VAL:
-        return getVal();
+      case DSLPackage.PRINT__PRINT:
+        return getPrint();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -154,8 +120,8 @@ public class PrintImpl extends MinimalEObjectImpl.Container implements Print
   {
     switch (featureID)
     {
-      case DSLPackage.PRINT__VAL:
-        setVal((Constant)newValue);
+      case DSLPackage.PRINT__PRINT:
+        setPrint((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -171,8 +137,8 @@ public class PrintImpl extends MinimalEObjectImpl.Container implements Print
   {
     switch (featureID)
     {
-      case DSLPackage.PRINT__VAL:
-        setVal((Constant)null);
+      case DSLPackage.PRINT__PRINT:
+        setPrint(PRINT_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -188,10 +154,27 @@ public class PrintImpl extends MinimalEObjectImpl.Container implements Print
   {
     switch (featureID)
     {
-      case DSLPackage.PRINT__VAL:
-        return val != null;
+      case DSLPackage.PRINT__PRINT:
+        return PRINT_EDEFAULT == null ? print != null : !PRINT_EDEFAULT.equals(print);
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (print: ");
+    result.append(print);
+    result.append(')');
+    return result.toString();
   }
 
 } //PrintImpl

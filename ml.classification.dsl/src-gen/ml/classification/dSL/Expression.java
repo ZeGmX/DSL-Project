@@ -14,7 +14,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link ml.classification.dSL.Expression#getExpr <em>Expr</em>}</li>
+ *   <li>{@link ml.classification.dSL.Expression#getExpr_prim <em>Expr prim</em>}</li>
+ *   <li>{@link ml.classification.dSL.Expression#getExpr_const <em>Expr const</em>}</li>
  * </ul>
  *
  * @see ml.classification.dSL.DSLPackage#getExpression()
@@ -24,25 +25,47 @@ import org.eclipse.emf.ecore.EObject;
 public interface Expression extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Expr</b></em>' containment reference.
+   * Returns the value of the '<em><b>Expr prim</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Expr</em>' containment reference.
-   * @see #setExpr(EObject)
-   * @see ml.classification.dSL.DSLPackage#getExpression_Expr()
+   * @return the value of the '<em>Expr prim</em>' containment reference.
+   * @see #setExpr_prim(Primitive)
+   * @see ml.classification.dSL.DSLPackage#getExpression_Expr_prim()
    * @model containment="true"
    * @generated
    */
-  EObject getExpr();
+  Primitive getExpr_prim();
 
   /**
-   * Sets the value of the '{@link ml.classification.dSL.Expression#getExpr <em>Expr</em>}' containment reference.
+   * Sets the value of the '{@link ml.classification.dSL.Expression#getExpr_prim <em>Expr prim</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Expr</em>' containment reference.
-   * @see #getExpr()
+   * @param value the new value of the '<em>Expr prim</em>' containment reference.
+   * @see #getExpr_prim()
    * @generated
    */
-  void setExpr(EObject value);
+  void setExpr_prim(Primitive value);
+
+  /**
+   * Returns the value of the '<em><b>Expr const</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Expr const</em>' attribute.
+   * @see #setExpr_const(String)
+   * @see ml.classification.dSL.DSLPackage#getExpression_Expr_const()
+   * @model
+   * @generated
+   */
+  String getExpr_const();
+
+  /**
+   * Sets the value of the '{@link ml.classification.dSL.Expression#getExpr_const <em>Expr const</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Expr const</em>' attribute.
+   * @see #getExpr_const()
+   * @generated
+   */
+  void setExpr_const(String value);
 
 } // Expression

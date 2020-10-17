@@ -3,14 +3,19 @@
  */
 package ml.classification.dSL.impl;
 
+import ml.classification.dSL.Algo_choose;
+import ml.classification.dSL.Column;
 import ml.classification.dSL.DSLPackage;
 import ml.classification.dSL.Primitive;
+import ml.classification.dSL.Print;
+import ml.classification.dSL.Read;
+import ml.classification.dSL.Strategy_choose;
+import ml.classification.dSL.Use_Metric;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -24,7 +29,12 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link ml.classification.dSL.impl.PrimitiveImpl#getPrimitive <em>Primitive</em>}</li>
+ *   <li>{@link ml.classification.dSL.impl.PrimitiveImpl#getPrint <em>Print</em>}</li>
+ *   <li>{@link ml.classification.dSL.impl.PrimitiveImpl#getAlgo_choose <em>Algo choose</em>}</li>
+ *   <li>{@link ml.classification.dSL.impl.PrimitiveImpl#getRead <em>Read</em>}</li>
+ *   <li>{@link ml.classification.dSL.impl.PrimitiveImpl#getStrategy_choose <em>Strategy choose</em>}</li>
+ *   <li>{@link ml.classification.dSL.impl.PrimitiveImpl#getColumn <em>Column</em>}</li>
+ *   <li>{@link ml.classification.dSL.impl.PrimitiveImpl#getUse_metric <em>Use metric</em>}</li>
  * </ul>
  *
  * @generated
@@ -32,14 +42,64 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class PrimitiveImpl extends MinimalEObjectImpl.Container implements Primitive
 {
   /**
-   * The cached value of the '{@link #getPrimitive() <em>Primitive</em>}' containment reference.
+   * The cached value of the '{@link #getPrint() <em>Print</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getPrimitive()
+   * @see #getPrint()
    * @generated
    * @ordered
    */
-  protected EObject primitive;
+  protected Print print;
+
+  /**
+   * The cached value of the '{@link #getAlgo_choose() <em>Algo choose</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getAlgo_choose()
+   * @generated
+   * @ordered
+   */
+  protected Algo_choose algo_choose;
+
+  /**
+   * The cached value of the '{@link #getRead() <em>Read</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRead()
+   * @generated
+   * @ordered
+   */
+  protected Read read;
+
+  /**
+   * The cached value of the '{@link #getStrategy_choose() <em>Strategy choose</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getStrategy_choose()
+   * @generated
+   * @ordered
+   */
+  protected Strategy_choose strategy_choose;
+
+  /**
+   * The cached value of the '{@link #getColumn() <em>Column</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getColumn()
+   * @generated
+   * @ordered
+   */
+  protected Column column;
+
+  /**
+   * The cached value of the '{@link #getUse_metric() <em>Use metric</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getUse_metric()
+   * @generated
+   * @ordered
+   */
+  protected Use_Metric use_metric;
 
   /**
    * <!-- begin-user-doc -->
@@ -68,9 +128,9 @@ public class PrimitiveImpl extends MinimalEObjectImpl.Container implements Primi
    * @generated
    */
   @Override
-  public EObject getPrimitive()
+  public Print getPrint()
   {
-    return primitive;
+    return print;
   }
 
   /**
@@ -78,13 +138,13 @@ public class PrimitiveImpl extends MinimalEObjectImpl.Container implements Primi
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetPrimitive(EObject newPrimitive, NotificationChain msgs)
+  public NotificationChain basicSetPrint(Print newPrint, NotificationChain msgs)
   {
-    EObject oldPrimitive = primitive;
-    primitive = newPrimitive;
+    Print oldPrint = print;
+    print = newPrint;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DSLPackage.PRIMITIVE__PRIMITIVE, oldPrimitive, newPrimitive);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DSLPackage.PRIMITIVE__PRINT, oldPrint, newPrint);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -96,20 +156,270 @@ public class PrimitiveImpl extends MinimalEObjectImpl.Container implements Primi
    * @generated
    */
   @Override
-  public void setPrimitive(EObject newPrimitive)
+  public void setPrint(Print newPrint)
   {
-    if (newPrimitive != primitive)
+    if (newPrint != print)
     {
       NotificationChain msgs = null;
-      if (primitive != null)
-        msgs = ((InternalEObject)primitive).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DSLPackage.PRIMITIVE__PRIMITIVE, null, msgs);
-      if (newPrimitive != null)
-        msgs = ((InternalEObject)newPrimitive).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DSLPackage.PRIMITIVE__PRIMITIVE, null, msgs);
-      msgs = basicSetPrimitive(newPrimitive, msgs);
+      if (print != null)
+        msgs = ((InternalEObject)print).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DSLPackage.PRIMITIVE__PRINT, null, msgs);
+      if (newPrint != null)
+        msgs = ((InternalEObject)newPrint).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DSLPackage.PRIMITIVE__PRINT, null, msgs);
+      msgs = basicSetPrint(newPrint, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.PRIMITIVE__PRIMITIVE, newPrimitive, newPrimitive));
+      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.PRIMITIVE__PRINT, newPrint, newPrint));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Algo_choose getAlgo_choose()
+  {
+    return algo_choose;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetAlgo_choose(Algo_choose newAlgo_choose, NotificationChain msgs)
+  {
+    Algo_choose oldAlgo_choose = algo_choose;
+    algo_choose = newAlgo_choose;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DSLPackage.PRIMITIVE__ALGO_CHOOSE, oldAlgo_choose, newAlgo_choose);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setAlgo_choose(Algo_choose newAlgo_choose)
+  {
+    if (newAlgo_choose != algo_choose)
+    {
+      NotificationChain msgs = null;
+      if (algo_choose != null)
+        msgs = ((InternalEObject)algo_choose).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DSLPackage.PRIMITIVE__ALGO_CHOOSE, null, msgs);
+      if (newAlgo_choose != null)
+        msgs = ((InternalEObject)newAlgo_choose).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DSLPackage.PRIMITIVE__ALGO_CHOOSE, null, msgs);
+      msgs = basicSetAlgo_choose(newAlgo_choose, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.PRIMITIVE__ALGO_CHOOSE, newAlgo_choose, newAlgo_choose));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Read getRead()
+  {
+    return read;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetRead(Read newRead, NotificationChain msgs)
+  {
+    Read oldRead = read;
+    read = newRead;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DSLPackage.PRIMITIVE__READ, oldRead, newRead);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setRead(Read newRead)
+  {
+    if (newRead != read)
+    {
+      NotificationChain msgs = null;
+      if (read != null)
+        msgs = ((InternalEObject)read).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DSLPackage.PRIMITIVE__READ, null, msgs);
+      if (newRead != null)
+        msgs = ((InternalEObject)newRead).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DSLPackage.PRIMITIVE__READ, null, msgs);
+      msgs = basicSetRead(newRead, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.PRIMITIVE__READ, newRead, newRead));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Strategy_choose getStrategy_choose()
+  {
+    return strategy_choose;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetStrategy_choose(Strategy_choose newStrategy_choose, NotificationChain msgs)
+  {
+    Strategy_choose oldStrategy_choose = strategy_choose;
+    strategy_choose = newStrategy_choose;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DSLPackage.PRIMITIVE__STRATEGY_CHOOSE, oldStrategy_choose, newStrategy_choose);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setStrategy_choose(Strategy_choose newStrategy_choose)
+  {
+    if (newStrategy_choose != strategy_choose)
+    {
+      NotificationChain msgs = null;
+      if (strategy_choose != null)
+        msgs = ((InternalEObject)strategy_choose).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DSLPackage.PRIMITIVE__STRATEGY_CHOOSE, null, msgs);
+      if (newStrategy_choose != null)
+        msgs = ((InternalEObject)newStrategy_choose).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DSLPackage.PRIMITIVE__STRATEGY_CHOOSE, null, msgs);
+      msgs = basicSetStrategy_choose(newStrategy_choose, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.PRIMITIVE__STRATEGY_CHOOSE, newStrategy_choose, newStrategy_choose));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Column getColumn()
+  {
+    return column;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetColumn(Column newColumn, NotificationChain msgs)
+  {
+    Column oldColumn = column;
+    column = newColumn;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DSLPackage.PRIMITIVE__COLUMN, oldColumn, newColumn);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setColumn(Column newColumn)
+  {
+    if (newColumn != column)
+    {
+      NotificationChain msgs = null;
+      if (column != null)
+        msgs = ((InternalEObject)column).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DSLPackage.PRIMITIVE__COLUMN, null, msgs);
+      if (newColumn != null)
+        msgs = ((InternalEObject)newColumn).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DSLPackage.PRIMITIVE__COLUMN, null, msgs);
+      msgs = basicSetColumn(newColumn, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.PRIMITIVE__COLUMN, newColumn, newColumn));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Use_Metric getUse_metric()
+  {
+    return use_metric;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetUse_metric(Use_Metric newUse_metric, NotificationChain msgs)
+  {
+    Use_Metric oldUse_metric = use_metric;
+    use_metric = newUse_metric;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DSLPackage.PRIMITIVE__USE_METRIC, oldUse_metric, newUse_metric);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setUse_metric(Use_Metric newUse_metric)
+  {
+    if (newUse_metric != use_metric)
+    {
+      NotificationChain msgs = null;
+      if (use_metric != null)
+        msgs = ((InternalEObject)use_metric).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DSLPackage.PRIMITIVE__USE_METRIC, null, msgs);
+      if (newUse_metric != null)
+        msgs = ((InternalEObject)newUse_metric).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DSLPackage.PRIMITIVE__USE_METRIC, null, msgs);
+      msgs = basicSetUse_metric(newUse_metric, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.PRIMITIVE__USE_METRIC, newUse_metric, newUse_metric));
   }
 
   /**
@@ -122,8 +432,18 @@ public class PrimitiveImpl extends MinimalEObjectImpl.Container implements Primi
   {
     switch (featureID)
     {
-      case DSLPackage.PRIMITIVE__PRIMITIVE:
-        return basicSetPrimitive(null, msgs);
+      case DSLPackage.PRIMITIVE__PRINT:
+        return basicSetPrint(null, msgs);
+      case DSLPackage.PRIMITIVE__ALGO_CHOOSE:
+        return basicSetAlgo_choose(null, msgs);
+      case DSLPackage.PRIMITIVE__READ:
+        return basicSetRead(null, msgs);
+      case DSLPackage.PRIMITIVE__STRATEGY_CHOOSE:
+        return basicSetStrategy_choose(null, msgs);
+      case DSLPackage.PRIMITIVE__COLUMN:
+        return basicSetColumn(null, msgs);
+      case DSLPackage.PRIMITIVE__USE_METRIC:
+        return basicSetUse_metric(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -138,8 +458,18 @@ public class PrimitiveImpl extends MinimalEObjectImpl.Container implements Primi
   {
     switch (featureID)
     {
-      case DSLPackage.PRIMITIVE__PRIMITIVE:
-        return getPrimitive();
+      case DSLPackage.PRIMITIVE__PRINT:
+        return getPrint();
+      case DSLPackage.PRIMITIVE__ALGO_CHOOSE:
+        return getAlgo_choose();
+      case DSLPackage.PRIMITIVE__READ:
+        return getRead();
+      case DSLPackage.PRIMITIVE__STRATEGY_CHOOSE:
+        return getStrategy_choose();
+      case DSLPackage.PRIMITIVE__COLUMN:
+        return getColumn();
+      case DSLPackage.PRIMITIVE__USE_METRIC:
+        return getUse_metric();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -154,8 +484,23 @@ public class PrimitiveImpl extends MinimalEObjectImpl.Container implements Primi
   {
     switch (featureID)
     {
-      case DSLPackage.PRIMITIVE__PRIMITIVE:
-        setPrimitive((EObject)newValue);
+      case DSLPackage.PRIMITIVE__PRINT:
+        setPrint((Print)newValue);
+        return;
+      case DSLPackage.PRIMITIVE__ALGO_CHOOSE:
+        setAlgo_choose((Algo_choose)newValue);
+        return;
+      case DSLPackage.PRIMITIVE__READ:
+        setRead((Read)newValue);
+        return;
+      case DSLPackage.PRIMITIVE__STRATEGY_CHOOSE:
+        setStrategy_choose((Strategy_choose)newValue);
+        return;
+      case DSLPackage.PRIMITIVE__COLUMN:
+        setColumn((Column)newValue);
+        return;
+      case DSLPackage.PRIMITIVE__USE_METRIC:
+        setUse_metric((Use_Metric)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -171,8 +516,23 @@ public class PrimitiveImpl extends MinimalEObjectImpl.Container implements Primi
   {
     switch (featureID)
     {
-      case DSLPackage.PRIMITIVE__PRIMITIVE:
-        setPrimitive((EObject)null);
+      case DSLPackage.PRIMITIVE__PRINT:
+        setPrint((Print)null);
+        return;
+      case DSLPackage.PRIMITIVE__ALGO_CHOOSE:
+        setAlgo_choose((Algo_choose)null);
+        return;
+      case DSLPackage.PRIMITIVE__READ:
+        setRead((Read)null);
+        return;
+      case DSLPackage.PRIMITIVE__STRATEGY_CHOOSE:
+        setStrategy_choose((Strategy_choose)null);
+        return;
+      case DSLPackage.PRIMITIVE__COLUMN:
+        setColumn((Column)null);
+        return;
+      case DSLPackage.PRIMITIVE__USE_METRIC:
+        setUse_metric((Use_Metric)null);
         return;
     }
     super.eUnset(featureID);
@@ -188,8 +548,18 @@ public class PrimitiveImpl extends MinimalEObjectImpl.Container implements Primi
   {
     switch (featureID)
     {
-      case DSLPackage.PRIMITIVE__PRIMITIVE:
-        return primitive != null;
+      case DSLPackage.PRIMITIVE__PRINT:
+        return print != null;
+      case DSLPackage.PRIMITIVE__ALGO_CHOOSE:
+        return algo_choose != null;
+      case DSLPackage.PRIMITIVE__READ:
+        return read != null;
+      case DSLPackage.PRIMITIVE__STRATEGY_CHOOSE:
+        return strategy_choose != null;
+      case DSLPackage.PRIMITIVE__COLUMN:
+        return column != null;
+      case DSLPackage.PRIMITIVE__USE_METRIC:
+        return use_metric != null;
     }
     return super.eIsSet(featureID);
   }

@@ -3,14 +3,15 @@
  */
 package ml.classification.dSL.impl;
 
+import ml.classification.dSL.Assign;
 import ml.classification.dSL.DSLPackage;
+import ml.classification.dSL.Primitive;
 import ml.classification.dSL.Statement;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -24,7 +25,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link ml.classification.dSL.impl.StatementImpl#getStatement <em>Statement</em>}</li>
+ *   <li>{@link ml.classification.dSL.impl.StatementImpl#getAssign <em>Assign</em>}</li>
+ *   <li>{@link ml.classification.dSL.impl.StatementImpl#getPrimitive <em>Primitive</em>}</li>
  * </ul>
  *
  * @generated
@@ -32,14 +34,24 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class StatementImpl extends MinimalEObjectImpl.Container implements Statement
 {
   /**
-   * The cached value of the '{@link #getStatement() <em>Statement</em>}' containment reference.
+   * The cached value of the '{@link #getAssign() <em>Assign</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getStatement()
+   * @see #getAssign()
    * @generated
    * @ordered
    */
-  protected EObject statement;
+  protected Assign assign;
+
+  /**
+   * The cached value of the '{@link #getPrimitive() <em>Primitive</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getPrimitive()
+   * @generated
+   * @ordered
+   */
+  protected Primitive primitive;
 
   /**
    * <!-- begin-user-doc -->
@@ -68,9 +80,9 @@ public class StatementImpl extends MinimalEObjectImpl.Container implements State
    * @generated
    */
   @Override
-  public EObject getStatement()
+  public Assign getAssign()
   {
-    return statement;
+    return assign;
   }
 
   /**
@@ -78,13 +90,13 @@ public class StatementImpl extends MinimalEObjectImpl.Container implements State
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetStatement(EObject newStatement, NotificationChain msgs)
+  public NotificationChain basicSetAssign(Assign newAssign, NotificationChain msgs)
   {
-    EObject oldStatement = statement;
-    statement = newStatement;
+    Assign oldAssign = assign;
+    assign = newAssign;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DSLPackage.STATEMENT__STATEMENT, oldStatement, newStatement);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DSLPackage.STATEMENT__ASSIGN, oldAssign, newAssign);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -96,20 +108,70 @@ public class StatementImpl extends MinimalEObjectImpl.Container implements State
    * @generated
    */
   @Override
-  public void setStatement(EObject newStatement)
+  public void setAssign(Assign newAssign)
   {
-    if (newStatement != statement)
+    if (newAssign != assign)
     {
       NotificationChain msgs = null;
-      if (statement != null)
-        msgs = ((InternalEObject)statement).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DSLPackage.STATEMENT__STATEMENT, null, msgs);
-      if (newStatement != null)
-        msgs = ((InternalEObject)newStatement).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DSLPackage.STATEMENT__STATEMENT, null, msgs);
-      msgs = basicSetStatement(newStatement, msgs);
+      if (assign != null)
+        msgs = ((InternalEObject)assign).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DSLPackage.STATEMENT__ASSIGN, null, msgs);
+      if (newAssign != null)
+        msgs = ((InternalEObject)newAssign).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DSLPackage.STATEMENT__ASSIGN, null, msgs);
+      msgs = basicSetAssign(newAssign, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.STATEMENT__STATEMENT, newStatement, newStatement));
+      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.STATEMENT__ASSIGN, newAssign, newAssign));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Primitive getPrimitive()
+  {
+    return primitive;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetPrimitive(Primitive newPrimitive, NotificationChain msgs)
+  {
+    Primitive oldPrimitive = primitive;
+    primitive = newPrimitive;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DSLPackage.STATEMENT__PRIMITIVE, oldPrimitive, newPrimitive);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setPrimitive(Primitive newPrimitive)
+  {
+    if (newPrimitive != primitive)
+    {
+      NotificationChain msgs = null;
+      if (primitive != null)
+        msgs = ((InternalEObject)primitive).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DSLPackage.STATEMENT__PRIMITIVE, null, msgs);
+      if (newPrimitive != null)
+        msgs = ((InternalEObject)newPrimitive).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DSLPackage.STATEMENT__PRIMITIVE, null, msgs);
+      msgs = basicSetPrimitive(newPrimitive, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.STATEMENT__PRIMITIVE, newPrimitive, newPrimitive));
   }
 
   /**
@@ -122,8 +184,10 @@ public class StatementImpl extends MinimalEObjectImpl.Container implements State
   {
     switch (featureID)
     {
-      case DSLPackage.STATEMENT__STATEMENT:
-        return basicSetStatement(null, msgs);
+      case DSLPackage.STATEMENT__ASSIGN:
+        return basicSetAssign(null, msgs);
+      case DSLPackage.STATEMENT__PRIMITIVE:
+        return basicSetPrimitive(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -138,8 +202,10 @@ public class StatementImpl extends MinimalEObjectImpl.Container implements State
   {
     switch (featureID)
     {
-      case DSLPackage.STATEMENT__STATEMENT:
-        return getStatement();
+      case DSLPackage.STATEMENT__ASSIGN:
+        return getAssign();
+      case DSLPackage.STATEMENT__PRIMITIVE:
+        return getPrimitive();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -154,8 +220,11 @@ public class StatementImpl extends MinimalEObjectImpl.Container implements State
   {
     switch (featureID)
     {
-      case DSLPackage.STATEMENT__STATEMENT:
-        setStatement((EObject)newValue);
+      case DSLPackage.STATEMENT__ASSIGN:
+        setAssign((Assign)newValue);
+        return;
+      case DSLPackage.STATEMENT__PRIMITIVE:
+        setPrimitive((Primitive)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -171,8 +240,11 @@ public class StatementImpl extends MinimalEObjectImpl.Container implements State
   {
     switch (featureID)
     {
-      case DSLPackage.STATEMENT__STATEMENT:
-        setStatement((EObject)null);
+      case DSLPackage.STATEMENT__ASSIGN:
+        setAssign((Assign)null);
+        return;
+      case DSLPackage.STATEMENT__PRIMITIVE:
+        setPrimitive((Primitive)null);
         return;
     }
     super.eUnset(featureID);
@@ -188,8 +260,10 @@ public class StatementImpl extends MinimalEObjectImpl.Container implements State
   {
     switch (featureID)
     {
-      case DSLPackage.STATEMENT__STATEMENT:
-        return statement != null;
+      case DSLPackage.STATEMENT__ASSIGN:
+        return assign != null;
+      case DSLPackage.STATEMENT__PRIMITIVE:
+        return primitive != null;
     }
     return super.eIsSet(featureID);
   }

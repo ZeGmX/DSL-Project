@@ -67,6 +67,8 @@ public class DSLFactoryImpl extends EFactoryImpl implements DSLFactory
     {
       case DSLPackage.ML: return createML();
       case DSLPackage.STATEMENT: return createStatement();
+      case DSLPackage.ASSIGN: return createAssign();
+      case DSLPackage.EXPRESSION: return createExpression();
       case DSLPackage.PRIMITIVE: return createPrimitive();
       case DSLPackage.USE_METRIC: return createUse_Metric();
       case DSLPackage.COLUMN: return createColumn();
@@ -74,9 +76,6 @@ public class DSLFactoryImpl extends EFactoryImpl implements DSLFactory
       case DSLPackage.READ: return createRead();
       case DSLPackage.ALGO_CHOOSE: return createAlgo_choose();
       case DSLPackage.PRINT: return createPrint();
-      case DSLPackage.EXPRESSION: return createExpression();
-      case DSLPackage.ASSIGN: return createAssign();
-      case DSLPackage.CONSTANT: return createConstant();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -104,6 +103,30 @@ public class DSLFactoryImpl extends EFactoryImpl implements DSLFactory
   {
     StatementImpl statement = new StatementImpl();
     return statement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Assign createAssign()
+  {
+    AssignImpl assign = new AssignImpl();
+    return assign;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Expression createExpression()
+  {
+    ExpressionImpl expression = new ExpressionImpl();
+    return expression;
   }
 
   /**
@@ -188,42 +211,6 @@ public class DSLFactoryImpl extends EFactoryImpl implements DSLFactory
   {
     PrintImpl print = new PrintImpl();
     return print;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Expression createExpression()
-  {
-    ExpressionImpl expression = new ExpressionImpl();
-    return expression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Assign createAssign()
-  {
-    AssignImpl assign = new AssignImpl();
-    return assign;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Constant createConstant()
-  {
-    ConstantImpl constant = new ConstantImpl();
-    return constant;
   }
 
   /**

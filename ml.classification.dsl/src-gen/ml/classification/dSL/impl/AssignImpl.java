@@ -5,12 +5,12 @@ package ml.classification.dSL.impl;
 
 import ml.classification.dSL.Assign;
 import ml.classification.dSL.DSLPackage;
+import ml.classification.dSL.Expression;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link ml.classification.dSL.impl.AssignImpl#getVarname <em>Varname</em>}</li>
- *   <li>{@link ml.classification.dSL.impl.AssignImpl#getVal <em>Val</em>}</li>
+ *   <li>{@link ml.classification.dSL.impl.AssignImpl#getAssign_value <em>Assign value</em>}</li>
  * </ul>
  *
  * @generated
@@ -53,14 +53,14 @@ public class AssignImpl extends MinimalEObjectImpl.Container implements Assign
   protected String varname = VARNAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getVal() <em>Val</em>}' containment reference.
+   * The cached value of the '{@link #getAssign_value() <em>Assign value</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getVal()
+   * @see #getAssign_value()
    * @generated
    * @ordered
    */
-  protected EObject val;
+  protected Expression assign_value;
 
   /**
    * <!-- begin-user-doc -->
@@ -114,9 +114,9 @@ public class AssignImpl extends MinimalEObjectImpl.Container implements Assign
    * @generated
    */
   @Override
-  public EObject getVal()
+  public Expression getAssign_value()
   {
-    return val;
+    return assign_value;
   }
 
   /**
@@ -124,13 +124,13 @@ public class AssignImpl extends MinimalEObjectImpl.Container implements Assign
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetVal(EObject newVal, NotificationChain msgs)
+  public NotificationChain basicSetAssign_value(Expression newAssign_value, NotificationChain msgs)
   {
-    EObject oldVal = val;
-    val = newVal;
+    Expression oldAssign_value = assign_value;
+    assign_value = newAssign_value;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DSLPackage.ASSIGN__VAL, oldVal, newVal);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DSLPackage.ASSIGN__ASSIGN_VALUE, oldAssign_value, newAssign_value);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -142,20 +142,20 @@ public class AssignImpl extends MinimalEObjectImpl.Container implements Assign
    * @generated
    */
   @Override
-  public void setVal(EObject newVal)
+  public void setAssign_value(Expression newAssign_value)
   {
-    if (newVal != val)
+    if (newAssign_value != assign_value)
     {
       NotificationChain msgs = null;
-      if (val != null)
-        msgs = ((InternalEObject)val).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DSLPackage.ASSIGN__VAL, null, msgs);
-      if (newVal != null)
-        msgs = ((InternalEObject)newVal).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DSLPackage.ASSIGN__VAL, null, msgs);
-      msgs = basicSetVal(newVal, msgs);
+      if (assign_value != null)
+        msgs = ((InternalEObject)assign_value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DSLPackage.ASSIGN__ASSIGN_VALUE, null, msgs);
+      if (newAssign_value != null)
+        msgs = ((InternalEObject)newAssign_value).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DSLPackage.ASSIGN__ASSIGN_VALUE, null, msgs);
+      msgs = basicSetAssign_value(newAssign_value, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.ASSIGN__VAL, newVal, newVal));
+      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.ASSIGN__ASSIGN_VALUE, newAssign_value, newAssign_value));
   }
 
   /**
@@ -168,8 +168,8 @@ public class AssignImpl extends MinimalEObjectImpl.Container implements Assign
   {
     switch (featureID)
     {
-      case DSLPackage.ASSIGN__VAL:
-        return basicSetVal(null, msgs);
+      case DSLPackage.ASSIGN__ASSIGN_VALUE:
+        return basicSetAssign_value(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -186,8 +186,8 @@ public class AssignImpl extends MinimalEObjectImpl.Container implements Assign
     {
       case DSLPackage.ASSIGN__VARNAME:
         return getVarname();
-      case DSLPackage.ASSIGN__VAL:
-        return getVal();
+      case DSLPackage.ASSIGN__ASSIGN_VALUE:
+        return getAssign_value();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -205,8 +205,8 @@ public class AssignImpl extends MinimalEObjectImpl.Container implements Assign
       case DSLPackage.ASSIGN__VARNAME:
         setVarname((String)newValue);
         return;
-      case DSLPackage.ASSIGN__VAL:
-        setVal((EObject)newValue);
+      case DSLPackage.ASSIGN__ASSIGN_VALUE:
+        setAssign_value((Expression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -225,8 +225,8 @@ public class AssignImpl extends MinimalEObjectImpl.Container implements Assign
       case DSLPackage.ASSIGN__VARNAME:
         setVarname(VARNAME_EDEFAULT);
         return;
-      case DSLPackage.ASSIGN__VAL:
-        setVal((EObject)null);
+      case DSLPackage.ASSIGN__ASSIGN_VALUE:
+        setAssign_value((Expression)null);
         return;
     }
     super.eUnset(featureID);
@@ -244,8 +244,8 @@ public class AssignImpl extends MinimalEObjectImpl.Container implements Assign
     {
       case DSLPackage.ASSIGN__VARNAME:
         return VARNAME_EDEFAULT == null ? varname != null : !VARNAME_EDEFAULT.equals(varname);
-      case DSLPackage.ASSIGN__VAL:
-        return val != null;
+      case DSLPackage.ASSIGN__ASSIGN_VALUE:
+        return assign_value != null;
     }
     return super.eIsSet(featureID);
   }

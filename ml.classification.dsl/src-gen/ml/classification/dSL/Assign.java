@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link ml.classification.dSL.Assign#getVarname <em>Varname</em>}</li>
- *   <li>{@link ml.classification.dSL.Assign#getVal <em>Val</em>}</li>
+ *   <li>{@link ml.classification.dSL.Assign#getAssign_value <em>Assign value</em>}</li>
  * </ul>
  *
  * @see ml.classification.dSL.DSLPackage#getAssign()
@@ -47,25 +47,25 @@ public interface Assign extends EObject
   void setVarname(String value);
 
   /**
-   * Returns the value of the '<em><b>Val</b></em>' containment reference.
+   * Returns the value of the '<em><b>Assign value</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Val</em>' containment reference.
-   * @see #setVal(EObject)
-   * @see ml.classification.dSL.DSLPackage#getAssign_Val()
+   * @return the value of the '<em>Assign value</em>' containment reference.
+   * @see #setAssign_value(Expression)
+   * @see ml.classification.dSL.DSLPackage#getAssign_Assign_value()
    * @model containment="true"
    * @generated
    */
-  EObject getVal();
+  Expression getAssign_value();
 
   /**
-   * Sets the value of the '{@link ml.classification.dSL.Assign#getVal <em>Val</em>}' containment reference.
+   * Sets the value of the '{@link ml.classification.dSL.Assign#getAssign_value <em>Assign value</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Val</em>' containment reference.
-   * @see #getVal()
+   * @param value the new value of the '<em>Assign value</em>' containment reference.
+   * @see #getAssign_value()
    * @generated
    */
-  void setVal(EObject value);
+  void setAssign_value(Expression value);
 
 } // Assign

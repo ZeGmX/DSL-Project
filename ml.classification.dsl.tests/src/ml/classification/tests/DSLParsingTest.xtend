@@ -11,6 +11,7 @@ import org.eclipse.xtext.testing.util.ParseHelper
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.^extension.ExtendWith
+import ml.classification.generator.DSLPrettyPrinter
 
 @ExtendWith(InjectionExtension)
 @InjectWith(DSLInjectorProvider)
@@ -26,5 +27,16 @@ class DSLParsingTest {
 		Assertions.assertNotNull(result)
 		val errors = result.eResource.errors
 		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+	}
+	
+	@Test
+	def void pp() {
+		val res = parseHelper.parse('''
+		print "Hello World!"
+		''')
+		val pp = new DSLPrettyPrinter
+		println(pp.prettyPrint(res))
+		Assertions.assertTrue(true)
+		
 	}
 }

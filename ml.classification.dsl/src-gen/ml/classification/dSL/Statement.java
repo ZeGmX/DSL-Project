@@ -14,7 +14,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link ml.classification.dSL.Statement#getStatement <em>Statement</em>}</li>
+ *   <li>{@link ml.classification.dSL.Statement#getAssign <em>Assign</em>}</li>
+ *   <li>{@link ml.classification.dSL.Statement#getPrimitive <em>Primitive</em>}</li>
  * </ul>
  *
  * @see ml.classification.dSL.DSLPackage#getStatement()
@@ -24,25 +25,47 @@ import org.eclipse.emf.ecore.EObject;
 public interface Statement extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Statement</b></em>' containment reference.
+   * Returns the value of the '<em><b>Assign</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Statement</em>' containment reference.
-   * @see #setStatement(EObject)
-   * @see ml.classification.dSL.DSLPackage#getStatement_Statement()
+   * @return the value of the '<em>Assign</em>' containment reference.
+   * @see #setAssign(Assign)
+   * @see ml.classification.dSL.DSLPackage#getStatement_Assign()
    * @model containment="true"
    * @generated
    */
-  EObject getStatement();
+  Assign getAssign();
 
   /**
-   * Sets the value of the '{@link ml.classification.dSL.Statement#getStatement <em>Statement</em>}' containment reference.
+   * Sets the value of the '{@link ml.classification.dSL.Statement#getAssign <em>Assign</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Statement</em>' containment reference.
-   * @see #getStatement()
+   * @param value the new value of the '<em>Assign</em>' containment reference.
+   * @see #getAssign()
    * @generated
    */
-  void setStatement(EObject value);
+  void setAssign(Assign value);
+
+  /**
+   * Returns the value of the '<em><b>Primitive</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Primitive</em>' containment reference.
+   * @see #setPrimitive(Primitive)
+   * @see ml.classification.dSL.DSLPackage#getStatement_Primitive()
+   * @model containment="true"
+   * @generated
+   */
+  Primitive getPrimitive();
+
+  /**
+   * Sets the value of the '{@link ml.classification.dSL.Statement#getPrimitive <em>Primitive</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Primitive</em>' containment reference.
+   * @see #getPrimitive()
+   * @generated
+   */
+  void setPrimitive(Primitive value);
 
 } // Statement

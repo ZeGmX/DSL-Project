@@ -42,6 +42,24 @@ public interface DSLFactory extends EFactory
   Statement createStatement();
 
   /**
+   * Returns a new object of class '<em>Assign</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Assign</em>'.
+   * @generated
+   */
+  Assign createAssign();
+
+  /**
+   * Returns a new object of class '<em>Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Expression</em>'.
+   * @generated
+   */
+  Expression createExpression();
+
+  /**
    * Returns a new object of class '<em>Primitive</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -103,33 +121,6 @@ public interface DSLFactory extends EFactory
    * @generated
    */
   Print createPrint();
-
-  /**
-   * Returns a new object of class '<em>Expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Expression</em>'.
-   * @generated
-   */
-  Expression createExpression();
-
-  /**
-   * Returns a new object of class '<em>Assign</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Assign</em>'.
-   * @generated
-   */
-  Assign createAssign();
-
-  /**
-   * Returns a new object of class '<em>Constant</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Constant</em>'.
-   * @generated
-   */
-  Constant createConstant();
 
   /**
    * Returns the package supported by this factory.

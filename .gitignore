@@ -1,0 +1,7 @@
+*/.gitignore
+concrete_grammar.docx
+*-gen*
+saveGrammar.txt
+DSL.xtext.txt
+DSLGenerator.xtend.txt
+ml.classification.dsl/src/ml/classification/generator/DSLPrettyPrinter.xtend

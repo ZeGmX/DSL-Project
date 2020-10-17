@@ -96,13 +96,22 @@ public interface DSLPackage extends EPackage
   int STATEMENT = 1;
 
   /**
-   * The feature id for the '<em><b>Statement</b></em>' containment reference.
+   * The feature id for the '<em><b>Assign</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int STATEMENT__STATEMENT = 0;
+  int STATEMENT__ASSIGN = 0;
+
+  /**
+   * The feature id for the '<em><b>Primitive</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STATEMENT__PRIMITIVE = 1;
 
   /**
    * The number of structural features of the '<em>Statement</em>' class.
@@ -111,7 +120,81 @@ public interface DSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int STATEMENT_FEATURE_COUNT = 1;
+  int STATEMENT_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link ml.classification.dSL.impl.AssignImpl <em>Assign</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see ml.classification.dSL.impl.AssignImpl
+   * @see ml.classification.dSL.impl.DSLPackageImpl#getAssign()
+   * @generated
+   */
+  int ASSIGN = 2;
+
+  /**
+   * The feature id for the '<em><b>Varname</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ASSIGN__VARNAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Assign value</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ASSIGN__ASSIGN_VALUE = 1;
+
+  /**
+   * The number of structural features of the '<em>Assign</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ASSIGN_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link ml.classification.dSL.impl.ExpressionImpl <em>Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see ml.classification.dSL.impl.ExpressionImpl
+   * @see ml.classification.dSL.impl.DSLPackageImpl#getExpression()
+   * @generated
+   */
+  int EXPRESSION = 3;
+
+  /**
+   * The feature id for the '<em><b>Expr prim</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRESSION__EXPR_PRIM = 0;
+
+  /**
+   * The feature id for the '<em><b>Expr const</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRESSION__EXPR_CONST = 1;
+
+  /**
+   * The number of structural features of the '<em>Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRESSION_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link ml.classification.dSL.impl.PrimitiveImpl <em>Primitive</em>}' class.
@@ -121,16 +204,61 @@ public interface DSLPackage extends EPackage
    * @see ml.classification.dSL.impl.DSLPackageImpl#getPrimitive()
    * @generated
    */
-  int PRIMITIVE = 2;
+  int PRIMITIVE = 4;
 
   /**
-   * The feature id for the '<em><b>Primitive</b></em>' containment reference.
+   * The feature id for the '<em><b>Print</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PRIMITIVE__PRIMITIVE = 0;
+  int PRIMITIVE__PRINT = 0;
+
+  /**
+   * The feature id for the '<em><b>Algo choose</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRIMITIVE__ALGO_CHOOSE = 1;
+
+  /**
+   * The feature id for the '<em><b>Read</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRIMITIVE__READ = 2;
+
+  /**
+   * The feature id for the '<em><b>Strategy choose</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRIMITIVE__STRATEGY_CHOOSE = 3;
+
+  /**
+   * The feature id for the '<em><b>Column</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRIMITIVE__COLUMN = 4;
+
+  /**
+   * The feature id for the '<em><b>Use metric</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRIMITIVE__USE_METRIC = 5;
 
   /**
    * The number of structural features of the '<em>Primitive</em>' class.
@@ -139,7 +267,7 @@ public interface DSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PRIMITIVE_FEATURE_COUNT = 1;
+  int PRIMITIVE_FEATURE_COUNT = 6;
 
   /**
    * The meta object id for the '{@link ml.classification.dSL.impl.Use_MetricImpl <em>Use Metric</em>}' class.
@@ -149,7 +277,7 @@ public interface DSLPackage extends EPackage
    * @see ml.classification.dSL.impl.DSLPackageImpl#getUse_Metric()
    * @generated
    */
-  int USE_METRIC = 3;
+  int USE_METRIC = 5;
 
   /**
    * The feature id for the '<em><b>Metric</b></em>' attribute.
@@ -177,7 +305,7 @@ public interface DSLPackage extends EPackage
    * @see ml.classification.dSL.impl.DSLPackageImpl#getColumn()
    * @generated
    */
-  int COLUMN = 4;
+  int COLUMN = 6;
 
   /**
    * The feature id for the '<em><b>Use</b></em>' attribute list.
@@ -223,7 +351,7 @@ public interface DSLPackage extends EPackage
    * @see ml.classification.dSL.impl.DSLPackageImpl#getStrategy_choose()
    * @generated
    */
-  int STRATEGY_CHOOSE = 5;
+  int STRATEGY_CHOOSE = 7;
 
   /**
    * The feature id for the '<em><b>Strategy</b></em>' attribute.
@@ -269,7 +397,7 @@ public interface DSLPackage extends EPackage
    * @see ml.classification.dSL.impl.DSLPackageImpl#getRead()
    * @generated
    */
-  int READ = 6;
+  int READ = 8;
 
   /**
    * The feature id for the '<em><b>Path</b></em>' attribute.
@@ -306,7 +434,7 @@ public interface DSLPackage extends EPackage
    * @see ml.classification.dSL.impl.DSLPackageImpl#getAlgo_choose()
    * @generated
    */
-  int ALGO_CHOOSE = 7;
+  int ALGO_CHOOSE = 9;
 
   /**
    * The feature id for the '<em><b>Algorithm</b></em>' attribute.
@@ -334,16 +462,16 @@ public interface DSLPackage extends EPackage
    * @see ml.classification.dSL.impl.DSLPackageImpl#getPrint()
    * @generated
    */
-  int PRINT = 8;
+  int PRINT = 10;
 
   /**
-   * The feature id for the '<em><b>Val</b></em>' containment reference.
+   * The feature id for the '<em><b>Print</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PRINT__VAL = 0;
+  int PRINT__PRINT = 0;
 
   /**
    * The number of structural features of the '<em>Print</em>' class.
@@ -353,126 +481,6 @@ public interface DSLPackage extends EPackage
    * @ordered
    */
   int PRINT_FEATURE_COUNT = 1;
-
-  /**
-   * The meta object id for the '{@link ml.classification.dSL.impl.ExpressionImpl <em>Expression</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see ml.classification.dSL.impl.ExpressionImpl
-   * @see ml.classification.dSL.impl.DSLPackageImpl#getExpression()
-   * @generated
-   */
-  int EXPRESSION = 9;
-
-  /**
-   * The feature id for the '<em><b>Expr</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EXPRESSION__EXPR = 0;
-
-  /**
-   * The number of structural features of the '<em>Expression</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EXPRESSION_FEATURE_COUNT = 1;
-
-  /**
-   * The meta object id for the '{@link ml.classification.dSL.impl.AssignImpl <em>Assign</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see ml.classification.dSL.impl.AssignImpl
-   * @see ml.classification.dSL.impl.DSLPackageImpl#getAssign()
-   * @generated
-   */
-  int ASSIGN = 10;
-
-  /**
-   * The feature id for the '<em><b>Varname</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ASSIGN__VARNAME = 0;
-
-  /**
-   * The feature id for the '<em><b>Val</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ASSIGN__VAL = 1;
-
-  /**
-   * The number of structural features of the '<em>Assign</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ASSIGN_FEATURE_COUNT = 2;
-
-  /**
-   * The meta object id for the '{@link ml.classification.dSL.impl.ConstantImpl <em>Constant</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see ml.classification.dSL.impl.ConstantImpl
-   * @see ml.classification.dSL.impl.DSLPackageImpl#getConstant()
-   * @generated
-   */
-  int CONSTANT = 11;
-
-  /**
-   * The feature id for the '<em><b>Val Int</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONSTANT__VAL_INT = 0;
-
-  /**
-   * The feature id for the '<em><b>Val Double</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONSTANT__VAL_DOUBLE = 1;
-
-  /**
-   * The feature id for the '<em><b>Val String</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONSTANT__VAL_STRING = 2;
-
-  /**
-   * The feature id for the '<em><b>Val ID</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONSTANT__VAL_ID = 3;
-
-  /**
-   * The number of structural features of the '<em>Constant</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONSTANT_FEATURE_COUNT = 4;
 
 
   /**
@@ -507,15 +515,90 @@ public interface DSLPackage extends EPackage
   EClass getStatement();
 
   /**
-   * Returns the meta object for the containment reference '{@link ml.classification.dSL.Statement#getStatement <em>Statement</em>}'.
+   * Returns the meta object for the containment reference '{@link ml.classification.dSL.Statement#getAssign <em>Assign</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Statement</em>'.
-   * @see ml.classification.dSL.Statement#getStatement()
+   * @return the meta object for the containment reference '<em>Assign</em>'.
+   * @see ml.classification.dSL.Statement#getAssign()
    * @see #getStatement()
    * @generated
    */
-  EReference getStatement_Statement();
+  EReference getStatement_Assign();
+
+  /**
+   * Returns the meta object for the containment reference '{@link ml.classification.dSL.Statement#getPrimitive <em>Primitive</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Primitive</em>'.
+   * @see ml.classification.dSL.Statement#getPrimitive()
+   * @see #getStatement()
+   * @generated
+   */
+  EReference getStatement_Primitive();
+
+  /**
+   * Returns the meta object for class '{@link ml.classification.dSL.Assign <em>Assign</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Assign</em>'.
+   * @see ml.classification.dSL.Assign
+   * @generated
+   */
+  EClass getAssign();
+
+  /**
+   * Returns the meta object for the attribute '{@link ml.classification.dSL.Assign#getVarname <em>Varname</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Varname</em>'.
+   * @see ml.classification.dSL.Assign#getVarname()
+   * @see #getAssign()
+   * @generated
+   */
+  EAttribute getAssign_Varname();
+
+  /**
+   * Returns the meta object for the containment reference '{@link ml.classification.dSL.Assign#getAssign_value <em>Assign value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Assign value</em>'.
+   * @see ml.classification.dSL.Assign#getAssign_value()
+   * @see #getAssign()
+   * @generated
+   */
+  EReference getAssign_Assign_value();
+
+  /**
+   * Returns the meta object for class '{@link ml.classification.dSL.Expression <em>Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Expression</em>'.
+   * @see ml.classification.dSL.Expression
+   * @generated
+   */
+  EClass getExpression();
+
+  /**
+   * Returns the meta object for the containment reference '{@link ml.classification.dSL.Expression#getExpr_prim <em>Expr prim</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Expr prim</em>'.
+   * @see ml.classification.dSL.Expression#getExpr_prim()
+   * @see #getExpression()
+   * @generated
+   */
+  EReference getExpression_Expr_prim();
+
+  /**
+   * Returns the meta object for the attribute '{@link ml.classification.dSL.Expression#getExpr_const <em>Expr const</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Expr const</em>'.
+   * @see ml.classification.dSL.Expression#getExpr_const()
+   * @see #getExpression()
+   * @generated
+   */
+  EAttribute getExpression_Expr_const();
 
   /**
    * Returns the meta object for class '{@link ml.classification.dSL.Primitive <em>Primitive</em>}'.
@@ -528,15 +611,70 @@ public interface DSLPackage extends EPackage
   EClass getPrimitive();
 
   /**
-   * Returns the meta object for the containment reference '{@link ml.classification.dSL.Primitive#getPrimitive <em>Primitive</em>}'.
+   * Returns the meta object for the containment reference '{@link ml.classification.dSL.Primitive#getPrint <em>Print</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Primitive</em>'.
-   * @see ml.classification.dSL.Primitive#getPrimitive()
+   * @return the meta object for the containment reference '<em>Print</em>'.
+   * @see ml.classification.dSL.Primitive#getPrint()
    * @see #getPrimitive()
    * @generated
    */
-  EReference getPrimitive_Primitive();
+  EReference getPrimitive_Print();
+
+  /**
+   * Returns the meta object for the containment reference '{@link ml.classification.dSL.Primitive#getAlgo_choose <em>Algo choose</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Algo choose</em>'.
+   * @see ml.classification.dSL.Primitive#getAlgo_choose()
+   * @see #getPrimitive()
+   * @generated
+   */
+  EReference getPrimitive_Algo_choose();
+
+  /**
+   * Returns the meta object for the containment reference '{@link ml.classification.dSL.Primitive#getRead <em>Read</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Read</em>'.
+   * @see ml.classification.dSL.Primitive#getRead()
+   * @see #getPrimitive()
+   * @generated
+   */
+  EReference getPrimitive_Read();
+
+  /**
+   * Returns the meta object for the containment reference '{@link ml.classification.dSL.Primitive#getStrategy_choose <em>Strategy choose</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Strategy choose</em>'.
+   * @see ml.classification.dSL.Primitive#getStrategy_choose()
+   * @see #getPrimitive()
+   * @generated
+   */
+  EReference getPrimitive_Strategy_choose();
+
+  /**
+   * Returns the meta object for the containment reference '{@link ml.classification.dSL.Primitive#getColumn <em>Column</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Column</em>'.
+   * @see ml.classification.dSL.Primitive#getColumn()
+   * @see #getPrimitive()
+   * @generated
+   */
+  EReference getPrimitive_Column();
+
+  /**
+   * Returns the meta object for the containment reference '{@link ml.classification.dSL.Primitive#getUse_metric <em>Use metric</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Use metric</em>'.
+   * @see ml.classification.dSL.Primitive#getUse_metric()
+   * @see #getPrimitive()
+   * @generated
+   */
+  EReference getPrimitive_Use_metric();
 
   /**
    * Returns the meta object for class '{@link ml.classification.dSL.Use_Metric <em>Use Metric</em>}'.
@@ -709,122 +847,15 @@ public interface DSLPackage extends EPackage
   EClass getPrint();
 
   /**
-   * Returns the meta object for the containment reference '{@link ml.classification.dSL.Print#getVal <em>Val</em>}'.
+   * Returns the meta object for the attribute '{@link ml.classification.dSL.Print#getPrint <em>Print</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Val</em>'.
-   * @see ml.classification.dSL.Print#getVal()
+   * @return the meta object for the attribute '<em>Print</em>'.
+   * @see ml.classification.dSL.Print#getPrint()
    * @see #getPrint()
    * @generated
    */
-  EReference getPrint_Val();
-
-  /**
-   * Returns the meta object for class '{@link ml.classification.dSL.Expression <em>Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Expression</em>'.
-   * @see ml.classification.dSL.Expression
-   * @generated
-   */
-  EClass getExpression();
-
-  /**
-   * Returns the meta object for the containment reference '{@link ml.classification.dSL.Expression#getExpr <em>Expr</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Expr</em>'.
-   * @see ml.classification.dSL.Expression#getExpr()
-   * @see #getExpression()
-   * @generated
-   */
-  EReference getExpression_Expr();
-
-  /**
-   * Returns the meta object for class '{@link ml.classification.dSL.Assign <em>Assign</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Assign</em>'.
-   * @see ml.classification.dSL.Assign
-   * @generated
-   */
-  EClass getAssign();
-
-  /**
-   * Returns the meta object for the attribute '{@link ml.classification.dSL.Assign#getVarname <em>Varname</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Varname</em>'.
-   * @see ml.classification.dSL.Assign#getVarname()
-   * @see #getAssign()
-   * @generated
-   */
-  EAttribute getAssign_Varname();
-
-  /**
-   * Returns the meta object for the containment reference '{@link ml.classification.dSL.Assign#getVal <em>Val</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Val</em>'.
-   * @see ml.classification.dSL.Assign#getVal()
-   * @see #getAssign()
-   * @generated
-   */
-  EReference getAssign_Val();
-
-  /**
-   * Returns the meta object for class '{@link ml.classification.dSL.Constant <em>Constant</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Constant</em>'.
-   * @see ml.classification.dSL.Constant
-   * @generated
-   */
-  EClass getConstant();
-
-  /**
-   * Returns the meta object for the attribute '{@link ml.classification.dSL.Constant#getValInt <em>Val Int</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Val Int</em>'.
-   * @see ml.classification.dSL.Constant#getValInt()
-   * @see #getConstant()
-   * @generated
-   */
-  EAttribute getConstant_ValInt();
-
-  /**
-   * Returns the meta object for the attribute '{@link ml.classification.dSL.Constant#getValDouble <em>Val Double</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Val Double</em>'.
-   * @see ml.classification.dSL.Constant#getValDouble()
-   * @see #getConstant()
-   * @generated
-   */
-  EAttribute getConstant_ValDouble();
-
-  /**
-   * Returns the meta object for the attribute '{@link ml.classification.dSL.Constant#getValString <em>Val String</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Val String</em>'.
-   * @see ml.classification.dSL.Constant#getValString()
-   * @see #getConstant()
-   * @generated
-   */
-  EAttribute getConstant_ValString();
-
-  /**
-   * Returns the meta object for the attribute '{@link ml.classification.dSL.Constant#getValID <em>Val ID</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Val ID</em>'.
-   * @see ml.classification.dSL.Constant#getValID()
-   * @see #getConstant()
-   * @generated
-   */
-  EAttribute getConstant_ValID();
+  EAttribute getPrint_Print();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -878,12 +909,72 @@ public interface DSLPackage extends EPackage
     EClass STATEMENT = eINSTANCE.getStatement();
 
     /**
-     * The meta object literal for the '<em><b>Statement</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Assign</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference STATEMENT__STATEMENT = eINSTANCE.getStatement_Statement();
+    EReference STATEMENT__ASSIGN = eINSTANCE.getStatement_Assign();
+
+    /**
+     * The meta object literal for the '<em><b>Primitive</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference STATEMENT__PRIMITIVE = eINSTANCE.getStatement_Primitive();
+
+    /**
+     * The meta object literal for the '{@link ml.classification.dSL.impl.AssignImpl <em>Assign</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see ml.classification.dSL.impl.AssignImpl
+     * @see ml.classification.dSL.impl.DSLPackageImpl#getAssign()
+     * @generated
+     */
+    EClass ASSIGN = eINSTANCE.getAssign();
+
+    /**
+     * The meta object literal for the '<em><b>Varname</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ASSIGN__VARNAME = eINSTANCE.getAssign_Varname();
+
+    /**
+     * The meta object literal for the '<em><b>Assign value</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ASSIGN__ASSIGN_VALUE = eINSTANCE.getAssign_Assign_value();
+
+    /**
+     * The meta object literal for the '{@link ml.classification.dSL.impl.ExpressionImpl <em>Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see ml.classification.dSL.impl.ExpressionImpl
+     * @see ml.classification.dSL.impl.DSLPackageImpl#getExpression()
+     * @generated
+     */
+    EClass EXPRESSION = eINSTANCE.getExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Expr prim</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXPRESSION__EXPR_PRIM = eINSTANCE.getExpression_Expr_prim();
+
+    /**
+     * The meta object literal for the '<em><b>Expr const</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute EXPRESSION__EXPR_CONST = eINSTANCE.getExpression_Expr_const();
 
     /**
      * The meta object literal for the '{@link ml.classification.dSL.impl.PrimitiveImpl <em>Primitive</em>}' class.
@@ -896,12 +987,52 @@ public interface DSLPackage extends EPackage
     EClass PRIMITIVE = eINSTANCE.getPrimitive();
 
     /**
-     * The meta object literal for the '<em><b>Primitive</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Print</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference PRIMITIVE__PRIMITIVE = eINSTANCE.getPrimitive_Primitive();
+    EReference PRIMITIVE__PRINT = eINSTANCE.getPrimitive_Print();
+
+    /**
+     * The meta object literal for the '<em><b>Algo choose</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PRIMITIVE__ALGO_CHOOSE = eINSTANCE.getPrimitive_Algo_choose();
+
+    /**
+     * The meta object literal for the '<em><b>Read</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PRIMITIVE__READ = eINSTANCE.getPrimitive_Read();
+
+    /**
+     * The meta object literal for the '<em><b>Strategy choose</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PRIMITIVE__STRATEGY_CHOOSE = eINSTANCE.getPrimitive_Strategy_choose();
+
+    /**
+     * The meta object literal for the '<em><b>Column</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PRIMITIVE__COLUMN = eINSTANCE.getPrimitive_Column();
+
+    /**
+     * The meta object literal for the '<em><b>Use metric</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PRIMITIVE__USE_METRIC = eINSTANCE.getPrimitive_Use_metric();
 
     /**
      * The meta object literal for the '{@link ml.classification.dSL.impl.Use_MetricImpl <em>Use Metric</em>}' class.
@@ -1044,98 +1175,12 @@ public interface DSLPackage extends EPackage
     EClass PRINT = eINSTANCE.getPrint();
 
     /**
-     * The meta object literal for the '<em><b>Val</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Print</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference PRINT__VAL = eINSTANCE.getPrint_Val();
-
-    /**
-     * The meta object literal for the '{@link ml.classification.dSL.impl.ExpressionImpl <em>Expression</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see ml.classification.dSL.impl.ExpressionImpl
-     * @see ml.classification.dSL.impl.DSLPackageImpl#getExpression()
-     * @generated
-     */
-    EClass EXPRESSION = eINSTANCE.getExpression();
-
-    /**
-     * The meta object literal for the '<em><b>Expr</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference EXPRESSION__EXPR = eINSTANCE.getExpression_Expr();
-
-    /**
-     * The meta object literal for the '{@link ml.classification.dSL.impl.AssignImpl <em>Assign</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see ml.classification.dSL.impl.AssignImpl
-     * @see ml.classification.dSL.impl.DSLPackageImpl#getAssign()
-     * @generated
-     */
-    EClass ASSIGN = eINSTANCE.getAssign();
-
-    /**
-     * The meta object literal for the '<em><b>Varname</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute ASSIGN__VARNAME = eINSTANCE.getAssign_Varname();
-
-    /**
-     * The meta object literal for the '<em><b>Val</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference ASSIGN__VAL = eINSTANCE.getAssign_Val();
-
-    /**
-     * The meta object literal for the '{@link ml.classification.dSL.impl.ConstantImpl <em>Constant</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see ml.classification.dSL.impl.ConstantImpl
-     * @see ml.classification.dSL.impl.DSLPackageImpl#getConstant()
-     * @generated
-     */
-    EClass CONSTANT = eINSTANCE.getConstant();
-
-    /**
-     * The meta object literal for the '<em><b>Val Int</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute CONSTANT__VAL_INT = eINSTANCE.getConstant_ValInt();
-
-    /**
-     * The meta object literal for the '<em><b>Val Double</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute CONSTANT__VAL_DOUBLE = eINSTANCE.getConstant_ValDouble();
-
-    /**
-     * The meta object literal for the '<em><b>Val String</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute CONSTANT__VAL_STRING = eINSTANCE.getConstant_ValString();
-
-    /**
-     * The meta object literal for the '<em><b>Val ID</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute CONSTANT__VAL_ID = eINSTANCE.getConstant_ValID();
+    EAttribute PRINT__PRINT = eINSTANCE.getPrint_Print();
 
   }
 

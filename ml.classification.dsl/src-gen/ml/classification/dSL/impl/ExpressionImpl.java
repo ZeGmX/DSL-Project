@@ -5,12 +5,12 @@ package ml.classification.dSL.impl;
 
 import ml.classification.dSL.DSLPackage;
 import ml.classification.dSL.Expression;
+import ml.classification.dSL.Primitive;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -24,7 +24,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link ml.classification.dSL.impl.ExpressionImpl#getExpr <em>Expr</em>}</li>
+ *   <li>{@link ml.classification.dSL.impl.ExpressionImpl#getExpr_prim <em>Expr prim</em>}</li>
+ *   <li>{@link ml.classification.dSL.impl.ExpressionImpl#getExpr_const <em>Expr const</em>}</li>
  * </ul>
  *
  * @generated
@@ -32,14 +33,34 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expression
 {
   /**
-   * The cached value of the '{@link #getExpr() <em>Expr</em>}' containment reference.
+   * The cached value of the '{@link #getExpr_prim() <em>Expr prim</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getExpr()
+   * @see #getExpr_prim()
    * @generated
    * @ordered
    */
-  protected EObject expr;
+  protected Primitive expr_prim;
+
+  /**
+   * The default value of the '{@link #getExpr_const() <em>Expr const</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getExpr_const()
+   * @generated
+   * @ordered
+   */
+  protected static final String EXPR_CONST_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getExpr_const() <em>Expr const</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getExpr_const()
+   * @generated
+   * @ordered
+   */
+  protected String expr_const = EXPR_CONST_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -68,9 +89,9 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
    * @generated
    */
   @Override
-  public EObject getExpr()
+  public Primitive getExpr_prim()
   {
-    return expr;
+    return expr_prim;
   }
 
   /**
@@ -78,13 +99,13 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetExpr(EObject newExpr, NotificationChain msgs)
+  public NotificationChain basicSetExpr_prim(Primitive newExpr_prim, NotificationChain msgs)
   {
-    EObject oldExpr = expr;
-    expr = newExpr;
+    Primitive oldExpr_prim = expr_prim;
+    expr_prim = newExpr_prim;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DSLPackage.EXPRESSION__EXPR, oldExpr, newExpr);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DSLPackage.EXPRESSION__EXPR_PRIM, oldExpr_prim, newExpr_prim);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -96,20 +117,45 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
    * @generated
    */
   @Override
-  public void setExpr(EObject newExpr)
+  public void setExpr_prim(Primitive newExpr_prim)
   {
-    if (newExpr != expr)
+    if (newExpr_prim != expr_prim)
     {
       NotificationChain msgs = null;
-      if (expr != null)
-        msgs = ((InternalEObject)expr).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DSLPackage.EXPRESSION__EXPR, null, msgs);
-      if (newExpr != null)
-        msgs = ((InternalEObject)newExpr).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DSLPackage.EXPRESSION__EXPR, null, msgs);
-      msgs = basicSetExpr(newExpr, msgs);
+      if (expr_prim != null)
+        msgs = ((InternalEObject)expr_prim).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DSLPackage.EXPRESSION__EXPR_PRIM, null, msgs);
+      if (newExpr_prim != null)
+        msgs = ((InternalEObject)newExpr_prim).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DSLPackage.EXPRESSION__EXPR_PRIM, null, msgs);
+      msgs = basicSetExpr_prim(newExpr_prim, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.EXPRESSION__EXPR, newExpr, newExpr));
+      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.EXPRESSION__EXPR_PRIM, newExpr_prim, newExpr_prim));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String getExpr_const()
+  {
+    return expr_const;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setExpr_const(String newExpr_const)
+  {
+    String oldExpr_const = expr_const;
+    expr_const = newExpr_const;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.EXPRESSION__EXPR_CONST, oldExpr_const, expr_const));
   }
 
   /**
@@ -122,8 +168,8 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
   {
     switch (featureID)
     {
-      case DSLPackage.EXPRESSION__EXPR:
-        return basicSetExpr(null, msgs);
+      case DSLPackage.EXPRESSION__EXPR_PRIM:
+        return basicSetExpr_prim(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -138,8 +184,10 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
   {
     switch (featureID)
     {
-      case DSLPackage.EXPRESSION__EXPR:
-        return getExpr();
+      case DSLPackage.EXPRESSION__EXPR_PRIM:
+        return getExpr_prim();
+      case DSLPackage.EXPRESSION__EXPR_CONST:
+        return getExpr_const();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -154,8 +202,11 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
   {
     switch (featureID)
     {
-      case DSLPackage.EXPRESSION__EXPR:
-        setExpr((EObject)newValue);
+      case DSLPackage.EXPRESSION__EXPR_PRIM:
+        setExpr_prim((Primitive)newValue);
+        return;
+      case DSLPackage.EXPRESSION__EXPR_CONST:
+        setExpr_const((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -171,8 +222,11 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
   {
     switch (featureID)
     {
-      case DSLPackage.EXPRESSION__EXPR:
-        setExpr((EObject)null);
+      case DSLPackage.EXPRESSION__EXPR_PRIM:
+        setExpr_prim((Primitive)null);
+        return;
+      case DSLPackage.EXPRESSION__EXPR_CONST:
+        setExpr_const(EXPR_CONST_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -188,10 +242,29 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
   {
     switch (featureID)
     {
-      case DSLPackage.EXPRESSION__EXPR:
-        return expr != null;
+      case DSLPackage.EXPRESSION__EXPR_PRIM:
+        return expr_prim != null;
+      case DSLPackage.EXPRESSION__EXPR_CONST:
+        return EXPR_CONST_EDEFAULT == null ? expr_const != null : !EXPR_CONST_EDEFAULT.equals(expr_const);
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (expr_const: ");
+    result.append(expr_const);
+    result.append(')');
+    return result.toString();
   }
 
 } //ExpressionImpl

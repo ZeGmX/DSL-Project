@@ -53,90 +53,175 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	public class StatementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ml.classification.DSL.Statement");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Assignment cStatementAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
-		private final RuleCall cStatementExpressionParserRuleCall_0_0 = (RuleCall)cStatementAssignment_0.eContents().get(0);
-		private final Assignment cStatementAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
-		private final RuleCall cStatementPrimitiveParserRuleCall_1_0 = (RuleCall)cStatementAssignment_1.eContents().get(0);
+		private final Assignment cAssignAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
+		private final RuleCall cAssignAssignParserRuleCall_0_0 = (RuleCall)cAssignAssignment_0.eContents().get(0);
+		private final Assignment cPrimitiveAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
+		private final RuleCall cPrimitivePrimitiveParserRuleCall_1_0 = (RuleCall)cPrimitiveAssignment_1.eContents().get(0);
 		
 		//Statement:
-		//	statement=Expression | statement=Primitive;
+		//	assign=Assign | primitive=Primitive;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//statement=Expression | statement=Primitive
+		//assign=Assign | primitive=Primitive
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//statement=Expression
-		public Assignment getStatementAssignment_0() { return cStatementAssignment_0; }
+		//assign=Assign
+		public Assignment getAssignAssignment_0() { return cAssignAssignment_0; }
 		
-		//Expression
-		public RuleCall getStatementExpressionParserRuleCall_0_0() { return cStatementExpressionParserRuleCall_0_0; }
+		//Assign
+		public RuleCall getAssignAssignParserRuleCall_0_0() { return cAssignAssignParserRuleCall_0_0; }
 		
-		//statement=Primitive
-		public Assignment getStatementAssignment_1() { return cStatementAssignment_1; }
+		//primitive=Primitive
+		public Assignment getPrimitiveAssignment_1() { return cPrimitiveAssignment_1; }
 		
 		//Primitive
-		public RuleCall getStatementPrimitiveParserRuleCall_1_0() { return cStatementPrimitiveParserRuleCall_1_0; }
+		public RuleCall getPrimitivePrimitiveParserRuleCall_1_0() { return cPrimitivePrimitiveParserRuleCall_1_0; }
+	}
+	public class AssignElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ml.classification.DSL.Assign");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cVarnameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cVarnameIDTerminalRuleCall_0_0 = (RuleCall)cVarnameAssignment_0.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cAssign_valueAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cAssign_valueExpressionParserRuleCall_2_0 = (RuleCall)cAssign_valueAssignment_2.eContents().get(0);
+		
+		//Assign:
+		//	varname=ID "=" assign_value=Expression;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//varname=ID "=" assign_value=Expression
+		public Group getGroup() { return cGroup; }
+		
+		//varname=ID
+		public Assignment getVarnameAssignment_0() { return cVarnameAssignment_0; }
+		
+		//ID
+		public RuleCall getVarnameIDTerminalRuleCall_0_0() { return cVarnameIDTerminalRuleCall_0_0; }
+		
+		//"="
+		public Keyword getEqualsSignKeyword_1() { return cEqualsSignKeyword_1; }
+		
+		//assign_value=Expression
+		public Assignment getAssign_valueAssignment_2() { return cAssign_valueAssignment_2; }
+		
+		//Expression
+		public RuleCall getAssign_valueExpressionParserRuleCall_2_0() { return cAssign_valueExpressionParserRuleCall_2_0; }
+	}
+	public class ExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ml.classification.DSL.Expression");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Assignment cExpr_primAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
+		private final RuleCall cExpr_primPrimitiveParserRuleCall_0_0 = (RuleCall)cExpr_primAssignment_0.eContents().get(0);
+		private final Assignment cExpr_constAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
+		private final RuleCall cExpr_constConstantParserRuleCall_1_0 = (RuleCall)cExpr_constAssignment_1.eContents().get(0);
+		
+		//Expression:
+		//	expr_prim=Primitive | expr_const=Constant;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//expr_prim=Primitive | expr_const=Constant
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//expr_prim=Primitive
+		public Assignment getExpr_primAssignment_0() { return cExpr_primAssignment_0; }
+		
+		//Primitive
+		public RuleCall getExpr_primPrimitiveParserRuleCall_0_0() { return cExpr_primPrimitiveParserRuleCall_0_0; }
+		
+		//expr_const=Constant
+		public Assignment getExpr_constAssignment_1() { return cExpr_constAssignment_1; }
+		
+		//Constant
+		public RuleCall getExpr_constConstantParserRuleCall_1_0() { return cExpr_constConstantParserRuleCall_1_0; }
 	}
 	public class PrimitiveElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ml.classification.DSL.Primitive");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Assignment cPrimitiveAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
-		private final RuleCall cPrimitivePrintParserRuleCall_0_0 = (RuleCall)cPrimitiveAssignment_0.eContents().get(0);
-		private final Assignment cPrimitiveAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
-		private final RuleCall cPrimitiveAlgo_chooseParserRuleCall_1_0 = (RuleCall)cPrimitiveAssignment_1.eContents().get(0);
-		private final Assignment cPrimitiveAssignment_2 = (Assignment)cAlternatives.eContents().get(2);
-		private final RuleCall cPrimitiveReadParserRuleCall_2_0 = (RuleCall)cPrimitiveAssignment_2.eContents().get(0);
-		private final Assignment cPrimitiveAssignment_3 = (Assignment)cAlternatives.eContents().get(3);
-		private final RuleCall cPrimitiveStrategy_chooseParserRuleCall_3_0 = (RuleCall)cPrimitiveAssignment_3.eContents().get(0);
-		private final Assignment cPrimitiveAssignment_4 = (Assignment)cAlternatives.eContents().get(4);
-		private final RuleCall cPrimitiveColumnParserRuleCall_4_0 = (RuleCall)cPrimitiveAssignment_4.eContents().get(0);
-		private final Assignment cPrimitiveAssignment_5 = (Assignment)cAlternatives.eContents().get(5);
-		private final RuleCall cPrimitiveUse_MetricParserRuleCall_5_0 = (RuleCall)cPrimitiveAssignment_5.eContents().get(0);
+		private final Assignment cPrintAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
+		private final RuleCall cPrintPrintParserRuleCall_0_0 = (RuleCall)cPrintAssignment_0.eContents().get(0);
+		private final Assignment cAlgo_chooseAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
+		private final RuleCall cAlgo_chooseAlgo_chooseParserRuleCall_1_0 = (RuleCall)cAlgo_chooseAssignment_1.eContents().get(0);
+		private final Assignment cReadAssignment_2 = (Assignment)cAlternatives.eContents().get(2);
+		private final RuleCall cReadReadParserRuleCall_2_0 = (RuleCall)cReadAssignment_2.eContents().get(0);
+		private final Assignment cStrategy_chooseAssignment_3 = (Assignment)cAlternatives.eContents().get(3);
+		private final RuleCall cStrategy_chooseStrategy_chooseParserRuleCall_3_0 = (RuleCall)cStrategy_chooseAssignment_3.eContents().get(0);
+		private final Assignment cColumnAssignment_4 = (Assignment)cAlternatives.eContents().get(4);
+		private final RuleCall cColumnColumnParserRuleCall_4_0 = (RuleCall)cColumnAssignment_4.eContents().get(0);
+		private final Assignment cUse_metricAssignment_5 = (Assignment)cAlternatives.eContents().get(5);
+		private final RuleCall cUse_metricUse_MetricParserRuleCall_5_0 = (RuleCall)cUse_metricAssignment_5.eContents().get(0);
 		
 		//Primitive:
-		//	primitive=Print | primitive=Algo_choose | primitive=Read | primitive=Strategy_choose | primitive=Column |
-		//	primitive=Use_Metric;
+		//	print=Print | algo_choose=Algo_choose | read=Read | strategy_choose=Strategy_choose | column=Column |
+		//	use_metric=Use_Metric;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//primitive=Print | primitive=Algo_choose | primitive=Read | primitive=Strategy_choose | primitive=Column |
-		//primitive=Use_Metric
+		//print=Print | algo_choose=Algo_choose | read=Read | strategy_choose=Strategy_choose | column=Column |
+		//use_metric=Use_Metric
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//primitive=Print
-		public Assignment getPrimitiveAssignment_0() { return cPrimitiveAssignment_0; }
+		//print=Print
+		public Assignment getPrintAssignment_0() { return cPrintAssignment_0; }
 		
 		//Print
-		public RuleCall getPrimitivePrintParserRuleCall_0_0() { return cPrimitivePrintParserRuleCall_0_0; }
+		public RuleCall getPrintPrintParserRuleCall_0_0() { return cPrintPrintParserRuleCall_0_0; }
 		
-		//primitive=Algo_choose
-		public Assignment getPrimitiveAssignment_1() { return cPrimitiveAssignment_1; }
+		//algo_choose=Algo_choose
+		public Assignment getAlgo_chooseAssignment_1() { return cAlgo_chooseAssignment_1; }
 		
 		//Algo_choose
-		public RuleCall getPrimitiveAlgo_chooseParserRuleCall_1_0() { return cPrimitiveAlgo_chooseParserRuleCall_1_0; }
+		public RuleCall getAlgo_chooseAlgo_chooseParserRuleCall_1_0() { return cAlgo_chooseAlgo_chooseParserRuleCall_1_0; }
 		
-		//primitive=Read
-		public Assignment getPrimitiveAssignment_2() { return cPrimitiveAssignment_2; }
+		//read=Read
+		public Assignment getReadAssignment_2() { return cReadAssignment_2; }
 		
 		//Read
-		public RuleCall getPrimitiveReadParserRuleCall_2_0() { return cPrimitiveReadParserRuleCall_2_0; }
+		public RuleCall getReadReadParserRuleCall_2_0() { return cReadReadParserRuleCall_2_0; }
 		
-		//primitive=Strategy_choose
-		public Assignment getPrimitiveAssignment_3() { return cPrimitiveAssignment_3; }
+		//strategy_choose=Strategy_choose
+		public Assignment getStrategy_chooseAssignment_3() { return cStrategy_chooseAssignment_3; }
 		
 		//Strategy_choose
-		public RuleCall getPrimitiveStrategy_chooseParserRuleCall_3_0() { return cPrimitiveStrategy_chooseParserRuleCall_3_0; }
+		public RuleCall getStrategy_chooseStrategy_chooseParserRuleCall_3_0() { return cStrategy_chooseStrategy_chooseParserRuleCall_3_0; }
 		
-		//primitive=Column
-		public Assignment getPrimitiveAssignment_4() { return cPrimitiveAssignment_4; }
+		//column=Column
+		public Assignment getColumnAssignment_4() { return cColumnAssignment_4; }
 		
 		//Column
-		public RuleCall getPrimitiveColumnParserRuleCall_4_0() { return cPrimitiveColumnParserRuleCall_4_0; }
+		public RuleCall getColumnColumnParserRuleCall_4_0() { return cColumnColumnParserRuleCall_4_0; }
 		
-		//primitive=Use_Metric
-		public Assignment getPrimitiveAssignment_5() { return cPrimitiveAssignment_5; }
+		//use_metric=Use_Metric
+		public Assignment getUse_metricAssignment_5() { return cUse_metricAssignment_5; }
 		
 		//Use_Metric
-		public RuleCall getPrimitiveUse_MetricParserRuleCall_5_0() { return cPrimitiveUse_MetricParserRuleCall_5_0; }
+		public RuleCall getUse_metricUse_MetricParserRuleCall_5_0() { return cUse_metricUse_MetricParserRuleCall_5_0; }
+	}
+	public class ConstantElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ml.classification.DSL.Constant");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cINTTerminalRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cDOUBLETerminalRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cSTRINGTerminalRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cIDTerminalRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		
+		//Constant:
+		//	INT | DOUBLE | STRING | ID;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//INT | DOUBLE | STRING | ID
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//INT
+		public RuleCall getINTTerminalRuleCall_0() { return cINTTerminalRuleCall_0; }
+		
+		//DOUBLE
+		public RuleCall getDOUBLETerminalRuleCall_1() { return cDOUBLETerminalRuleCall_1; }
+		
+		//STRING
+		public RuleCall getSTRINGTerminalRuleCall_2() { return cSTRINGTerminalRuleCall_2; }
+		
+		//ID
+		public RuleCall getIDTerminalRuleCall_3() { return cIDTerminalRuleCall_3; }
 	}
 	public class Use_MetricElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ml.classification.DSL.Use_Metric");
@@ -340,159 +425,33 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ml.classification.DSL.Print");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cPrintKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cValAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cValConstantParserRuleCall_1_0 = (RuleCall)cValAssignment_1.eContents().get(0);
+		private final Assignment cPrintAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cPrintConstantParserRuleCall_1_0 = (RuleCall)cPrintAssignment_1.eContents().get(0);
 		
 		//Print:
-		//	"print" val=Constant;
+		//	"print" print=Constant;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//"print" val=Constant
+		//"print" print=Constant
 		public Group getGroup() { return cGroup; }
 		
 		//"print"
 		public Keyword getPrintKeyword_0() { return cPrintKeyword_0; }
 		
-		//val=Constant
-		public Assignment getValAssignment_1() { return cValAssignment_1; }
+		//print=Constant
+		public Assignment getPrintAssignment_1() { return cPrintAssignment_1; }
 		
 		//Constant
-		public RuleCall getValConstantParserRuleCall_1_0() { return cValConstantParserRuleCall_1_0; }
-	}
-	public class ExpressionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ml.classification.DSL.Expression");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Assignment cExprAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
-		private final RuleCall cExprConstantParserRuleCall_0_0 = (RuleCall)cExprAssignment_0.eContents().get(0);
-		private final Assignment cExprAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
-		private final RuleCall cExprAssignParserRuleCall_1_0 = (RuleCall)cExprAssignment_1.eContents().get(0);
-		
-		//Expression:
-		//	expr=Constant | expr=Assign;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//expr=Constant | expr=Assign
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//expr=Constant
-		public Assignment getExprAssignment_0() { return cExprAssignment_0; }
-		
-		//Constant
-		public RuleCall getExprConstantParserRuleCall_0_0() { return cExprConstantParserRuleCall_0_0; }
-		
-		//expr=Assign
-		public Assignment getExprAssignment_1() { return cExprAssignment_1; }
-		
-		//Assign
-		public RuleCall getExprAssignParserRuleCall_1_0() { return cExprAssignParserRuleCall_1_0; }
-	}
-	public class AssignElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ml.classification.DSL.Assign");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final Assignment cVarnameAssignment_0_0 = (Assignment)cGroup_0.eContents().get(0);
-		private final RuleCall cVarnameIDTerminalRuleCall_0_0_0 = (RuleCall)cVarnameAssignment_0_0.eContents().get(0);
-		private final Keyword cEqualsSignKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
-		private final Assignment cValAssignment_0_2 = (Assignment)cGroup_0.eContents().get(2);
-		private final RuleCall cValConstantParserRuleCall_0_2_0 = (RuleCall)cValAssignment_0_2.eContents().get(0);
-		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Assignment cVarnameAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
-		private final RuleCall cVarnameIDTerminalRuleCall_1_0_0 = (RuleCall)cVarnameAssignment_1_0.eContents().get(0);
-		private final Keyword cEqualsSignKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
-		private final Assignment cValAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final RuleCall cValPrimitiveParserRuleCall_1_2_0 = (RuleCall)cValAssignment_1_2.eContents().get(0);
-		
-		//Assign:
-		//	varname=ID "=" val=Constant | varname=ID "=" val=Primitive;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//varname=ID "=" val=Constant | varname=ID "=" val=Primitive
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//varname=ID "=" val=Constant
-		public Group getGroup_0() { return cGroup_0; }
-		
-		//varname=ID
-		public Assignment getVarnameAssignment_0_0() { return cVarnameAssignment_0_0; }
-		
-		//ID
-		public RuleCall getVarnameIDTerminalRuleCall_0_0_0() { return cVarnameIDTerminalRuleCall_0_0_0; }
-		
-		//"="
-		public Keyword getEqualsSignKeyword_0_1() { return cEqualsSignKeyword_0_1; }
-		
-		//val=Constant
-		public Assignment getValAssignment_0_2() { return cValAssignment_0_2; }
-		
-		//Constant
-		public RuleCall getValConstantParserRuleCall_0_2_0() { return cValConstantParserRuleCall_0_2_0; }
-		
-		//varname=ID "=" val=Primitive
-		public Group getGroup_1() { return cGroup_1; }
-		
-		//varname=ID
-		public Assignment getVarnameAssignment_1_0() { return cVarnameAssignment_1_0; }
-		
-		//ID
-		public RuleCall getVarnameIDTerminalRuleCall_1_0_0() { return cVarnameIDTerminalRuleCall_1_0_0; }
-		
-		//"="
-		public Keyword getEqualsSignKeyword_1_1() { return cEqualsSignKeyword_1_1; }
-		
-		//val=Primitive
-		public Assignment getValAssignment_1_2() { return cValAssignment_1_2; }
-		
-		//Primitive
-		public RuleCall getValPrimitiveParserRuleCall_1_2_0() { return cValPrimitiveParserRuleCall_1_2_0; }
-	}
-	public class ConstantElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ml.classification.DSL.Constant");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Assignment cValIntAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
-		private final RuleCall cValIntINTTerminalRuleCall_0_0 = (RuleCall)cValIntAssignment_0.eContents().get(0);
-		private final Assignment cValDoubleAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
-		private final RuleCall cValDoubleDOUBLETerminalRuleCall_1_0 = (RuleCall)cValDoubleAssignment_1.eContents().get(0);
-		private final Assignment cValStringAssignment_2 = (Assignment)cAlternatives.eContents().get(2);
-		private final RuleCall cValStringSTRINGTerminalRuleCall_2_0 = (RuleCall)cValStringAssignment_2.eContents().get(0);
-		private final Assignment cValIDAssignment_3 = (Assignment)cAlternatives.eContents().get(3);
-		private final RuleCall cValIDIDTerminalRuleCall_3_0 = (RuleCall)cValIDAssignment_3.eContents().get(0);
-		
-		//Constant:
-		//	valInt=INT | valDouble=DOUBLE | valString=STRING | valID=ID;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//valInt=INT | valDouble=DOUBLE | valString=STRING | valID=ID
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//valInt=INT
-		public Assignment getValIntAssignment_0() { return cValIntAssignment_0; }
-		
-		//INT
-		public RuleCall getValIntINTTerminalRuleCall_0_0() { return cValIntINTTerminalRuleCall_0_0; }
-		
-		//valDouble=DOUBLE
-		public Assignment getValDoubleAssignment_1() { return cValDoubleAssignment_1; }
-		
-		//DOUBLE
-		public RuleCall getValDoubleDOUBLETerminalRuleCall_1_0() { return cValDoubleDOUBLETerminalRuleCall_1_0; }
-		
-		//valString=STRING
-		public Assignment getValStringAssignment_2() { return cValStringAssignment_2; }
-		
-		//STRING
-		public RuleCall getValStringSTRINGTerminalRuleCall_2_0() { return cValStringSTRINGTerminalRuleCall_2_0; }
-		
-		//valID=ID
-		public Assignment getValIDAssignment_3() { return cValIDAssignment_3; }
-		
-		//ID
-		public RuleCall getValIDIDTerminalRuleCall_3_0() { return cValIDIDTerminalRuleCall_3_0; }
+		public RuleCall getPrintConstantParserRuleCall_1_0() { return cPrintConstantParserRuleCall_1_0; }
 	}
 	
 	
 	private final MLElements pML;
 	private final StatementElements pStatement;
+	private final AssignElements pAssign;
+	private final ExpressionElements pExpression;
 	private final PrimitiveElements pPrimitive;
+	private final ConstantElements pConstant;
 	private final Use_MetricElements pUse_Metric;
 	private final TerminalRule tMETRIC;
 	private final ColumnElements pColumn;
@@ -502,9 +461,6 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	private final Algo_chooseElements pAlgo_choose;
 	private final TerminalRule tALGO_NAME;
 	private final PrintElements pPrint;
-	private final ExpressionElements pExpression;
-	private final AssignElements pAssign;
-	private final ConstantElements pConstant;
 	private final TerminalRule tDOUBLE;
 	
 	private final Grammar grammar;
@@ -518,7 +474,10 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		this.gaTerminals = gaTerminals;
 		this.pML = new MLElements();
 		this.pStatement = new StatementElements();
+		this.pAssign = new AssignElements();
+		this.pExpression = new ExpressionElements();
 		this.pPrimitive = new PrimitiveElements();
+		this.pConstant = new ConstantElements();
 		this.pUse_Metric = new Use_MetricElements();
 		this.tMETRIC = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ml.classification.DSL.METRIC");
 		this.pColumn = new ColumnElements();
@@ -528,9 +487,6 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		this.pAlgo_choose = new Algo_chooseElements();
 		this.tALGO_NAME = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ml.classification.DSL.ALGO_NAME");
 		this.pPrint = new PrintElements();
-		this.pExpression = new ExpressionElements();
-		this.pAssign = new AssignElements();
-		this.pConstant = new ConstantElements();
 		this.tDOUBLE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ml.classification.DSL.DOUBLE");
 	}
 	
@@ -573,7 +529,7 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	}
 	
 	//Statement:
-	//	statement=Expression | statement=Primitive;
+	//	assign=Assign | primitive=Primitive;
 	public StatementElements getStatementAccess() {
 		return pStatement;
 	}
@@ -582,15 +538,45 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		return getStatementAccess().getRule();
 	}
 	
+	//Assign:
+	//	varname=ID "=" assign_value=Expression;
+	public AssignElements getAssignAccess() {
+		return pAssign;
+	}
+	
+	public ParserRule getAssignRule() {
+		return getAssignAccess().getRule();
+	}
+	
+	//Expression:
+	//	expr_prim=Primitive | expr_const=Constant;
+	public ExpressionElements getExpressionAccess() {
+		return pExpression;
+	}
+	
+	public ParserRule getExpressionRule() {
+		return getExpressionAccess().getRule();
+	}
+	
 	//Primitive:
-	//	primitive=Print | primitive=Algo_choose | primitive=Read | primitive=Strategy_choose | primitive=Column |
-	//	primitive=Use_Metric;
+	//	print=Print | algo_choose=Algo_choose | read=Read | strategy_choose=Strategy_choose | column=Column |
+	//	use_metric=Use_Metric;
 	public PrimitiveElements getPrimitiveAccess() {
 		return pPrimitive;
 	}
 	
 	public ParserRule getPrimitiveRule() {
 		return getPrimitiveAccess().getRule();
+	}
+	
+	//Constant:
+	//	INT | DOUBLE | STRING | ID;
+	public ConstantElements getConstantAccess() {
+		return pConstant;
+	}
+	
+	public ParserRule getConstantRule() {
+		return getConstantAccess().getRule();
 	}
 	
 	//Use_Metric:
@@ -668,43 +654,13 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	}
 	
 	//Print:
-	//	"print" val=Constant;
+	//	"print" print=Constant;
 	public PrintElements getPrintAccess() {
 		return pPrint;
 	}
 	
 	public ParserRule getPrintRule() {
 		return getPrintAccess().getRule();
-	}
-	
-	//Expression:
-	//	expr=Constant | expr=Assign;
-	public ExpressionElements getExpressionAccess() {
-		return pExpression;
-	}
-	
-	public ParserRule getExpressionRule() {
-		return getExpressionAccess().getRule();
-	}
-	
-	//Assign:
-	//	varname=ID "=" val=Constant | varname=ID "=" val=Primitive;
-	public AssignElements getAssignAccess() {
-		return pAssign;
-	}
-	
-	public ParserRule getAssignRule() {
-		return getAssignAccess().getRule();
-	}
-	
-	//Constant:
-	//	valInt=INT | valDouble=DOUBLE | valString=STRING | valID=ID;
-	public ConstantElements getConstantAccess() {
-		return pConstant;
-	}
-	
-	public ParserRule getConstantRule() {
-		return getConstantAccess().getRule();
 	}
 	
 	//terminal DOUBLE:

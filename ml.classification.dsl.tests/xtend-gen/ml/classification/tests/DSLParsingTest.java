@@ -44,4 +44,10 @@ public class DSLParsingTest {
       throw Exceptions.sneakyThrow(_e);
     }
   }
+  
+  @Test
+  public void pp() {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method prettyPrint(Object) from the type DSLPrettyPrinter refers to the missing type Object");
+  }
 }

@@ -2,22 +2,33 @@ grammar ml.classification.DSL with org.eclipse.xtext.common.Terminals
 
 generate dSL "http://www.classification.ml/DSL"
 
-
 // concrete and abstract syntax
 ML:
 	(statements+=Statement)* statements+=Statement;
 		
 Statement :
-	statement=Expression | 
-	statement=Primitive;
+    assign=Assign | 
+    primitive=Primitive;
+
+Assign:
+    varname=ID "=" assign_value=Expression;
+
+Expression:
+    expr_prim=Primitive | expr_const=Constant;
 
 Primitive:
-	primitive=Print | 
-	primitive=Algo_choose | 
-	primitive=Read | 
-	primitive=Strategy_choose | 
-	primitive=Column | 
-	primitive=Use_Metric;
+    print=Print | 
+    algo_choose=Algo_choose | 
+    read=Read | 
+    strategy_choose=Strategy_choose | 
+    column=Column | 
+    use_metric=Use_Metric;
+
+Constant:
+    INT | 
+    DOUBLE | 
+    STRING | 
+    ID;
 	
 Use_Metric:
 	"use_metric" metric=METRIC;
@@ -50,21 +61,7 @@ terminal ALGO_NAME:
 	"svm";
 
 Print:
-	"print" val=Constant;
-
-Expression:
-	expr=Constant | 
-	expr=Assign;
-
-Assign:
-	varname=ID "=" val=Constant |
-	varname=ID "=" val=Primitive; 
-
-Constant:
-	valInt=INT | 
-	valDouble=DOUBLE | 
-	valString=STRING | 
-	valID=ID;
+	"print" print=Constant;
 
 terminal DOUBLE:
 	INT "." INT ;
