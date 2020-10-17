@@ -7,3 +7,4 @@ DSLGenerator.xtend.txt
 ml.classification.dsl/src/ml/classification/generator/DSLPrettyPrinter.xtend
 LorenzoBettini_2013_Chapter8AnExpressionL_ImplementingDomainSpe.pdf
 FL_insurance_sample.csv
+*/generated/*
