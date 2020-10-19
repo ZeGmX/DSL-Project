@@ -7,33 +7,48 @@ ML:
 	(statements+=Statement)* statements+=Statement;
 		
 Statement :
-    assign=Assign | 
-    primitive=Primitive;
+	assign=Assign | 
+	primitive=Primitive;
 
 Assign:
-    varname=ID "=" assign_value=Expression;
-
+	varname=ID "=" assign_value=Expression;
+	
 Expression:
-    expr_prim=Primitive | expr_const=Constant;
+	expr_prim=Primitive | expr_const=Constant;
 
 Primitive:
-    print=Print | 
-    algo_choose=Algo_choose | 
-    read=Read | 
-    strategy_choose=Strategy_choose | 
-    column=Column | 
-    use_metric=Use_Metric |
-    predict=Predict;
-
-Predict:
-	"predict";
+	print=Print | 
+	algo_choose=Algo_choose | 
+	read=Read | 
+	strategy_choose=Strategy_choose | 
+	column=Column | 
+	use_metric=Use_Metric|
+	predict=PREDICT;
 
 Constant:
-    INT | 
-    DOUBLE | 
-    STRING | 
-    ID;
+	constantInt=MLINT | 
+	constantDouble=DOUBLE | 
+	constantString=STRING | 
+	varRef=ID;
+
+Print:
+	"print" print=Constant;
 	
+Algo_choose:
+	"use_algorithm" algorithm=ALGO_NAME;
+
+Read:
+	"read" path=Constant  separator=SEP?;
+	
+Strategy_choose:
+	"use_strategy" strategy="train_test" ratio=Constant | 
+	"use_strategy" strategy="cross_valid" nb=Constant? ;
+
+Column:
+	"use_column" (use+=Constant)+ | 
+	"unuse_column" (unuse+=Constant)+ | 
+	"predict_column" predict=Constant;
+
 Use_Metric:
 	"use_metric" metric=METRIC;
 
@@ -42,30 +57,18 @@ terminal METRIC:
 	"recall" | 
 	"f1";
 
-Column:
-	"use_column" (use+=INT)+ | 
-	"unuse_column" (unuse+=INT)+ | 
-	"predict_column" predict=INT;
-
-Strategy_choose:
-	"use_strategy" strategy="train_test" ratio=DOUBLE | 
-	"use_strategy" strategy="cross_valid" nb=INT? ;
-
-Read:
-	"read" path=STRING  separator=SEP?;
+PREDICT:
+	"predict";
 
 terminal SEP:
 	";"|",";
-
-Algo_choose:
-	"use_algorithm" algorithm=ALGO_NAME;
 
 terminal ALGO_NAME:
 	"tree" | 
 	"svm";
 
-Print:
-	"print" print=Constant;
-
 terminal DOUBLE:
 	INT "." INT ;
+
+terminal MLINT:
+	INT;

@@ -9,3 +9,5 @@ ml.classification.dsl/src/ml/classification/generator/DSLPrettyPrinter.xtend
 LorenzoBettini_2013_Chapter8AnExpressionL_ImplementingDomainSpe.pdf
 *.csv
 */generated/*
+atom/
+compilerPythonSave.txt

@@ -11,7 +11,7 @@ import ml.classification.dSL.Read
 import ml.classification.dSL.Strategy_choose
 import ml.classification.dSL.Use_Metric
 import ml.classification.dSL.Column
-
+import ml.classification.dSL.Constant
 
 class PrettyPrinter {
 	def prettyprint (ML ml){
@@ -38,7 +38,7 @@ class PrettyPrinter {
 		«IF expression.expr_prim !== null»
 			«expression.expr_prim.prettyprint()»
 		«ENDIF»«IF expression.expr_const !== null»
-			«expression.expr_const.toString()»
+			«expression.expr_const.prettyprint()»
 		«ENDIF»
 		'''
 	
@@ -88,14 +88,14 @@ class PrettyPrinter {
 	
 	def prettyprint (Read read){
 		'''
-		read "«read.path»" «read.separator»
+		read «read.path.prettyprint()» «read.separator»
 		'''
 	
 	}
 	
 	def prettyprint (Strategy_choose strat_choose){
 		'''
-		use_strategy«IF strat_choose.strategy=="train_test"» «strat_choose.strategy» «strat_choose.ratio»«ENDIF»«IF strat_choose.strategy=="cross_valid"» «strat_choose.strategy» «strat_choose.nb»«ENDIF»
+		use_strategy «IF strat_choose.strategy=="train_test"»«strat_choose.strategy» «strat_choose.ratio.constantDouble»«ENDIF»«IF strat_choose.strategy=="cross_valid"»«strat_choose.strategy» «strat_choose.nb.constantInt»«ENDIF»
 		'''	
 	}
 	
@@ -109,13 +109,26 @@ class PrettyPrinter {
 	def prettyprint(Column c) {
 		'''
 		«IF c.use.size > 0»
-			use_column «FOR i : c.use»«i.toString()» «ENDFOR»
+			use_column «FOR i : c.use»«i.constantInt» «ENDFOR»
 		«ELSE»«IF c.unuse.size > 0»
-			unuse_column «FOR i : c.unuse»«i.toString()» «ENDFOR»
+			unuse_column «FOR i : c.unuse»«i.constantInt» «ENDFOR»
 		«ELSE»
-			predict_column «c.predict.toString»
+			predict_column «c.predict.constantInt»
 		«ENDIF»
 		«ENDIF»
+		'''
+	}
+	
+	def String prettyprint(Constant c) {
+		'''
+		«IF c.constantInt !== null»
+			«c.constantInt»«ELSE»
+		«IF c.constantDouble !== null»
+			«c.constantDouble»«ELSE»
+		«IF c.constantString !== null»
+			"«c.constantString»"«ELSE»
+			«c.varRef»
+		«ENDIF»«ENDIF»«ENDIF»
 		'''
 	}
 	

@@ -19,7 +19,7 @@
     </genClasses>
     <genClasses ecoreClass="DSL.ecore#//Expression">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//Expression/expr_prim"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//Expression/expr_const"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//Expression/expr_const"/>
     </genClasses>
     <genClasses ecoreClass="DSL.ecore#//Primitive">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//Primitive/print"/>
@@ -30,28 +30,34 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//Primitive/use_metric"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//Primitive/predict"/>
     </genClasses>
-    <genClasses ecoreClass="DSL.ecore#//Use_Metric">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//Use_Metric/metric"/>
+    <genClasses ecoreClass="DSL.ecore#//Constant">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//Constant/constantInt"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//Constant/constantDouble"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//Constant/constantString"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//Constant/varRef"/>
     </genClasses>
-    <genClasses ecoreClass="DSL.ecore#//Column">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//Column/use"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//Column/unuse"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//Column/predict"/>
-    </genClasses>
-    <genClasses ecoreClass="DSL.ecore#//Strategy_choose">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//Strategy_choose/strategy"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//Strategy_choose/ratio"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//Strategy_choose/nb"/>
-    </genClasses>
-    <genClasses ecoreClass="DSL.ecore#//Read">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//Read/path"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//Read/separator"/>
+    <genClasses ecoreClass="DSL.ecore#//Print">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//Print/print"/>
     </genClasses>
     <genClasses ecoreClass="DSL.ecore#//Algo_choose">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//Algo_choose/algorithm"/>
     </genClasses>
-    <genClasses ecoreClass="DSL.ecore#//Print">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//Print/print"/>
+    <genClasses ecoreClass="DSL.ecore#//Read">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//Read/path"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//Read/separator"/>
+    </genClasses>
+    <genClasses ecoreClass="DSL.ecore#//Strategy_choose">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//Strategy_choose/strategy"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//Strategy_choose/ratio"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//Strategy_choose/nb"/>
+    </genClasses>
+    <genClasses ecoreClass="DSL.ecore#//Column">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//Column/use"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//Column/unuse"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//Column/predict"/>
+    </genClasses>
+    <genClasses ecoreClass="DSL.ecore#//Use_Metric">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//Use_Metric/metric"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
