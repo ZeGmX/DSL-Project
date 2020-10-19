@@ -10,7 +10,7 @@ package ml.classification.validation;
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#validation
  */
 public class DSLValidator extends AbstractDSLValidator {
-	
+
 //	public static final String INVALID_NAME = "invalidName";
 //
 //	@Check
@@ -21,5 +21,3 @@ public class DSLValidator extends AbstractDSLValidator {
 //					INVALID_NAME);
 //		}
 //	}
-	
-}
