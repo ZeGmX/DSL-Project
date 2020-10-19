@@ -1,5 +1,6 @@
 */.gitignore
 concrete_grammar.docx
+concrete_grammar.odt
 *-gen*
 saveGrammar.txt
 DSL.xtext.txt
