@@ -24,6 +24,8 @@ class DSLGenerator extends AbstractGenerator {
              	val nameCompilePython = resource.URI.lastSegment.replaceAll(".mldsl","") + ".py"
              	val compiler2Python = new Compiler2Python
              	fsa.generateFile(nameCompilePython, compiler2Python.compile(ml))
+             	val interpreter = new Interpreter
+             	interpreter.interpret(ml)
              	
        }
     }
