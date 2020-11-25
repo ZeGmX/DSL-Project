@@ -74,7 +74,7 @@ class PrettyPrinter {
 	
 	def prettyprint (Print print){
 		'''
-		print «print.print»
+		print «print.print.prettyprint()»
 		'''
 	
 	}
@@ -95,7 +95,7 @@ class PrettyPrinter {
 	
 	def prettyprint (Strategy_choose strat_choose){
 		'''
-		use_strategy «IF strat_choose.strategy=="train_test"»«strat_choose.strategy» «strat_choose.ratio.constantDouble»«ENDIF»«IF strat_choose.strategy=="cross_valid"»«strat_choose.strategy» «strat_choose.nb.constantInt»«ENDIF»
+		use_strategy «IF strat_choose.strategy=="train_test"»«strat_choose.strategy» «strat_choose.ratio.prettyprint»«ENDIF»«IF strat_choose.strategy=="cross_valid"»«strat_choose.strategy» «strat_choose.nb.prettyprint»«ENDIF»
 		'''	
 	}
 	
@@ -109,11 +109,11 @@ class PrettyPrinter {
 	def prettyprint(Column c) {
 		'''
 		«IF c.use.size > 0»
-			use_column «FOR i : c.use»«i.constantInt» «ENDFOR»
+			use_column «FOR i : c.use»«i.prettyprint()» «ENDFOR»
 		«ELSE»«IF c.unuse.size > 0»
-			unuse_column «FOR i : c.unuse»«i.constantInt» «ENDFOR»
+			unuse_column «FOR i : c.unuse»«i.prettyprint()» «ENDFOR»
 		«ELSE»
-			predict_column «c.predict.constantInt»
+			predict_column «c.predict.prettyprint()»
 		«ENDIF»
 		«ENDIF»
 		'''
@@ -121,15 +121,10 @@ class PrettyPrinter {
 	
 	def String prettyprint(Constant c) {
 		'''
-		«IF c.constantInt !== null»
-			«c.constantInt»«ELSE»
-		«IF c.constantDouble !== null»
-			«c.constantDouble»«ELSE»
-		«IF c.constantString !== null»
-			"«c.constantString»"«ELSE»
-			«c.varRef»
-		«ENDIF»«ENDIF»«ENDIF»
-		'''
+		«IF c.constantInt !== null»«c.constantInt»«ELSE»
+		«IF c.constantDouble !== null»«c.constantDouble»«ELSE»
+		«IF c.constantString !== null»"«c.constantString»"«ELSE»
+		«c.varRef»«ENDIF»«ENDIF»«ENDIF»'''
 	}
 	
 }

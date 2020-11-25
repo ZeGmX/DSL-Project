@@ -109,22 +109,21 @@ class Interpreter {
 	
 	def interpret(Column c) {
 		if (c.use.size > 0) {
-			for (index: c.use) use_columns.add(Integer.parseInt(index.constantInt))
+			for (index: c.use) use_columns.add(index.interpret as Integer)
 		}
 		else if (c.unuse.size > 0) {
 			for (index: c.unuse) {
-				use_columns.remove(Integer.parseInt(index.constantInt) as Object)
-				
+				use_columns.remove(index.interpret)
 			}
 		}
-		else predict_column = Integer.parseInt(c.predict.constantInt)
+		else predict_column = c.predict.interpret as Integer
 	}
 	
 	def interpret(Constant c) {
 		if (c.constantInt !== null) return Integer.parseInt(c.constantInt)
 		else if (c.constantDouble !== null) return Double.parseDouble(c.constantDouble)
 		else if (c.constantString !== null) return c.constantString
-		else return environment.get(c.varRef)
+		else return environment.get(c.varRef).interpret
 	}
 	
 	def Double computeAccuracy(ArrayList<String> predicted) {

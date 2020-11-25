@@ -11,7 +11,7 @@ import org.eclipse.xtext.testing.util.ParseHelper
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.^extension.ExtendWith
-import ml.classification.generator.DSLPrettyPrinter
+import ml.classification.generator.PrettyPrinter
 
 @ExtendWith(InjectionExtension)
 @InjectWith(DSLInjectorProvider)
@@ -34,8 +34,8 @@ class DSLParsingTest {
 		val res = parseHelper.parse('''
 		print "Hello World!"
 		''')
-		val pp = new DSLPrettyPrinter
-		println(pp.prettyPrint(res))
+		val pp = new PrettyPrinter
+		println(pp.prettyprint(res))
 		Assertions.assertTrue(true)
 		
 	}
