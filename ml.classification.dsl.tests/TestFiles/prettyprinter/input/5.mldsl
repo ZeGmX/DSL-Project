@@ -1,0 +1,3 @@
+use_strategy train_test 0.7
+use_strategy cross_valid
+use_strategy cross_valid 6

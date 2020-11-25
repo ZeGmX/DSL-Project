@@ -1,0 +1,18 @@
+read "database.csv" ;
+use_column 1 2 
+unuse_column 3 4 5 
+unuse_column 9 
+predict_column 4
+use_algorithm tree
+use_metric f1
+use_strategy cross_valid 5
+predict
+use_algorithm svm
+predict
+use_metric recall
+predict
+read "database2.csv"
+predict
+use_algorithm tree
+use_column 1 
+predict_column 5

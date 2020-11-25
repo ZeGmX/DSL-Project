@@ -1,0 +1,3 @@
+use_metric f1
+use_metric recall
+use_metric accuracy

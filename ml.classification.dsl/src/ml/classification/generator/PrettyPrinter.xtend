@@ -88,14 +88,14 @@ class PrettyPrinter {
 	
 	def prettyprint (Read read){
 		'''
-		read «read.path.prettyprint()» «read.separator»
+		read «read.path.prettyprint()»«IF read.separator !== null» «read.separator»«ENDIF»
 		'''
 	
 	}
 	
 	def prettyprint (Strategy_choose strat_choose){
 		'''
-		use_strategy «IF strat_choose.strategy=="train_test"»«strat_choose.strategy» «strat_choose.ratio.prettyprint»«ENDIF»«IF strat_choose.strategy=="cross_valid"»«strat_choose.strategy» «strat_choose.nb.prettyprint»«ENDIF»
+		use_strategy «IF strat_choose.strategy=="train_test"»«strat_choose.strategy» «strat_choose.ratio.prettyprint»«ENDIF»«IF strat_choose.strategy=="cross_valid"»«strat_choose.strategy»«IF strat_choose.nb !== null» «strat_choose.nb.prettyprint»«ENDIF»«ENDIF»
 		'''	
 	}
 	

@@ -1,0 +1,16 @@
+read "database.csv" ;
+x1 = 1
+x2 = 2
+x3 = 3
+x4 = 4
+x5 = 5
+x9 = 9
+ratio = 0.5
+use_column x1 x2 
+unuse_column x3 x4 x5 
+unuse_column x9 
+predict_column x4
+use_algorithm tree
+use_metric f1
+use_strategy train_test ratio
+predict

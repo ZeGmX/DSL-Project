@@ -36,15 +36,172 @@ class DSLPrettyPrinterTest {
 	}
 	
 	@Test
-	def void testPrettyPrinterOutput() {
+	def void testPrettyPrinterOutput1() {
 		val prettyPrinter = new PrettyPrinter
 		val input = parseHelper.parse(Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/prettyprinter/input/1.mldsl")))
 		Assertions.assertNotNull(input)
 		val output = prettyPrinter.prettyprint(input)
 		Assertions.assertNotNull(output)
-		print(output)
+		print("***Output:\n" + output)
 		val expected_output = Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/prettyprinter/expected/1.mldsl"))
-		print("\n"+expected_output)
+		print("\n***expected:\n" + expected_output + "\n\n\n")
 		Assertions.assertTrue(equals(output,expected_output))
 	}
+	
+	@Test
+	def void testPrettyPrinterOutput2() {
+		val prettyPrinter = new PrettyPrinter
+		val input = parseHelper.parse(Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/prettyprinter/input/2.mldsl")))
+		Assertions.assertNotNull(input)
+		val output = prettyPrinter.prettyprint(input)
+		Assertions.assertNotNull(output)
+		print("***Output:\n" + output)
+		val expected_output = Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/prettyprinter/expected/2.mldsl"))
+		print("\n***expected:\n" + expected_output + "\n\n\n")
+		Assertions.assertTrue(equals(output,expected_output))
+	}
+	
+	@Test
+	def void testPrettyPrinterOutput3() {
+		val prettyPrinter = new PrettyPrinter
+		val input = parseHelper.parse(Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/prettyprinter/input/3.mldsl")))
+		Assertions.assertNotNull(input)
+		val output = prettyPrinter.prettyprint(input)
+		Assertions.assertNotNull(output)
+		print("***Output:\n" + output)
+		val expected_output = Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/prettyprinter/expected/3.mldsl"))
+		print("\n***expected:\n" + expected_output + "\n\n\n")
+		Assertions.assertTrue(equals(output,expected_output))
+	}
+	
+	@Test
+	def void testPrettyPrinterOutput4() {
+		val prettyPrinter = new PrettyPrinter
+		val input = parseHelper.parse(Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/prettyprinter/input/4.mldsl")))
+		Assertions.assertNotNull(input)
+		val output = prettyPrinter.prettyprint(input)
+		Assertions.assertNotNull(output)
+		print("***Output:\n" + output)
+		val expected_output = Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/prettyprinter/expected/4.mldsl"))
+		print("\n***expected:\n" + expected_output + "\n\n\n")
+		Assertions.assertTrue(equals(output,expected_output))
+	}
+	
+	@Test
+	def void testPrettyPrinterOutput5() {
+		val prettyPrinter = new PrettyPrinter
+		val input = parseHelper.parse(Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/prettyprinter/input/5.mldsl")))
+		Assertions.assertNotNull(input)
+		val output = prettyPrinter.prettyprint(input)
+		Assertions.assertNotNull(output)
+		print("***Output:\n" + output)
+		val expected_output = Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/prettyprinter/expected/5.mldsl"))
+		print("\n***expected:\n" + expected_output + "\n\n\n")
+		Assertions.assertTrue(equals(output,expected_output))
+	}
+	
+	@Test
+	def void testPrettyPrinterOutput6() {
+		val prettyPrinter = new PrettyPrinter
+		val input = parseHelper.parse(Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/prettyprinter/input/6.mldsl")))
+		Assertions.assertNotNull(input)
+		val output = prettyPrinter.prettyprint(input)
+		Assertions.assertNotNull(output)
+		print("***Output:\n" + output)
+		val expected_output = Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/prettyprinter/expected/6.mldsl"))
+		print("\n***expected:\n" + expected_output + "\n\n\n")
+		Assertions.assertTrue(equals(output,expected_output))
+	}
+	
+	@Test
+	def void testPrettyPrinterOutput7() {
+		val prettyPrinter = new PrettyPrinter
+		val input = parseHelper.parse(Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/prettyprinter/input/7.mldsl")))
+		Assertions.assertNotNull(input)
+		val output = prettyPrinter.prettyprint(input)
+		Assertions.assertNotNull(output)
+		print("***Output:\n" + output)
+		val expected_output = Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/prettyprinter/expected/7.mldsl"))
+		print("\n***expected:\n" + expected_output + "\n\n\n")
+		Assertions.assertTrue(equals(output,expected_output))
+	}
+	
+	@Test
+	def void testPrettyPrinterOutput8() {
+		val prettyPrinter = new PrettyPrinter
+		val input = parseHelper.parse(Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/prettyprinter/input/8.mldsl")))
+		Assertions.assertNotNull(input)
+		val output = prettyPrinter.prettyprint(input)
+		Assertions.assertNotNull(output)
+		print("***Output:\n" + output)
+		val expected_output = Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/prettyprinter/expected/8.mldsl"))
+		print("\n***expected:\n" + expected_output + "\n\n\n")
+		Assertions.assertTrue(equals(output,expected_output))
+	}
+	
+	@Test
+	def void testPrettyPrinterOutput9() {
+		val prettyPrinter = new PrettyPrinter
+		val input = parseHelper.parse(Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/prettyprinter/input/9.mldsl")))
+		Assertions.assertNotNull(input)
+		val output = prettyPrinter.prettyprint(input)
+		Assertions.assertNotNull(output)
+		print("***Output:\n" + output)
+		val expected_output = Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/prettyprinter/expected/9.mldsl"))
+		print("\n***expected:\n" + expected_output + "\n\n\n")
+		Assertions.assertTrue(equals(output,expected_output))
+	}
+	
+	@Test
+	def void testPrettyPrinterOutput10() {
+		val prettyPrinter = new PrettyPrinter
+		val input = parseHelper.parse(Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/prettyprinter/input/10.mldsl")))
+		Assertions.assertNotNull(input)
+		val output = prettyPrinter.prettyprint(input)
+		Assertions.assertNotNull(output)
+		print("***Output:\n" + output)
+		val expected_output = Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/prettyprinter/expected/10.mldsl"))
+		print("\n***expected:\n" + expected_output + "\n\n\n")
+		Assertions.assertTrue(equals(output,expected_output))
+	}
+	
+	@Test
+	def void testPrettyPrinterOutput11() {
+		val prettyPrinter = new PrettyPrinter
+		val input = parseHelper.parse(Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/prettyprinter/input/11.mldsl")))
+		Assertions.assertNotNull(input)
+		val output = prettyPrinter.prettyprint(input)
+		Assertions.assertNotNull(output)
+		print("***Output:\n" + output)
+		val expected_output = Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/prettyprinter/expected/11.mldsl"))
+		print("\n***expected:\n" + expected_output + "\n\n\n")
+		Assertions.assertTrue(equals(output,expected_output))
+	}
+	
+	@Test
+	def void testPrettyPrinterOutput12() {
+		val prettyPrinter = new PrettyPrinter
+		val input = parseHelper.parse(Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/prettyprinter/input/12.mldsl")))
+		Assertions.assertNotNull(input)
+		val output = prettyPrinter.prettyprint(input)
+		Assertions.assertNotNull(output)
+		print("***Output:\n" + output)
+		val expected_output = Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/prettyprinter/expected/12.mldsl"))
+		print("\n***expected:\n" + expected_output + "\n\n\n")
+		Assertions.assertTrue(equals(output,expected_output))
+	}
+	
+	@Test
+	def void testPrettyPrinterOutput13() {
+		val prettyPrinter = new PrettyPrinter
+		val input = parseHelper.parse(Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/prettyprinter/input/13.mldsl")))
+		Assertions.assertNotNull(input)
+		val output = prettyPrinter.prettyprint(input)
+		Assertions.assertNotNull(output)
+		print("***Output:\n" + output)
+		val expected_output = Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/prettyprinter/expected/13.mldsl"))
+		print("\n***expected:\n" + expected_output + "\n\n\n")
+		Assertions.assertTrue(equals(output,expected_output))
+	}
+	
 }
