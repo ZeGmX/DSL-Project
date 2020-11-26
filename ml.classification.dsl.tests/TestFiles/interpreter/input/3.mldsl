@@ -1,0 +1,4 @@
+read "/home/lendy/Cours/M1/DSL/DSL-Project/iris.csv" ,
+predict_column 1
+predict_column 2
+predict_column 3

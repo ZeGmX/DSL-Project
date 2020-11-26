@@ -1,0 +1,4 @@
+use_column 1 2 3 4 5 6
+unuse_column 3
+unuse_column 4 5
+unuse_column 5 6
