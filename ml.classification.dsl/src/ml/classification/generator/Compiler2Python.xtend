@@ -123,8 +123,8 @@ class DSL_Classifier:
                         \"tree\": DecisionTreeClassifier(max_depth=5)}
 
         metrics = { \"accuracy\": accuracy_score,
-                    \"recall\": recall_score,
-                    \"f1\": f1_score}
+                    \"recall\": lambda x, y: recall_score(x, y, average=\"micro\"),
+                    \"f1\": lambda x, y: f1_score(x, y, average=\"micro\")}
 
         # Setting the classifier according to the algorithm
         if self.algo in classifiers:
@@ -168,7 +168,6 @@ classifier = DSL_Classifier()
 "
 
 	def String compile(ML ml) {
-		//var res = Files.readString(Paths.get("Cours/M1/DSL/DSL-Project/initial_py_file.py"))
 		var res = initial_py_file
 		for (s : ml.statements) res += s.compile + "\n"
 		return res

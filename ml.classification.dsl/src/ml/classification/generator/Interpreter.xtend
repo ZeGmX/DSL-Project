@@ -18,13 +18,15 @@ import java.util.Arrays
 import java.util.List
 import java.util.Random;
 import java.util.HashMap
+import java.util.stream.IntStream
+import java.util.stream.Collectors
 
 class Interpreter {
-	var Map<String, Expression> environment = new HashMap<String, Expression>
-	var ArrayList<Integer> use_columns = new ArrayList<Integer>()
-	var int predict_column = -1
-	var String metric = "accuracy"
-	var List<List<String>> dataset = new ArrayList<List<String>>()
+	public var Map<String, Expression> environment = new HashMap<String, Expression>
+	public var List<Integer> use_columns = new ArrayList<Integer>()
+	public var int predict_column = -1
+	public var String metric = "accuracy"
+	public var List<List<String>> dataset = new ArrayList<List<String>>()
 	
 	
 	def interpret(ML ml) {
@@ -93,6 +95,7 @@ class Interpreter {
 	
 	def interpret(Read r) {
 	
+		dataset = new ArrayList<List<String>>()
 		var BufferedReader br = new BufferedReader(new FileReader(r.path.constantString))	
 	    var String line;
 	    while ((line = br.readLine()) !== null) {
@@ -100,7 +103,9 @@ class Interpreter {
 	    	if (r.separator !== null) sep = r.separator 
 	        var String[] values = line.split(sep)
 	        dataset.add(Arrays.asList(values))
-    	}	
+    	}
+    	predict_column = dataset.get(0).size - 1
+    	use_columns = IntStream.range(0, dataset.get(0).size - 1).boxed().collect(Collectors.toList());
 	}
 	
 	def interpret(Use_Metric um) {
@@ -109,7 +114,11 @@ class Interpreter {
 	
 	def interpret(Column c) {
 		if (c.use.size > 0) {
-			for (index: c.use) use_columns.add(index.interpret as Integer)
+			for (index: c.use) {
+				val intIndex = index.interpret as Integer
+				if (!use_columns.contains(intIndex)) use_columns.add(intIndex)
+			}
+				
 		}
 		else if (c.unuse.size > 0) {
 			for (index: c.unuse) {
