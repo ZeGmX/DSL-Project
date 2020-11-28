@@ -132,7 +132,7 @@ DSLclassifier <- function(algo = \"tree\",metric = \"accuracy\",strategy = \"tra
     
     ######### METHODS #########
     
-    read = function(path, sep=\"\t\")
+    read = function(path, sep=\";\")
     {
       assign(\"dataset\",read.csv(file=path,sep=sep,header = T, stringsAsFactors = F),thisEnv)
     },

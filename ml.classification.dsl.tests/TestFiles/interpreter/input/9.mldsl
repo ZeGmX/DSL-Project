@@ -1,8 +1,1 @@
 read "../../DSL-Project/iris.csv" ,
-
-unuse_column 3
-use_column 0 1 2
-predict_column 3
-
-use_metric recall
-predict

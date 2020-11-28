@@ -1,3 +1,5 @@
+<div style="text-align: justify">
+
 # Report of the DSL project
 
 Lendy Mulot - Margot Masson
@@ -12,15 +14,44 @@ First, we decided on the concrete and abstract grammar of our language. Then we 
 
 ### Choice of the grammar
 
-We have chosen a simple grammar, very refined but also human-readable. This grammar does not include a character used to mark the end of instructions and only has very few types (int, double, string). It is only suitable for the field of machine learning for classification tasks since it does not include loops or classic instructions but on the contrary very has specific functions such as "predict", allowing to perform a prediction task on a dataset.
+We have chosen a simple grammar, very refined but also human-readable. This grammar does not include a character used to mark the end of instructions and only has very few types (int, double, string). It is only suitable for the field of machine learning for classification tasks since it does not include loops or classic instructions but on the contrary has very specific functions such as `predict`, allowing to perform a prediction task on a dataset.
 
 This grammar has evolved a lot throughout the project, and we have updated our meta model as it progresses. The final version of this meta model, whose concrete grammar was implemented in Xtext, can be seen below.
 
+<p align="center">
+    <img src="https://github.com/ZeGmX/DSL-Project/blob/main/Metamodel-v3.jpg?raw=true">
+</p>
+
 We can notice all the primitives, that facilitate the realization of classification tasks with very simple and explicit keywords. After implementing this grammar in Xtext, which automatically generates a parser, we also did a validator, that verify if the variables are defined before their use.
 
-- *TODO insérer screenshot validator*
+<p align="center">
+    <img src="https://github.com/ZeGmX/DSL-Project/blob/main/screen_validator.png?raw=true">
+</p>
 
 Once the parser and the validator were defined, we could work on the files generation.
+
+### Specifications
+
+When making this DSL, we had to make several choices. First, the input CSV file should follow these rules:
+- Having a comma or semicolon as a separator character
+- Not having any missing values
+- Having all the values numerical
+
+Currently, the possible strategies are a train / test split or cross validation, the compatible algorithms for classification are SVM and random forest, and the metrics the DSL can compute are the accuracy, recall and F1 score.
+
+Then, we decided that the user should not have to set every parameters if he does no need do. We dealt with that using default values. If not specified, they are as follow:  
+
+- The algorithm is random tree
+- The strategy is a train / test separation with 50% pf the dataset in each
+- If the cross validation strategy is selected, the default number of sets is 3
+- The column to predict is the last one
+- All the other columns can be used to predict
+- The default separator for the CSV file is the semicolon
+
+Finally, the input CSV file is considered to have a header. You can still use a CSV file with no header but be aware that the first line will not be taken into account.
+
+
+To use the tool, please refer to the `Readme.md` file.
 
 ### Implementation of the pretty printer, the compilers and the interpreter
 
@@ -28,7 +59,11 @@ The pretty printer was very simple to code for our project because we do not use
 
 For the two compilers, we had to lean more about Python and R, especially about R, and to find a way to make instructions easy to generate. We decided to use an object-oriented approach. So we implemented two "initial_file" that contain a "DSLClassifier" class that make all the job. We just had to transform the mldsl instruction into call of class methods.
 
-The interpreter... 
+The interpreter was pretty straightforward since the classification algorithm it uses is random. Thus the `use_algorithm` and `use_strategy` instructions have no consequences whatsoever. We needed class fields to keep track of the columns that should be used, the column to predict, the dataset and the metric to compute. Those fields are updated when the right statement is used. To interprete the `predict` keyword, we look at all the possible values in the column to predict (which represents the different classes) and for each entry of the dataset we pick one uniformly. We then implemented the computation of the different metric to compare the results.
+
+### To go further
+
+The object-oriented approach we used to implement the compilers allows us to easily add new metrics and algorithm (for instance in Python, we just have to add one line in the `metrics` or `classifiers` dictionnary in the `predict` method), solving part of the expression problem. Adding a new strategy can be a bit more tricky but should be doable too.
 
 ## Tests of the ML-DSL
 
@@ -38,10 +73,44 @@ In order to test the generation of the pretty printed and compiled files, we cre
 
 The compilers needed more work because in addition to testing that the output corresponds to the oracle, we had to test that the output is syntactically correct in Python and R.
 
+*TODO: benchmark of the compilers*
+
 ### Tests of the interpreters
+
+To test the interpreter, we first tested its good functionning by unsing files targetting one particular keyword each. For each of them we verified that after interpreting each line, the corresponding field was set to the right value, and we did an additional test to check that if we interpret the whole file at once, the field value at the end is the right one.
+
+We also wanted to test the performances of the interpreter with respect to the size of the dataset and the metric computed. The following results are the mean execution time of creation of the Interpreter object and the interpretation of the file for 10.000 tries on a computer with the following specifications:
+- CPU: Intel i5-7200U (4) @ 3.100GHz
+- Memory: 5847 MiB
+- OS: Debian GNU/Linux 10 (buster) x86_64
+- Java: OpenJDK 11.0.9
+
+The first experience consist shows the load time (from a file containing only a `read` instruction) and the interpretation time for a file predicting for the two algorithms, the three metrics and the two strategies (in fact only the metric has an impact for the interpreter). The values are in milliseconds.
+
+| Dataset size | Load time | Every combination computation time |
+|--------------|-----------|------------------------------------|
+| 15, 3 (manually created) | 15 | 26 |
+| 150, 4 (iris dataset)    | 57 | 239 |
+
+The second experience focuses on the impact of the metric for a given dataset.
+
+| Dataset size | Metric | Computation time (ms) |
+|--------------|--------|-----------------------|
+| 15, 3 (manually created) | F1 | 13 |
+| 15, 3 (manually created) | Recall | 11 |
+| 15, 3 (manually created) | Accuracy | 11 |
+| 150, 4 (iris dataset)    | F1 | 84 |
+| 150, 4 (iris dataset)    | Recall | 75 |
+| 150, 4 (iris dataset)    | Accuracy | 68 |
+
+We can see that the Recall and Accuracy take about as much time, which makes sense since the algorithm is pretty much the same to compute it. The F1 score takes a slightly higher time to compute.
+
+We would to point out that this computation time can be function of other parameters, like the number of different classes.
 
 ## Cooperation with the other projects
 
-We cooperated with the csv project of Mathieu Poirier.
+We cooperated with the CSV project of Mathieu Poirier and Bastien Rousseau.
 
 ## Conclusion
+
+*TODO*

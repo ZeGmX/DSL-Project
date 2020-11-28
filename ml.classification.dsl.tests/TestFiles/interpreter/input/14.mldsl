@@ -1,0 +1,8 @@
+read "../../DSL-Project/convertcsv.csv" ,
+
+unuse_column 1
+use_column 0 2
+predict_column 1
+
+use_metric recall
+predict
