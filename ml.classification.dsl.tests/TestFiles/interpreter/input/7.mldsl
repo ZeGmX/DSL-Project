@@ -1,0 +1,49 @@
+read "../../DSL-Project/iris.csv" ,
+
+unuse_column 3
+use_column 0 1 2
+predict_column 3
+
+use_algorithm tree
+use_metric f1
+use_strategy train_test 0.5
+predict
+
+use_algorithm svm
+predict
+
+use_algorithm tree
+use_metric recall
+predict
+
+use_algorithm svm
+predict
+
+use_algorithm tree
+use_metric accuracy
+predict
+
+use_algorithm svm
+predict
+
+use_algorithm tree
+use_metric f1
+use_strategy cross_valid 5
+predict
+
+use_algorithm svm
+predict
+
+use_algorithm tree
+use_metric recall
+predict
+
+use_algorithm svm
+predict
+
+use_algorithm tree
+use_metric accuracy
+predict
+
+use_algorithm svm
+predict

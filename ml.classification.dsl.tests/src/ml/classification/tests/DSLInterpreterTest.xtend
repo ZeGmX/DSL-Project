@@ -170,5 +170,82 @@ class DSLInterpreterTest {
 		Assertions.assertTrue(interpreter.dataset.get(0).size == 3)
 		Assertions.assertTrue(interpreter.dataset.get(0).get(0) == "1")
 	}
+	
+	@Test
+	def void testInterpreterExecutionTime1() {
+		val input = parseHelper.parse(Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/interpreter/input/6.mldsl")))
+		Assertions.assertNotNull(input)
+		
+		val nbTests = 100000
+		var Interpreter interpreter
+		val startTime = System.nanoTime
+		for (i: 0..< nbTests) {
+			interpreter = new Interpreter
+			interpreter.printVal = false
+			interpreter.interpret(input)	
+		}
+		val meanTime = (System.nanoTime - startTime) / (nbTests * 1000)
+		System.out.println("***\nMean time on a 15 * 3 database to compute all combination of metric-strategy-algorithm: " + meanTime + "ms\n***")
+	}
+	
+	@Test
+	def void testInterpreterExecutionTime2() {
+		val input = parseHelper.parse(Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/interpreter/input/7.mldsl")))
+		Assertions.assertNotNull(input)
+		
+		val nbTests = 100000
+		var Interpreter interpreter
+		val startTime = System.nanoTime
+		for (i: 0..< nbTests) {
+			interpreter = new Interpreter
+			interpreter.printVal = false
+			interpreter.interpret(input)	
+		}
+		val meanTime = (System.nanoTime - startTime) / (nbTests * 1000)
+		System.out.println("***\nMean time on a 150 * 4 database to compute all combination of metric-strategy-algorithm: " + meanTime + "ms\n***")
+	}
 
+	@Test
+	def void testInterpreterBenchmarkMetric() {
+		val inputF1 = parseHelper.parse(Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/interpreter/input/8.mldsl")))
+		val inputRecall = parseHelper.parse(Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/interpreter/input/9.mldsl")))
+		val inputAccuracy = parseHelper.parse(Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/interpreter/input/10.mldsl")))
+		Assertions.assertNotNull(inputF1)
+		Assertions.assertNotNull(inputRecall)
+		Assertions.assertNotNull(inputAccuracy)
+		
+		val nbTests = 100000
+		var Interpreter interpreter
+		var startTime = System.nanoTime
+		
+		for (i: 0..< nbTests) {
+			interpreter = new Interpreter
+			interpreter.printVal = false
+			interpreter.interpret(inputF1)	
+		}
+		val meanTimeF1 = (System.nanoTime - startTime) / (nbTests * 1000)
+		
+		startTime = System.nanoTime
+		
+		for (i: 0..< nbTests) {
+			interpreter = new Interpreter
+			interpreter.printVal = false
+			interpreter.interpret(inputRecall)	
+		}
+		val meanTimeRecall = (System.nanoTime - startTime) / (nbTests * 1000)
+		
+		startTime = System.nanoTime
+		
+		for (i: 0..< nbTests) {
+			interpreter = new Interpreter
+			interpreter.printVal = false
+			interpreter.interpret(inputAccuracy)	
+		}
+		val meanTimeAccuracy = (System.nanoTime - startTime) / (nbTests * 1000)
+		
+		System.out.println("***\nMean time on a 150 * 4 database: ")
+		System.out.println("Computing F1 score: " + meanTimeF1 + "ms")
+		System.out.println("Computing Recall: " + meanTimeRecall + "ms")
+		System.out.println("Computing Accuracy: " + meanTimeAccuracy + "ms\n***")
+	}
 }

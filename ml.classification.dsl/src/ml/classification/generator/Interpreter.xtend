@@ -27,6 +27,7 @@ class Interpreter {
 	public var int predict_column = -1
 	public var String metric = "accuracy"
 	public var List<List<String>> dataset = new ArrayList<List<String>>()
+	public var printVal = true // if things should be printed
 	
 	
 	def interpret(ML ml) {
@@ -79,18 +80,20 @@ class Interpreter {
 			} else if (metric == "f1") {
 				metricValue = computeF1(predicted, differentVars)
 			}
-			System.out.println(metric + ": " + metricValue.toString)
+			if (printVal) System.out.println(metric + ": " + metricValue.toString)
 		}
 		// Nothing to interpet for algo_choose and strategy_choose
 	}
 	
 	def interpret(Print p) {
-		if (p.print.varRef !== null) {
-			val valueToPrint = environment.getOrDefault(p.print.varRef, null)
-			if (valueToPrint !== null) System.out.println("value printed: " + valueToPrint.interpret)
-			else System.out.println("Should i really print?")
+		if (printVal) {
+			if (p.print.varRef !== null) {
+				val valueToPrint = environment.getOrDefault(p.print.varRef, null)
+				if (valueToPrint !== null) System.out.println("value printed: " + valueToPrint.interpret)
+				else System.out.println("Should i really print?")
+			}
+			else System.out.println("value printed: " + p.print.interpret)
 		}
-		else System.out.println("value printed: " + p.print.interpret)
 	}
 	
 	def interpret(Read r) {
