@@ -26,4 +26,9 @@ Export-Package: ml.classification.validation,
  ml.classification.services,
  ml.classification.dSL.util,
  ml.classification.serializer
-Import-Package: org.apache.log4j
+Import-Package: ml.classification.tests,
+ org.apache.log4j,
+ org.eclipse.xtext.testing,
+ org.eclipse.xtext.testing.extensions,
+ org.eclipse.xtext.testing.util,
+ org.junit.jupiter.api.extension;version="5.6.0"
