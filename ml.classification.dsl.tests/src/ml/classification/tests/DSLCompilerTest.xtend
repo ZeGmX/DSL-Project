@@ -55,21 +55,19 @@ class DSLCompilerTest {
 		Assertions.assertNotNull(r_expected_output)
 		
 		
-		val r_output = Rcompiler.compile(input)
+		var r_output = Rcompiler.compile(input)
 		Assertions.assertNotNull(r_output)
+		r_output = r_output.replaceAll('\r', '')
+		// For compatibility issues between Windows and Debian
 
 		Assertions.assertEquals(r_expected_output,r_output)
 		Assertions.assertTrue(equals(r_output,r_expected_output))
 		
-		
 		val py_output = Pcompiler.compile(input)
 		Assertions.assertNotNull(py_output)
 		
-
 		Assertions.assertEquals(py_expected_output,py_output)
 		Assertions.assertTrue(equals(py_output,py_expected_output))
-		
-
 	}
 	
 	//test of variable references
@@ -87,8 +85,10 @@ class DSLCompilerTest {
 		val r_expected_output = Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/compiler/expected/2.r"))
 		Assertions.assertNotNull(r_expected_output)
 		
-		val r_output = Rcompiler.compile(input)
+		var r_output = Rcompiler.compile(input)
 		Assertions.assertNotNull(r_output)
+		r_output = r_output.replaceAll('\r', '')
+		// For compatibility issues between Windows and Debian
 
 		Assertions.assertEquals(r_expected_output,r_output)
 		Assertions.assertTrue(equals(r_output,r_expected_output))
@@ -115,8 +115,10 @@ class DSLCompilerTest {
 		val r_expected_output = Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/compiler/expected/3.r"))
 		Assertions.assertNotNull(r_expected_output)
 		
-		val r_output = Rcompiler.compile(input)
+		var r_output = Rcompiler.compile(input)
 		Assertions.assertNotNull(r_output)
+		r_output = r_output.replaceAll('\r', '')
+		// For compatibility issues between Windows and Debian
 
 		Assertions.assertEquals(r_expected_output,r_output)
 		Assertions.assertTrue(equals(r_output,r_expected_output))
@@ -143,8 +145,10 @@ class DSLCompilerTest {
 		val r_expected_output = Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/compiler/expected/4.r"))
 		Assertions.assertNotNull(r_expected_output)
 		
-		val r_output = Rcompiler.compile(input)
+		var r_output = Rcompiler.compile(input)
 		Assertions.assertNotNull(r_output)
+		r_output = r_output.replaceAll('\r', '')
+		// For compatibility issues between Windows and Debian
 
 		Assertions.assertEquals(r_expected_output,r_output)
 		Assertions.assertTrue(equals(r_output,r_expected_output))
@@ -171,8 +175,10 @@ class DSLCompilerTest {
 		val r_expected_output = Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/compiler/expected/5.r"))
 		Assertions.assertNotNull(r_expected_output)
 		
-		val r_output = Rcompiler.compile(input)
+		var r_output = Rcompiler.compile(input)
 		Assertions.assertNotNull(r_output)
+		r_output = r_output.replaceAll('\r', '')
+		// For compatibility issues between Windows and Debian
 
 		Assertions.assertEquals(r_expected_output,r_output)
 		Assertions.assertTrue(equals(r_output,r_expected_output))
@@ -199,8 +205,10 @@ class DSLCompilerTest {
 		val r_expected_output = Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/compiler/expected/6.r"))
 		Assertions.assertNotNull(r_expected_output)
 		
-		val r_output = Rcompiler.compile(input)
+		var r_output = Rcompiler.compile(input)
 		Assertions.assertNotNull(r_output)
+		r_output = r_output.replaceAll('\r', '')
+		// For compatibility issues between Windows and Debian
 
 		Assertions.assertEquals(r_expected_output,r_output)
 		Assertions.assertTrue(equals(r_output,r_expected_output))
@@ -227,8 +235,10 @@ class DSLCompilerTest {
 		val r_expected_output = Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/compiler/expected/7.r"))
 		Assertions.assertNotNull(r_expected_output)
 		
-		val r_output = Rcompiler.compile(input)
+		var r_output = Rcompiler.compile(input)
 		Assertions.assertNotNull(r_output)
+		r_output = r_output.replaceAll('\r', '')
+		// For compatibility issues between Windows and Debian
 
 		Assertions.assertEquals(r_expected_output,r_output)
 		Assertions.assertTrue(equals(r_output,r_expected_output))
@@ -255,8 +265,10 @@ class DSLCompilerTest {
 		val r_expected_output = Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/compiler/expected/8.r"))
 		Assertions.assertNotNull(r_expected_output)
 		
-		val r_output = Rcompiler.compile(input)
+		var r_output = Rcompiler.compile(input)
 		Assertions.assertNotNull(r_output)
+		r_output = r_output.replaceAll('\r', '')
+		// For compatibility issues between Windows and Debian
 
 		Assertions.assertEquals(r_expected_output,r_output)
 		Assertions.assertTrue(equals(r_output,r_expected_output))
@@ -283,8 +295,10 @@ class DSLCompilerTest {
 		val r_expected_output = Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/compiler/expected/9.r"))
 		Assertions.assertNotNull(r_expected_output)
 		
-		val r_output = Rcompiler.compile(input)
+		var r_output = Rcompiler.compile(input)
 		Assertions.assertNotNull(r_output)
+		r_output = r_output.replaceAll('\r', '')
+		// For compatibility issues between Windows and Debian
 
 		Assertions.assertEquals(r_expected_output,r_output)
 		Assertions.assertTrue(equals(r_output,r_expected_output))
@@ -311,8 +325,10 @@ class DSLCompilerTest {
 		val r_expected_output = Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/compiler/expected/10.r"))
 		Assertions.assertNotNull(r_expected_output)
 		
-		val r_output = Rcompiler.compile(input)
+		var r_output = Rcompiler.compile(input)
 		Assertions.assertNotNull(r_output)
+		r_output = r_output.replaceAll('\r', '')
+		// For compatibility issues between Windows and Debian
 
 		Assertions.assertEquals(r_expected_output,r_output)
 		Assertions.assertTrue(equals(r_output,r_expected_output))
@@ -339,8 +355,10 @@ class DSLCompilerTest {
 		val r_expected_output = Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/compiler/expected/11.r"))
 		Assertions.assertNotNull(r_expected_output)
 		
-		val r_output = Rcompiler.compile(input)
+		var r_output = Rcompiler.compile(input)
 		Assertions.assertNotNull(r_output)
+		r_output = r_output.replaceAll('\r', '')
+		// For compatibility issues between Windows and Debian
 
 		Assertions.assertEquals(r_expected_output,r_output)
 		Assertions.assertTrue(equals(r_output,r_expected_output))
@@ -367,8 +385,10 @@ class DSLCompilerTest {
 		val r_expected_output = Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/compiler/expected/12.r"))
 		Assertions.assertNotNull(r_expected_output)
 		
-		val r_output = Rcompiler.compile(input)
+		var r_output = Rcompiler.compile(input)
 		Assertions.assertNotNull(r_output)
+		r_output = r_output.replaceAll('\r', '')
+		// For compatibility issues between Windows and Debian
 
 		Assertions.assertEquals(r_expected_output,r_output)
 		Assertions.assertTrue(equals(r_output,r_expected_output))
@@ -395,8 +415,10 @@ class DSLCompilerTest {
 		val r_expected_output = Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/compiler/expected/13.r"))
 		Assertions.assertNotNull(r_expected_output)
 		
-		val r_output = Rcompiler.compile(input)
+		var r_output = Rcompiler.compile(input)
 		Assertions.assertNotNull(r_output)
+		r_output = r_output.replaceAll('\r', '')
+		// For compatibility issues between Windows and Debian
 
 		Assertions.assertEquals(r_expected_output,r_output)
 		Assertions.assertTrue(equals(r_output,r_expected_output))
