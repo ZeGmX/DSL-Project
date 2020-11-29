@@ -19,13 +19,13 @@ We have chosen a simple grammar, very refined but also human-readable. This gram
 This grammar has evolved a lot throughout the project, and we have updated our meta model as it progresses. The final version of this meta model, whose concrete grammar was implemented in Xtext, can be seen below.
 
 <p align="center">
-    <img src="https://github.com/ZeGmX/DSL-Project/blob/main/Metamodel-v3.jpg?raw=true">
+    <img src="https://github.com/ZeGmX/DSL-Project/blob/main/report_images/Metamodel-v3.jpg?raw=true">
 </p>
 
 We can notice all the primitives, that facilitate the realization of classification tasks with very simple and explicit keywords. After implementing this grammar in Xtext, which automatically generates a parser, we also did a validator, that verify if the variables are defined before their use.
 
 <p align="center">
-    <img src="https://github.com/ZeGmX/DSL-Project/blob/main/screen_validator.png?raw=true">
+    <img src="https://github.com/ZeGmX/DSL-Project/blob/main/report_images/screen_validator.png?raw=true">
 </p>
 
 Once the parser and the validator were defined, we could work on the files generation.
@@ -107,8 +107,8 @@ We also wanted to test the performances of the interpreter with respect to the s
 
 The first experience consist shows the load time (from a file containing only a `read` instruction) and the interpretation time for a file predicting for the two algorithms, the three metrics and the two strategies (in fact only the metric has an impact for the interpreter). The values are in milliseconds.
 
-| Dataset size             | Load time | Every combination computation time |
-| ------------------------ | --------- | ---------------------------------- |
+| Dataset size             | Load time (ms) | Every combination computation time (ms) |
+| ------------------------ | -------------- | ---------------------------------------- |
 | 15, 3 (manually created) | 15        | 26                                 |
 | 150, 4 (iris dataset)    | 57        | 239                                |
 
@@ -129,7 +129,37 @@ We would to point out that this computation time can be function of other parame
 
 ## Cooperation with the other projects
 
-We cooperated with the CSV project of Mathieu Poirier and Bastien Rousseau.
+We cooperated with the CSV project of Mathieu Poirier and Bastien Rousseau. We provided them with the dataset `data-individuals-very-tiny.csv` (containing information about gender, height, weight) we originally used to tests our compilers, and they used it to create two datasets:
+
+* The first one replaced the gender randomly for each individual.
+* The second one selected only the individuals with a height superior to 1.70m to get a biased dataset.
+
+We then wrote a .mldsl file to compute every possible combination of strategy, algorithm and metric while predicting the gender and then we ran the compiled Python version giving us the following results:
+
+<p align="center">
+    <img src="https://github.com/ZeGmX/DSL-Project/blob/main/report_images/interop_initial.png?raw=true">
+    Results for the initial file
+</p>
+
+<p align="center">
+    <img src="https://github.com/ZeGmX/DSL-Project/blob/main/report_images/interop_biased.png?raw=true">
+    Results for the biased file
+</p>
+<p align="center">
+    <img src="https://github.com/ZeGmX/DSL-Project/blob/main/report_images/interop_random.png?raw=true">
+    Results for the random file
+</p>
+
+As we can see, the initial dataset and the biased one got good scores while the random one got way less. We can also notice that the biased one got slightly lower scores, which makes sense since there was less data, and greater representation of one gender in the biased one. These tests tend to show the well functionning of our compiler, and of the compiler of Bastien and Mathieu. We would like to thank them for this cooperation.
+
+They also provided us with their benchmark file that we used to predict the input size given the other parameters. We obtained the following results:
+
+<p align="center">
+    <img src="https://github.com/ZeGmX/DSL-Project/blob/main/report_images/interop_benchmark.png?raw=true">
+    Results for the random file
+</p>
+
+We can see that the overall scores are not very high, but we want to point out that there was a lot of different possible classes comparet to the previous dataset (only two classes), and that the interpreter obtained between 0.04 and 0.06 scores using random classification , which is way less than the Python file.
 
 ## Conclusion
 
