@@ -145,6 +145,15 @@ DSLclassifier <- function(algo = "tree",metric = "accuracy",strategy = "train_te
 
     doPrediction=function(){
       
+      if (length(use_column)==0){
+      	i<-1
+      	while(i<length(dataset)){
+      		use_column <- append(use_column,list(i))
+      		i<-i+1
+      	}
+      	predict_column<-length(dataset)-1
+      }
+
       used_dataset <- dataset
       used_columns <- use_column
       predicted_column <- predict_column + 1
@@ -290,5 +299,4 @@ DSLclassifier <- function(algo = "tree",metric = "accuracy",strategy = "train_te
 }
 
 classifier<-DSLclassifier()
-classifier$read("C:/Users/Utilisateur/Documents/ESIR/ESIR3-SIF/DSL/ProjetGit/DSL-Project/ml.classification.dsl.tests/TestFiles/runPyR/iris.csv")
-classifier$doPrediction()
+classifier$read("C:/Users/Utilisateur/Documents/ESIR/ESIR3-SIF/DSL/ProjetGit/DSL-Project/ml.classification.dsl.tests/TestFiles/runPyR/iris.csv")classifier$doPrediction()

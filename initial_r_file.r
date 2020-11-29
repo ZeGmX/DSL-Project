@@ -146,12 +146,12 @@ DSLclassifier <- function(algo = "tree",metric = "accuracy",strategy = "train_te
     doPrediction=function(){
       
       if (length(use_column)==0){
-        i<-1
-        while(i<length(dataset)){
-          use_column <- append(use_column,list(i))
-          i<-i+1
-        }
-        predict_column<-length(dataset)-1
+      	i<-1
+      	while(i<length(dataset)){
+      		use_column <- append(use_column,list(i))
+      		i<-i+1
+      	}
+      	predict_column<-length(dataset)-1
       }
 
       used_dataset <- dataset
@@ -299,22 +299,3 @@ DSLclassifier <- function(algo = "tree",metric = "accuracy",strategy = "train_te
 }
 
 classifier<-DSLclassifier()
-classifier$read("database.csv", ";")
-classifier$add_columns(list(1, 2))
-classifier$remove_columns(list(3, 4, 5))
-classifier$remove_columns(list(9))
-classifier$setPredict_column(4)
-classifier$setAlgo("tree")
-classifier$setMetric("f1")
-classifier$setStrategy("cross_valid")
-classifier$setCross_valid_nb(5)
-classifier$doPrediction()
-classifier$setAlgo("svm")
-classifier$doPrediction()
-classifier$setMetric("recall")
-classifier$doPrediction()
-classifier$read("database2.csv", "null")
-classifier$doPrediction()
-classifier$setAlgo("tree")
-classifier$add_columns(list(1))
-classifier$setPredict_column(5)
