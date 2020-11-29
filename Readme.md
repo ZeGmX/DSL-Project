@@ -4,6 +4,8 @@
 
 Given a CSV dataset our language gives the ability to use a classification algorithm to predict a column and output the metric relating the closeness of the results.
 
+You can find the implementation of the DSL in the `ml.classification` package, the implementation of the prettyprinter, interpreter and compilers in the `ml.classification.generator` package, the type-checking in the `ml.classification.validation` package and the Junit tests in the `ml.classification.tests` package.
+
 ## How to write a .mldsl file
 
 A .mldsl consists in a list of statements.
