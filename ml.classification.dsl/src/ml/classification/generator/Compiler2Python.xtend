@@ -14,6 +14,7 @@ import ml.classification.dSL.Column
 import ml.classification.dSL.Constant
 
 class Compiler2Python {
+	String newLine = System.getProperty("line.separator")
 	String initial_py_file =
 "\"\"\"
 classification
@@ -169,7 +170,7 @@ classifier = DSL_Classifier()
 
 	def String compile(ML ml) {
 		var res = initial_py_file
-		for (s : ml.statements) res += s.compile + "\n"
+		for (s : ml.statements) res += s.compile + newLine
 		return res
 	}
 	
@@ -215,9 +216,11 @@ classifier = DSL_Classifier()
 	
 	def String compile(Strategy_choose sc) {
 		var beginWith = "classifier.strategy = \"" + sc.strategy + "\""
-		if (sc.strategy == "train_test") beginWith += "\nclassifier.train_test_ratio = " + sc.ratio.compile
-		else if (Integer.parseInt(sc.nb.constantInt) > 0) beginWith += "\nclassifier.cross_valid_nb = " + sc.nb.constantInt
-		else if (sc.nb.varRef !== null) beginWith += "\nclassifier.cross_valid_nb = " + sc.nb.varRef
+		if (sc.strategy == "train_test") beginWith += newLine +"classifier.train_test_ratio = " + sc.ratio.compile
+		else if (sc.nb !== null){
+			if(Integer.parseInt(sc.nb.constantInt) > 0) beginWith += newLine+"classifier.cross_valid_nb = " + sc.nb.constantInt
+			else if (sc.nb.varRef !== null) beginWith += newLine+"classifier.cross_valid_nb = " + sc.nb.varRef
+		}
 		return beginWith
 	}
 	

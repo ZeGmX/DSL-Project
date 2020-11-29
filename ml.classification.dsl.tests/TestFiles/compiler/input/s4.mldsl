@@ -1,0 +1,80 @@
+read "database.csv" ;
+use_column 1 2 
+use_column 9
+unuse_column 3 4 5 
+unuse_column 9 
+predict_column 4
+use_algorithm tree
+use_metric f1
+use_strategy cross_valid 5
+predict
+read "database2.csv" ;
+use_column 1 2 
+use_column 9
+unuse_column 3 4 5 
+unuse_column 9 
+predict_column 4
+use_algorithm svm
+use_metric recall
+use_strategy train_test 0.5
+predict
+read "database.csv" ;
+use_column 1 2 
+use_column 9
+unuse_column 3 4 5 
+unuse_column 9 
+predict_column 4
+use_algorithm tree
+use_metric f1
+use_strategy cross_valid 5
+predict
+read "database2.csv" ;
+use_column 1 2 
+use_column 9
+unuse_column 3 4 5 
+unuse_column 9 
+predict_column 4
+use_algorithm svm
+use_metric recall
+use_strategy train_test 0.5
+predict
+read "database.csv" ;
+use_column 1 2 
+use_column 9
+unuse_column 3 4 5 
+unuse_column 9 
+predict_column 4
+use_algorithm tree
+use_metric f1
+use_strategy cross_valid 5
+predict
+read "database2.csv" ;
+use_column 1 2 
+use_column 9
+unuse_column 3 4 5 
+unuse_column 9 
+predict_column 4
+use_algorithm svm
+use_metric recall
+use_strategy train_test 0.5
+predict
+read "database.csv" ;
+use_column 1 2 
+use_column 9
+unuse_column 3 4 5 
+unuse_column 9 
+predict_column 4
+use_algorithm tree
+use_metric f1
+use_strategy cross_valid 5
+predict
+read "database2.csv" ;
+use_column 1 2 
+use_column 9
+unuse_column 3 4 5 
+unuse_column 9 
+predict_column 4
+use_algorithm svm
+use_metric recall
+use_strategy train_test 0.5
+predict

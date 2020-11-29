@@ -33,6 +33,7 @@ Once the parser and the validator were defined, we could work on the files gener
 ### Specifications
 
 When making this DSL, we had to make several choices. First, the input CSV file should follow these rules:
+
 - Having a comma or semicolon as a separator character
 - Not having any missing values
 - Having all the values numerical
@@ -49,7 +50,6 @@ Then, we decided that the user should not have to set every parameters if he doe
 - The default separator for the CSV file is the semicolon
 
 Finally, the input CSV file is considered to have a header. You can still use a CSV file with no header but be aware that the first line will not be taken into account.
-
 
 To use the tool, please refer to the `Readme.md` file.
 
@@ -71,15 +71,35 @@ The object-oriented approach we used to implement the compilers allows us to eas
 
 In order to test the generation of the pretty printed and compiled files, we created some input programs in our language, and we compared the generated files with oracles we had created. The test of the pretty printer did not pose a lot of problems and the comparison with a test oracle is enough to verify its good functioning.
 
-The compilers needed more work because in addition to testing that the output corresponds to the oracle, we had to test that the output is syntactically correct in Python and R.
+The compilers needed more work because in addition to testing that the output corresponds to the oracle, we had to test that the output is syntactically correct in Python and R. We wanted to test the performance of the compilation, so we measured the exectution time of the r and py files generation. The following results are the mean execution time of creation of the Compiler object and the compilation of the input file for 1000 tries on a computer with the following specifications:
 
-*TODO: benchmark of the compilers*
+- CPU: Intel i5-4300U @ 1.90GHz 2.49GHz
+- Memory: 4 Go
+- OS: Windows 10
+- Java: OpenJDK 13.0.1
+
+The following experience measures the impact of the number of lines of the input on the execution time :
+
+| Size of the input file (number of lines) | R compiler generation time (ms) | Python compiler generation time (ms) |
+| ---------------------------------------- | ------------------------------- | ------------------------------------ |
+| 10                                       | 138                             | 109                                  |
+| 20                                       | 272                             | 138                                  |
+| 40                                       | 571                             | 99                                   |
+| 80                                       | 582                             | 160                                  |
+| 160                                      | 1311                            | 355                                  |
+| 320                                      | 3580                            | 1014                                 |
+| 640                                      | 10952                           | 2840                                 |
+| 1280                                     | 38264                           | 10548                                |
+| 2560                                     | 132928                          | 35645                                |
+
+We can notice that the R file is much longer to generate than the Python one. It can be explained by the fact that the initial R file is bigger than the initial Python file.
 
 ### Tests of the interpreters
 
 To test the interpreter, we first tested its good functionning by unsing files targetting one particular keyword each. For each of them we verified that after interpreting each line, the corresponding field was set to the right value, and we did an additional test to check that if we interpret the whole file at once, the field value at the end is the right one.
 
 We also wanted to test the performances of the interpreter with respect to the size of the dataset and the metric computed. The following results are the mean execution time of creation of the Interpreter object and the interpretation of the file for 10.000 tries on a computer with the following specifications:
+
 - CPU: Intel i5-7200U (4) @ 3.100GHz
 - Memory: 5847 MiB
 - OS: Debian GNU/Linux 10 (buster) x86_64
@@ -87,21 +107,21 @@ We also wanted to test the performances of the interpreter with respect to the s
 
 The first experience consist shows the load time (from a file containing only a `read` instruction) and the interpretation time for a file predicting for the two algorithms, the three metrics and the two strategies (in fact only the metric has an impact for the interpreter). The values are in milliseconds.
 
-| Dataset size | Load time | Every combination computation time |
-|--------------|-----------|------------------------------------|
-| 15, 3 (manually created) | 15 | 26 |
-| 150, 4 (iris dataset)    | 57 | 239 |
+| Dataset size             | Load time | Every combination computation time |
+| ------------------------ | --------- | ---------------------------------- |
+| 15, 3 (manually created) | 15        | 26                                 |
+| 150, 4 (iris dataset)    | 57        | 239                                |
 
 The second experience focuses on the impact of the metric for a given dataset.
 
-| Dataset size | Metric | Computation time (ms) |
-|--------------|--------|-----------------------|
-| 15, 3 (manually created) | F1 | 13 |
-| 15, 3 (manually created) | Recall | 11 |
-| 15, 3 (manually created) | Accuracy | 11 |
-| 150, 4 (iris dataset)    | F1 | 84 |
-| 150, 4 (iris dataset)    | Recall | 75 |
-| 150, 4 (iris dataset)    | Accuracy | 68 |
+| Dataset size             | Metric   | Computation time (ms) |
+| ------------------------ | -------- | --------------------- |
+| 15, 3 (manually created) | F1       | 13                    |
+| 15, 3 (manually created) | Recall   | 11                    |
+| 15, 3 (manually created) | Accuracy | 11                    |
+| 150, 4 (iris dataset)    | F1       | 84                    |
+| 150, 4 (iris dataset)    | Recall   | 75                    |
+| 150, 4 (iris dataset)    | Accuracy | 68                    |
 
 We can see that the Recall and Accuracy take about as much time, which makes sense since the algorithm is pretty much the same to compute it. The F1 score takes a slightly higher time to compute.
 

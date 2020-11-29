@@ -1,0 +1,8 @@
+read "../../../ProjetGit/DSL-Project/data-individuals-very-tiny.txt" ;
+use_column 1 2 3 
+column_to_predict = 1
+predict_column column_to_predict
+use_strategy train_test 0.7
+use_algorithm tree
+use_metric accuracy
+predict

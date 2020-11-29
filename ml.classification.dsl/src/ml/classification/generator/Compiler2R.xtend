@@ -20,6 +20,7 @@ import ml.classification.dSL.Constant
 
 class Compiler2R extends AbstractGenerator{
 	// fichier généré dans runtime-EclipseXtext\projetTest\src-gen
+	String newLine = System.getProperty("line.separator")
 	String initial_r_file = 
 	"library(caret)
 library(tidyverse)
@@ -132,7 +133,7 @@ DSLclassifier <- function(algo = \"tree\",metric = \"accuracy\",strategy = \"tra
     
     ######### METHODS #########
     
-    read = function(path, sep=\";\")
+    read = function(path, sep=\",\")
     {
       assign(\"dataset\",read.csv(file=path,sep=sep,header = T, stringsAsFactors = F),thisEnv)
     },
@@ -222,7 +223,7 @@ DSLclassifier <- function(algo = \"tree\",metric = \"accuracy\",strategy = \"tra
       }
       
       else {
-        stop(\"algo must be either \"svm\" or \"tree\"\")
+        stop(\"algo must be either \\\"svm\\\" or \\\"tree\\\"\")
       }
       
       
@@ -233,7 +234,7 @@ DSLclassifier <- function(algo = \"tree\",metric = \"accuracy\",strategy = \"tra
         model.pred <- predict(model.fit, x_test, type = \"class\")
       }
       else {
-        stop(\"strategy must be either \"train_test\" or \"cross_valid\"\")
+        stop(\"strategy must be either \\\"train_test\\\" or \\\"cross_valid\\\"\")
       }
       
       print(length(y_test))
@@ -253,7 +254,7 @@ DSLclassifier <- function(algo = \"tree\",metric = \"accuracy\",strategy = \"tra
         return(accuracy)
       }
       else {
-        stop(\"metric shoud be either \"accuracy\", \"recall\" or \"f1\"\")
+        stop(\"metric shoud be either \\\"accuracy\\\", \\\"recall\\\" or \\\"f1\\\"\")
       }
     }
   )
@@ -280,7 +281,7 @@ classifier<-DSLclassifier()
 	def String compile(ML ml) {
 		var res = initial_r_file
 		for (s : ml.statements){
-			res += s.compile + "\n"
+			res += s.compile + newLine
 			
 		}
 		return res
@@ -296,7 +297,7 @@ classifier<-DSLclassifier()
 	}
 	
 	def String compile(Assign a) {
-		return a.varname + " = " + a.assign_value.compile
+		return a.varname + " <- " + a.assign_value.compile
 	}
 	
 	def String compile (Expression e){
@@ -337,10 +338,14 @@ classifier<-DSLclassifier()
 	def String compile(Strategy_choose sc) {
 		var line = "classifier$setStrategy(\"" + sc.strategy + "\")"
 		if (sc.strategy == "train_test") {
-			line += "\nclassifier$setTrain_test_ratio(" + sc.ratio.constantDouble + ")"
+			if(sc.ratio !== null){
+				line += newLine +"classifier$setTrain_test_ratio(" + sc.ratio.constantDouble + ")"
+			}
 		}
 		else if (sc.strategy == "cross_valid"){
-			line += "\nclassifier$setCross_valid_nb(" + sc.nb.constantInt + ")"
+			if (sc.nb !== null){
+				line += newLine+"classifier$setCross_valid_nb(" + sc.nb.constantInt + ")"
+			}
 		} 
 		return line
 	}
