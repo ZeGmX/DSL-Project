@@ -100,7 +100,7 @@ class Interpreter {
 	
 		dataset = new ArrayList<List<String>>()
 		var BufferedReader br = new BufferedReader(new FileReader(r.path.constantString))	
-	    var String line;
+	    var String line = br.readLine(); // Ignore the header
 	    while ((line = br.readLine()) !== null) {
 	    	var String sep = ";"
 	    	if (r.separator !== null) sep = r.separator 
