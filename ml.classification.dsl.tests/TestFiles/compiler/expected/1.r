@@ -142,13 +142,22 @@ DSLclassifier <- function(algo = "tree",metric = "accuracy",strategy = "train_te
       if (a>b){return(a)}
       else{return(b)}
     },
-    
+
     doPrediction=function(){
       
+      if (length(use_column)==0){
+        i<-1
+        while(i<length(dataset)){
+          use_column <- append(use_column,list(i))
+          i<-i+1
+        }
+        predict_column<-length(dataset)-1
+      }
+
       used_dataset <- dataset
       used_columns <- use_column
       predicted_column <- predict_column + 1
-      
+    
       j<-1
       
       while (j <= length(used_columns)){
@@ -179,7 +188,6 @@ DSLclassifier <- function(algo = "tree",metric = "accuracy",strategy = "train_te
       train_columns <- unlist(train_columns)
       
       used_dataset <- subset(used_dataset, select= used_columns)
-      
       col_names <- names(dataset)
       used_col_names <- names(used_dataset)
       former_predict_name <- col_names[predicted_column]
@@ -187,14 +195,13 @@ DSLclassifier <- function(algo = "tree",metric = "accuracy",strategy = "train_te
       used_col_names[[indexOfPredict]]<-"Predict"
       colnames(used_dataset) <- used_col_names
       
-      
       trainIndex <- caret::createDataPartition(used_dataset$Predict, p=train_test_ratio, list = FALSE)
       
       
-      trainingData <- used_dataset[trainIndex,] # creation du jeu de donnÃ©es "train"
+      trainingData <- used_dataset[trainIndex,] # training set creation
       
       
-      testingData <- used_dataset[-trainIndex,] # creation du jeu de donnÃ©es "test"
+      testingData <- used_dataset[-trainIndex,] # testing set creation
       
       
       j<-1
@@ -210,7 +217,7 @@ DSLclassifier <- function(algo = "tree",metric = "accuracy",strategy = "train_te
       
       x_test <- testingData[,train_columns]
       y_test <- testingData[,indexOfPredict]
-      
+
       if (algo == "svm"){
         model.fit <- svm(as.factor(Predict)~., data=trainingData, kernel="linear",scale=F)
       }
@@ -259,8 +266,8 @@ DSLclassifier <- function(algo = "tree",metric = "accuracy",strategy = "train_te
       
       else if (metric == "f1"){
         precision = diag / colsums 
-        recall = diag / rowsums 
-        f1 <- mean(2 * precision * recall / (precision + recall))
+         recall = diag / rowsums 
+         f1 <- mean(2 * precision * recall / (precision + recall))
         if (is.na(f1)){
           f1<-0
         }
@@ -292,11 +299,12 @@ DSLclassifier <- function(algo = "tree",metric = "accuracy",strategy = "train_te
 }
 
 classifier<-DSLclassifier()
-classifier$read("C:/Users/Utilisateur/Documents/ESIR/ESIR3-SIF/DSL/ProjetGit/DSL-Project/ml.classification.dsl.tests/TestFiles/runPyR/iris.csv", ",")
-classifier$add_columns(list(0, 1, 2))
-classifier$remove_columns(list(2))
-classifier$setPredict_column(3)
+classifier$read("../../../ProjetGit/DSL-Project/data-individuals-very-tiny.txt", ";")
+classifier$add_columns(list(1, 2, 3))
+column_to_predict <- 1
+classifier$setPredict_column(column_to_predict)
+classifier$setStrategy("train_test")
+classifier$setTrain_test_ratio(0.7)
 classifier$setAlgo("tree")
-classifier$setMetric("f1")
-classifier$setStrategy("cross_valid")
+classifier$setMetric("accuracy")
 classifier$doPrediction()

@@ -166,13 +166,22 @@ DSLclassifier <- function(algo = \"tree\",metric = \"accuracy\",strategy = \"tra
       if (a>b){return(a)}
       else{return(b)}
     },
-    
+
     doPrediction=function(){
       
+      if (length(use_column)==0){
+        i<-1
+        while(i<length(dataset)){
+          use_column <- append(use_column,list(i))
+          i<-i+1
+        }
+        predict_column<-length(dataset)-1
+      }
+
       used_dataset <- dataset
       used_columns <- use_column
       predicted_column <- predict_column + 1
-      
+    
       j<-1
       
       while (j <= length(used_columns)){
@@ -203,7 +212,6 @@ DSLclassifier <- function(algo = \"tree\",metric = \"accuracy\",strategy = \"tra
       train_columns <- unlist(train_columns)
       
       used_dataset <- subset(used_dataset, select= used_columns)
-      
       col_names <- names(dataset)
       used_col_names <- names(used_dataset)
       former_predict_name <- col_names[predicted_column]
@@ -211,14 +219,13 @@ DSLclassifier <- function(algo = \"tree\",metric = \"accuracy\",strategy = \"tra
       used_col_names[[indexOfPredict]]<-\"Predict\"
       colnames(used_dataset) <- used_col_names
       
-      
       trainIndex <- caret::createDataPartition(used_dataset$Predict, p=train_test_ratio, list = FALSE)
       
       
-      trainingData <- used_dataset[trainIndex,] # creation du jeu de donnÃ©es \"train\"
+      trainingData <- used_dataset[trainIndex,] # training set creation
       
       
-      testingData <- used_dataset[-trainIndex,] # creation du jeu de donnÃ©es \"test\"
+      testingData <- used_dataset[-trainIndex,] # testing set creation
       
       
       j<-1
@@ -234,7 +241,7 @@ DSLclassifier <- function(algo = \"tree\",metric = \"accuracy\",strategy = \"tra
       
       x_test <- testingData[,train_columns]
       y_test <- testingData[,indexOfPredict]
-      
+
       if (algo == \"svm\"){
         model.fit <- svm(as.factor(Predict)~., data=trainingData, kernel=\"linear\",scale=F)
       }
@@ -283,8 +290,8 @@ DSLclassifier <- function(algo = \"tree\",metric = \"accuracy\",strategy = \"tra
       
       else if (metric == \"f1\"){
         precision = diag / colsums 
-        recall = diag / rowsums 
-        f1 <- mean(2 * precision * recall / (precision + recall))
+         recall = diag / rowsums 
+         f1 <- mean(2 * precision * recall / (precision + recall))
         if (is.na(f1)){
           f1<-0
         }
@@ -406,13 +413,13 @@ classifier<-DSLclassifier()
 		if (c.use.size > 0) {
 			var line = "classifier$add_columns(list("
 			for (i : c.use){
-				line += i.constantInt + ", "
+				line += i.compile + ", "
 			}
 			return line.substring(0, line.length - 2) + "))"
 		} else if (c.unuse.size > 0) {
 			var line = "classifier$remove_columns(list("
 			for (i : c.unuse){
-				line += i.constantInt + ", "
+				line += i.compile + ", "
 			}
 			return line.substring(0, line.length - 2) + "))"
 		} else {

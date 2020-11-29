@@ -455,7 +455,7 @@ class DSLCompilerTest {
 		Assertions.assertTrue(equals(py_output,py_expected_output))
 	}
 	
-	@Test
+	//@Test
 	def void testRCompilerSpeed() {
 		val nbTests = 1000
 		var startTime = System.nanoTime
@@ -618,7 +618,7 @@ class DSLCompilerTest {
 		System.out.println("***")
 	}
 	
-	@Test
+	//@Test
 	def void testPyCompilerSpeed() {
 		val nbTests = 1000
 		var startTime = System.nanoTime
