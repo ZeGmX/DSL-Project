@@ -145,15 +145,6 @@ DSLclassifier <- function(algo = "tree",metric = "accuracy",strategy = "train_te
 
     doPrediction=function(){
       
-      if (length(use_column)==0){
-      	i<-1
-      	while(i<length(dataset)){
-      		use_column <- append(use_column,list(i))
-      		i<-i+1
-      	}
-      	predict_column<-length(dataset)-1
-      }
-
       used_dataset <- dataset
       used_columns <- use_column
       predicted_column <- predict_column + 1
@@ -188,12 +179,14 @@ DSLclassifier <- function(algo = "tree",metric = "accuracy",strategy = "train_te
       train_columns <- unlist(train_columns)
       
       used_dataset <- subset(used_dataset, select= used_columns)
+      
       col_names <- names(dataset)
       used_col_names <- names(used_dataset)
       former_predict_name <- col_names[predicted_column]
       indexOfPredict <- match(former_predict_name,used_col_names)
       used_col_names[[indexOfPredict]]<-"Predict"
       colnames(used_dataset) <- used_col_names
+      
       
       trainIndex <- caret::createDataPartition(used_dataset$Predict, p=train_test_ratio, list = FALSE)
       
@@ -299,5 +292,11 @@ DSLclassifier <- function(algo = "tree",metric = "accuracy",strategy = "train_te
 }
 
 classifier<-DSLclassifier()
-classifier$read("C:/Users/Utilisateur/Documents/ESIR/ESIR3-SIF/DSL/ProjetGit/DSL-Project/ml.classification.dsl.tests/TestFiles/runPyR/iris.csv")
+classifier$read("C:/Users/Utilisateur/Documents/ESIR/ESIR3-SIF/DSL/ProjetGit/DSL-Project/ml.classification.dsl.tests/TestFiles/runPyR/iris.csv", ",")
+classifier$add_columns(list(0, 1, 2))
+classifier$remove_columns(list(2))
+classifier$setPredict_column(3)
+classifier$setAlgo("svm")
+classifier$setMetric("accuracy")
+classifier$setStrategy("train_test")
 classifier$doPrediction()

@@ -1,0 +1,8 @@
+read "C:/Users/Utilisateur/Documents/ESIR/ESIR3-SIF/DSL/ProjetGit/DSL-Project/ml.classification.dsl.tests/TestFiles/runPyR/iris.csv" ,
+use_column 0 1 2 
+unuse_column 2
+predict_column 3
+use_algorithm tree
+use_metric f1
+use_strategy cross_valid
+predict

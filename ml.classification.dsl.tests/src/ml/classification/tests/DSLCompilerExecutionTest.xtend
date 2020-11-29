@@ -72,7 +72,7 @@ class DSLCompilerExecutionTest {
 	}
 	
 	
-	//@Test
+	@Test
 	def void testCompilersExecutionOutput1() {
 		val Rcompiler = new Compiler2R
 		val Pcompiler = new Compiler2Python
@@ -117,7 +117,7 @@ class DSLCompilerExecutionTest {
         System.out.println("Fin du test");
 	}
 	
-	//@Test
+	@Test
 	def void testCompilersExecutionOutput2() {
 		val Rcompiler = new Compiler2R
 		val Pcompiler = new Compiler2Python
@@ -158,7 +158,7 @@ class DSLCompilerExecutionTest {
         System.out.println("Fin du test");
 	}
 	
-	//@Test
+	@Test
 	def void testCompilersExecutionOutput3() {
 		val Rcompiler = new Compiler2R
 		val Pcompiler = new Compiler2Python
@@ -199,7 +199,7 @@ class DSLCompilerExecutionTest {
         System.out.println("Fin du test");
 	}
 	
-	//@Test
+	@Test
 	def void testCompilersExecutionOutput4() {
 		val Rcompiler = new Compiler2R
 		val Pcompiler = new Compiler2Python
@@ -253,6 +253,276 @@ class DSLCompilerExecutionTest {
         try {
             var process_py = Runtime.getRuntime().exec("C:/Users/Utilisateur/AppData/Local/Programs/Python/Python38/python.exe C:/Users/Utilisateur/Documents/ESIR/ESIR3-SIF/DSL/ProjetGit/DSL-Project/ml.classification.dsl.tests/TestFiles/runPyR/5.py")
             var process_r = Runtime.getRuntime().exec("C:/ProgramData/R-4.0.3/bin/Rscript.exe C:/Users/Utilisateur/Documents/ESIR/ESIR3-SIF/DSL/ProjetGit/DSL-Project/ml.classification.dsl.tests/TestFiles/runPyR/5.r")
+            
+            var fluxSortiePy = new AfficheurFlux(process_py.getInputStream());
+            var fluxErreurPy = new AfficheurFlux(process_py.getErrorStream());
+            
+            new Thread(fluxSortiePy).start();
+            new Thread(fluxErreurPy).start();
+            
+            var fluxSortieR = new AfficheurFlux(process_r.getInputStream());
+            var fluxErreurR = new AfficheurFlux(process_r.getErrorStream());
+			
+            new Thread(fluxSortieR).start();
+            new Thread(fluxErreurR).start();
+            
+            process_py.waitFor();
+            process_r.waitFor();
+            
+            var r_error = Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/runPyR/error_r.txt"))
+		
+            Assertions.assertNull(fluxErreurPy.m_trace)
+            Assertions.assertEquals(fluxErreurR.m_trace,r_error)
+            
+            val outputR = fluxSortieR.m_trace.split("of ",2)
+            val outputPy = fluxSortiePy.m_trace.split("of ",2)
+            
+            Assertions.assertEquals(outputR.get(0),outputPy.get(0))
+
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
+        System.out.println("Fin du test");
+	}
+	
+	@Test
+	def void testCompilersExecutionOutput6() {
+		val Rcompiler = new Compiler2R
+		val Pcompiler = new Compiler2Python
+
+		System.out.println("Test d'exécution des fichiers générés");
+        try {
+            var process_py = Runtime.getRuntime().exec("C:/Users/Utilisateur/AppData/Local/Programs/Python/Python38/python.exe C:/Users/Utilisateur/Documents/ESIR/ESIR3-SIF/DSL/ProjetGit/DSL-Project/ml.classification.dsl.tests/TestFiles/runPyR/6.py")
+            var process_r = Runtime.getRuntime().exec("C:/ProgramData/R-4.0.3/bin/Rscript.exe C:/Users/Utilisateur/Documents/ESIR/ESIR3-SIF/DSL/ProjetGit/DSL-Project/ml.classification.dsl.tests/TestFiles/runPyR/6.r")
+            
+            var fluxSortiePy = new AfficheurFlux(process_py.getInputStream());
+            var fluxErreurPy = new AfficheurFlux(process_py.getErrorStream());
+            
+            new Thread(fluxSortiePy).start();
+            new Thread(fluxErreurPy).start();
+            
+            var fluxSortieR = new AfficheurFlux(process_r.getInputStream());
+            var fluxErreurR = new AfficheurFlux(process_r.getErrorStream());
+			
+            new Thread(fluxSortieR).start();
+            new Thread(fluxErreurR).start();
+            
+            process_py.waitFor();
+            process_r.waitFor();
+            
+            var r_error = Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/runPyR/error_r.txt"))
+		
+            Assertions.assertNull(fluxErreurPy.m_trace)
+            Assertions.assertEquals(fluxErreurR.m_trace,r_error)
+            
+            val outputR = fluxSortieR.m_trace.split("of ",2)
+            val outputPy = fluxSortiePy.m_trace.split("of ",2)
+            
+            Assertions.assertEquals(outputR.get(0),outputPy.get(0))
+
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
+        System.out.println("Fin du test");
+	}
+	
+	@Test
+	def void testCompilersExecutionOutput7() {
+		val Rcompiler = new Compiler2R
+		val Pcompiler = new Compiler2Python
+
+		System.out.println("Test d'exécution des fichiers générés");
+        try {
+            var process_py = Runtime.getRuntime().exec("C:/Users/Utilisateur/AppData/Local/Programs/Python/Python38/python.exe C:/Users/Utilisateur/Documents/ESIR/ESIR3-SIF/DSL/ProjetGit/DSL-Project/ml.classification.dsl.tests/TestFiles/runPyR/7.py")
+            var process_r = Runtime.getRuntime().exec("C:/ProgramData/R-4.0.3/bin/Rscript.exe C:/Users/Utilisateur/Documents/ESIR/ESIR3-SIF/DSL/ProjetGit/DSL-Project/ml.classification.dsl.tests/TestFiles/runPyR/7.r")
+            
+            var fluxSortiePy = new AfficheurFlux(process_py.getInputStream());
+            var fluxErreurPy = new AfficheurFlux(process_py.getErrorStream());
+            
+            new Thread(fluxSortiePy).start();
+            new Thread(fluxErreurPy).start();
+            
+            var fluxSortieR = new AfficheurFlux(process_r.getInputStream());
+            var fluxErreurR = new AfficheurFlux(process_r.getErrorStream());
+			
+            new Thread(fluxSortieR).start();
+            new Thread(fluxErreurR).start();
+            
+            process_py.waitFor();
+            process_r.waitFor();
+            
+            var r_error = Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/runPyR/error_r.txt"))
+		
+            Assertions.assertNull(fluxErreurPy.m_trace)
+            Assertions.assertEquals(fluxErreurR.m_trace,r_error)
+            
+            val outputR = fluxSortieR.m_trace.split("of ",2)
+            val outputPy = fluxSortiePy.m_trace.split("of ",2)
+            
+            Assertions.assertEquals(outputR.get(0),outputPy.get(0))
+
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
+        System.out.println("Fin du test");
+	}
+	
+	@Test
+	def void testCompilersExecutionOutput8() {
+		val Rcompiler = new Compiler2R
+		val Pcompiler = new Compiler2Python
+
+		System.out.println("Test d'exécution des fichiers générés");
+        try {
+            var process_py = Runtime.getRuntime().exec("C:/Users/Utilisateur/AppData/Local/Programs/Python/Python38/python.exe C:/Users/Utilisateur/Documents/ESIR/ESIR3-SIF/DSL/ProjetGit/DSL-Project/ml.classification.dsl.tests/TestFiles/runPyR/8.py")
+            var process_r = Runtime.getRuntime().exec("C:/ProgramData/R-4.0.3/bin/Rscript.exe C:/Users/Utilisateur/Documents/ESIR/ESIR3-SIF/DSL/ProjetGit/DSL-Project/ml.classification.dsl.tests/TestFiles/runPyR/8.r")
+            
+            var fluxSortiePy = new AfficheurFlux(process_py.getInputStream());
+            var fluxErreurPy = new AfficheurFlux(process_py.getErrorStream());
+            
+            new Thread(fluxSortiePy).start();
+            new Thread(fluxErreurPy).start();
+            
+            var fluxSortieR = new AfficheurFlux(process_r.getInputStream());
+            var fluxErreurR = new AfficheurFlux(process_r.getErrorStream());
+			
+            new Thread(fluxSortieR).start();
+            new Thread(fluxErreurR).start();
+            
+            process_py.waitFor();
+            process_r.waitFor();
+            
+            var r_error = Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/runPyR/error_r.txt"))
+		
+            Assertions.assertNull(fluxErreurPy.m_trace)
+            Assertions.assertEquals(fluxErreurR.m_trace,r_error)
+            
+            val outputR = fluxSortieR.m_trace.split("of ",2)
+            val outputPy = fluxSortiePy.m_trace.split("of ",2)
+            
+            Assertions.assertEquals(outputR.get(0),outputPy.get(0))
+
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
+        System.out.println("Fin du test");
+	}
+	
+	@Test
+	def void testCompilersExecutionOutput9() {
+		val Rcompiler = new Compiler2R
+		val Pcompiler = new Compiler2Python
+
+		System.out.println("Test d'exécution des fichiers générés");
+        try {
+            var process_py = Runtime.getRuntime().exec("C:/Users/Utilisateur/AppData/Local/Programs/Python/Python38/python.exe C:/Users/Utilisateur/Documents/ESIR/ESIR3-SIF/DSL/ProjetGit/DSL-Project/ml.classification.dsl.tests/TestFiles/runPyR/9.py")
+            var process_r = Runtime.getRuntime().exec("C:/ProgramData/R-4.0.3/bin/Rscript.exe C:/Users/Utilisateur/Documents/ESIR/ESIR3-SIF/DSL/ProjetGit/DSL-Project/ml.classification.dsl.tests/TestFiles/runPyR/9.r")
+            
+            var fluxSortiePy = new AfficheurFlux(process_py.getInputStream());
+            var fluxErreurPy = new AfficheurFlux(process_py.getErrorStream());
+            
+            new Thread(fluxSortiePy).start();
+            new Thread(fluxErreurPy).start();
+            
+            var fluxSortieR = new AfficheurFlux(process_r.getInputStream());
+            var fluxErreurR = new AfficheurFlux(process_r.getErrorStream());
+			
+            new Thread(fluxSortieR).start();
+            new Thread(fluxErreurR).start();
+            
+            process_py.waitFor();
+            process_r.waitFor();
+            
+            var r_error = Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/runPyR/error_r.txt"))
+		
+            Assertions.assertNull(fluxErreurPy.m_trace)
+            Assertions.assertEquals(fluxErreurR.m_trace,r_error)
+            
+            val outputR = fluxSortieR.m_trace.split("of ",2)
+            val outputPy = fluxSortiePy.m_trace.split("of ",2)
+            
+            Assertions.assertEquals(outputR.get(0),outputPy.get(0))
+
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
+        System.out.println("Fin du test");
+	}
+	
+	@Test
+	def void testCompilersExecutionOutput10() {
+		val Rcompiler = new Compiler2R
+		val Pcompiler = new Compiler2Python
+
+		System.out.println("Test d'exécution des fichiers générés");
+        try {
+            var process_py = Runtime.getRuntime().exec("C:/Users/Utilisateur/AppData/Local/Programs/Python/Python38/python.exe C:/Users/Utilisateur/Documents/ESIR/ESIR3-SIF/DSL/ProjetGit/DSL-Project/ml.classification.dsl.tests/TestFiles/runPyR/10.py")
+            var process_r = Runtime.getRuntime().exec("C:/ProgramData/R-4.0.3/bin/Rscript.exe C:/Users/Utilisateur/Documents/ESIR/ESIR3-SIF/DSL/ProjetGit/DSL-Project/ml.classification.dsl.tests/TestFiles/runPyR/10.r")
+            
+            var fluxSortiePy = new AfficheurFlux(process_py.getInputStream());
+            var fluxErreurPy = new AfficheurFlux(process_py.getErrorStream());
+            
+            new Thread(fluxSortiePy).start();
+            new Thread(fluxErreurPy).start();
+            
+            var fluxSortieR = new AfficheurFlux(process_r.getInputStream());
+            var fluxErreurR = new AfficheurFlux(process_r.getErrorStream());
+			
+            new Thread(fluxSortieR).start();
+            new Thread(fluxErreurR).start();
+            
+            process_py.waitFor();
+            process_r.waitFor();
+            
+            var r_error = Files.readString(Paths.get("../../DSL-Project/ml.classification.dsl.tests/TestFiles/runPyR/error_r.txt"))
+		
+            Assertions.assertNull(fluxErreurPy.m_trace)
+            Assertions.assertEquals(fluxErreurR.m_trace,r_error)
+            
+            val outputR = fluxSortieR.m_trace.split("of ",2)
+            val outputPy = fluxSortiePy.m_trace.split("of ",2)
+            
+            Assertions.assertEquals(outputR.get(0),outputPy.get(0))
+
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
+        System.out.println("Fin du test");
+	}
+	
+	@Test
+	def void testCompilersExecutionOutput11() {
+		val Rcompiler = new Compiler2R
+		val Pcompiler = new Compiler2Python
+
+		System.out.println("Test d'exécution des fichiers générés");
+        try {
+            var process_py = Runtime.getRuntime().exec("C:/Users/Utilisateur/AppData/Local/Programs/Python/Python38/python.exe C:/Users/Utilisateur/Documents/ESIR/ESIR3-SIF/DSL/ProjetGit/DSL-Project/ml.classification.dsl.tests/TestFiles/runPyR/11.py")
+            var process_r = Runtime.getRuntime().exec("C:/ProgramData/R-4.0.3/bin/Rscript.exe C:/Users/Utilisateur/Documents/ESIR/ESIR3-SIF/DSL/ProjetGit/DSL-Project/ml.classification.dsl.tests/TestFiles/runPyR/11.r")
             
             var fluxSortiePy = new AfficheurFlux(process_py.getInputStream());
             var fluxErreurPy = new AfficheurFlux(process_py.getErrorStream());

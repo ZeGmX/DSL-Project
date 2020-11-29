@@ -82,17 +82,32 @@ The following experience measures the impact of the number of lines of the input
 
 | Size of the input file (number of lines) | R compiler generation time (ms) | Python compiler generation time (ms) |
 | ---------------------------------------- | ------------------------------- | ------------------------------------ |
-| 10                                       | 138                             | 109                                  |
-| 20                                       | 272                             | 138                                  |
-| 40                                       | 571                             | 99                                   |
-| 80                                       | 582                             | 160                                  |
-| 160                                      | 1311                            | 355                                  |
-| 320                                      | 3580                            | 1014                                 |
-| 640                                      | 10952                           | 2840                                 |
-| 1280                                     | 38264                           | 10548                                |
-| 2560                                     | 132928                          | 35645                                |
+| 10                                       | 399                             | 109                                  |
+| 20                                       | 425                             | 138                                  |
+| 40                                       | 792                             | 99                                   |
+| 80                                       | 1388                            | 160                                  |
+| 160                                      | 3098                            | 355                                  |
+| 320                                      | 8648                            | 1014                                 |
+| 640                                      | 23366                           | 2840                                 |
+| 1280                                     | 75493                           | 10548                                |
+| 2560                                     | 269282                          | 35645                                |
 
 We can notice that the R file is much longer to generate than the Python one. It can be explained by the fact that the initial R file is bigger than the initial Python file.
+
+Then we wrote tests that execute python and R file, and compare their results. In order to pass the tests, we only tested that the strings returned by the two versions, without the score result, are the same : `For the algorithm, and the strategy strategy, we found a metric-score of`. That allow us to verify that the execution went well and that all the parameters were taken into account. In order to compare the results of the R and th Python ml computation, we present some results below.
+
+| Dataset | Algorithm | Strategy         | Metric   | R result  | Python result      |
+| ------- | --------- | ---------------- | -------- | --------- | ------------------ |
+| iris    | tree      | cross validation | f1       | 0.8351266 | 0.9395973154362416 |
+| iris    | tree      | train test       | f1       | 0.934236  | 0.9466666666666667 |
+| iris    | tree      | train test       | accuracy | 0.9459459 | 0.96               |
+| iris    | tree      | train test       | recall   | 0.9404762 | 0.8933333333333333 |
+| iris    | svm       | train test       | f1       | 0.959984  | 0.7066666666666667 |
+| iris    | svm       | train test       | accuracy | 0.9594595 | 0.9333333333333333 |
+| iris    | svm       | train test       | recall   | 0.9615385 | 0.92               |
+| random  | svm       | train test       | accuracy | 0.9459459 | 1                  |
+
+We can observe that the obtained values are close. Only the cross_validation work better for python than for R. It can be explained by the fact that it doesn't exist any ready-made function as it is the case in Python. Of course, that are not the same value, but it is impossible to obtain since even in the same language we don't obtain twice the same result.
 
 ### Tests of the interpreters
 
@@ -108,9 +123,9 @@ We also wanted to test the performances of the interpreter with respect to the s
 The first experience consist shows the load time (from a file containing only a `read` instruction) and the interpretation time for a file predicting for the two algorithms, the three metrics and the two strategies (in fact only the metric has an impact for the interpreter). The values are in milliseconds.
 
 | Dataset size             | Load time (ms) | Every combination computation time (ms) |
-| ------------------------ | -------------- | ---------------------------------------- |
-| 15, 3 (manually created) | 15        | 26                                 |
-| 150, 4 (iris dataset)    | 57        | 239                                |
+| ------------------------ | -------------- | --------------------------------------- |
+| 15, 3 (manually created) | 15             | 26                                      |
+| 150, 4 (iris dataset)    | 57             | 239                                     |
 
 The second experience focuses on the impact of the metric for a given dataset.
 
@@ -163,4 +178,6 @@ We can see that the overall scores are not very high, but we want to point out t
 
 ## Conclusion
 
-*TODO*
+In conclusion, we can say that our DSL works quite well, although it works best in Python. This DSL cannot work with a dataset with missing values, but we have worked with a CSV team whose DSL also does not take into account missing values.
+
+The tests we performed show that the different parts of our DSL work on sample toys, and larger files were used to show the evolution of runtime versus input size.
