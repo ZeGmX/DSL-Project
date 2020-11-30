@@ -26,17 +26,16 @@ import ml.classification.generator.Interpreter
 
 @ExtendWith(InjectionExtension)
 @InjectWith(DSLInjectorProvider)
-class DSLCompilerExecutionTest2 {
+class Main {
 	
 	@Inject
 	ParseHelper<ML> parseHelper
 	
 	@Test
-	def main () throws Exception  {
+	def main (String[] args) throws Exception  {
 		System.out.println("test");
-		var args ="../../DSL-Project/ml.classification.dsl.tests/TestFiles/test.mldsl"
 		if (args.length >= 1) {
-			var path = args //args.get(0);
+			var path = args.get(0);
 
 			var content = Files.readString(Paths.get(path));
 			System.out.println(content);
