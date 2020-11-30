@@ -5,8 +5,8 @@ then
 else
     if [ ${1##*.} = mldsl ]
     then
-        echo "Starting the java project for the file $1..."
-        java -jar main.jar $1
+        #echo "Starting the java project for the file $1..."
+        #java -jar main.jar $1
         name=$1
         echo "Interpreting the compiled Python file..."
         python3 "${name//.mldsl/.py}"
