@@ -32,8 +32,11 @@ To run the Python compiled file you will need to run the following command in a 
 
 ## How to test
 
-When you have your .mldsl file ready you need to open a terminal and go to the `DSL-Project/` folder and then run the `./run.sh absolute/path/to/the/file.mldsl` command. If it is not executable, you can run `chmod 755 run.sh`.  
+What we wanted to do:  
+*When you have your .mldsl file ready you need to open a terminal and go to the `DSL-Project/` folder and then run the `./run.sh absolute/path/to/the/file.mldsl` command. If it is not executable, you can run `chmod 755 run.sh`.*  
 
-This script should pretty-print your file, run the interpreter, generate the compiled file in Python and R (in the same folder as the original .mldsl file) and execute them.
+*This script should pretty-print your file, run the interpreter, generate the compiled file in Python and R (in the same folder as the original .mldsl file) and execute them.*
+
+But due to problems to make a working jar file out of our project and compatibility issues between our two operating systems, this might not work. You can still open the project in Eclipse, and run the `Main.xtend` file in the `ml.classification.dsl.tests` project. Then the compiles files generated are located in the same folder as the input .mldsl file and you can run them using `python3 absolute/path/to/the/file.py` and `Rscript absolute/path/to/the/file.r`.
 
 </div>
