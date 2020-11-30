@@ -37,6 +37,6 @@ What we wanted to do:
 
 *This script should pretty-print your file, run the interpreter, generate the compiled file in Python and R (in the same folder as the original .mldsl file) and execute them.*
 
-But due to problems to make a working jar file out of our project and compatibility issues between our two operating systems, this might not work. You can still open the project in Eclipse, and run the `Main.xtend` file in the `ml.classification.dsl.tests` project. Then the compiles files generated are located in the same folder as the input .mldsl file and you can run them using `python3 absolute/path/to/the/file.py` and `Rscript absolute/path/to/the/file.r`.
+But due to problems to make a working jar file out of our project and compatibility issues between our two operating systems, this might not work. You can still open the project in Eclipse, and run the `Main.xtend` file in the `ml.classification.dsl.tests` project as JUnit Test (and adding the absolute path to the run configuration). Then the compiles files generated are located in the same folder as the input .mldsl file and you can run them using `python3 absolute/path/to/the/file.py` and `Rscript absolute/path/to/the/file.r`.
 
 </div>
